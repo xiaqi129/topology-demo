@@ -1,0 +1,7 @@
+{
+    "/FirewallManagement": {
+      "target": "http://10.124.196.249/",
+      "logLevel": "debug"
+    }
+}
+  
