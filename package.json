@@ -14,7 +14,7 @@
     "pre-commit": {
         "run": [
             "precommit-msg",
-            "tslint --type-check --project tsconfig.json  src/**/*.ts",
+            "tslint",
             "lesshint"
         ]
     },
