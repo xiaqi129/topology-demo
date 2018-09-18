@@ -4,7 +4,8 @@ import { Component, OnInit } from '@angular/core';
     templateUrl: './index.html',
     styleUrls: ['./index.style.less']
 }) export class IndexComponent implements OnInit {
-    ngOnInit() {
 
+    ngOnInit() {
+        const message = 'dddd';
     }
 }

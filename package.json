@@ -5,13 +5,18 @@
         "ng": "ng",
         "start": "ng serve --port=4300",
         "build": "ng build",
+        "build-prod": "ng build --prod",
         "test": "ng test",
-        "lint": "ng lint",
+        "lint": "ng lint --type-check",
         "e2e": "ng e2e",
         "precommit-msg": "echo 'Pre-commit checks...' && exit 0"
     },
     "pre-commit": {
-        "run": ["precommit-msg","tslint"]
+        "run": [
+            "precommit-msg",,
+            "tslint",
+            "lesshint"
+        ]
     },
     "private": true,
     "dependencies": {
