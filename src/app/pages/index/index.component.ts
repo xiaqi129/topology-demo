@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./index.style.less']
 }) export class IndexComponent implements OnInit {
 
-    ngOnInit() {
+    public ngOnInit() {
         const message = 'dddd';
     }
 }
