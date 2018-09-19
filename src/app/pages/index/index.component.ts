@@ -4,8 +4,8 @@ import { Component, OnInit } from '@angular/core';
     templateUrl: './index.html',
     styleUrls: ['./index.style.less']
 }) export class IndexComponent implements OnInit {
-
-    public ngOnInit() {
-        const message = 'dddd';
+    constructor() {
+        console.log('in IndexComponent');
     }
+    ngOnInit() {}
 }

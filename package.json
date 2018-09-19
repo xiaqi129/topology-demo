@@ -11,11 +11,13 @@
         "e2e": "ng e2e",
         "precommit-msg": "echo 'Pre-commit checks...' && exit 0"
     },
-    "pre-commit": [
-        "precommit-msg",
-        "tslint",
-        "lesshint"
-    ],
+    "pre-commit": {
+        "run": [
+            "precommit-msg",
+            "tslint",
+            "lesshint"
+        ]
+    },
     "private": true,
     "dependencies": {
         "@angular/animations": "^6.1.0",
