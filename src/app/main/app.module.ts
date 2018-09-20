@@ -1,9 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppRouter } from './app.router';
+import { appRouter } from './app.router';
 import { AppComponent } from './app.component';
 import { HomeModule } from '../pages/home/home.module';
 import { IndexModule } from '../pages/index/index.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     declarations: [
@@ -11,7 +12,8 @@ import { IndexModule } from '../pages/index/index.module';
     ],
     imports: [
         BrowserModule,
-        AppRouter,
+        RouterModule,
+        appRouter,
         HomeModule,
         IndexModule
     ],

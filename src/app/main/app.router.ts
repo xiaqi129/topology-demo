@@ -7,4 +7,4 @@ const routes: Routes = [
         pathMatch: 'full'
     },
     ];
-export const AppRouter = RouterModule.forRoot(routes, { useHash: true });
+export const appRouter: any = RouterModule.forRoot(routes, { useHash: true });

@@ -8,8 +8,8 @@
         "build-prod": "ng build --prod",
         "test": "ng test",
         "lint":"run-p eslint stylelint",
-        "tslint": "tslint \"src/**/*.ts\" --project tsconfig.json && exit 0",
-        "stylelint": "stylelint \"src/**/*.scss\" --config .stylelintrc.json",
+        "tslint": "tslint \"src/**/*.ts\"",
+        "stylelint": "stylelint \"src/**/*.scss\"",
         "e2e": "ng e2e",
         "runsh":".\\script\\script.sh",
         "precommit-msg": "echo 'Pre-commit checks...' && exit 0"
