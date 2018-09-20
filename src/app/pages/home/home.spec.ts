@@ -21,8 +21,7 @@ describe('Component: Home', () => {
         el = de.nativeElement;
     }));
     it('should display a different test title', () => {
-        component.title = 'I am title';
         fixture.detectChanges();
-        expect(el.textContent).toBe('I am title');
+        expect(el.textContent).toEqual('I am title');
     });
 });
