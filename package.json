@@ -10,7 +10,6 @@
         "tslint": "tslint \"src/**/*.ts\" --project tsconfig.json && exit 0",
         "lesshint": "lesshint \"src/**/*.less\" && exit 0",
         "e2e": "ng e2e",
-        "runsh": ".\\bin\\test.sh",
         "precommit-msg": "echo 'Pre-commit checks...' && exit 0"
     },
     "pre-commit": {
