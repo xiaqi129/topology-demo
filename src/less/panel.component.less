@@ -1,0 +1,225 @@
+.border-radius (@radius) {
+    border-radius: @radius;
+    -moz-border-radius: @radius;
+    -webkit-border-radius: @radius;
+  }
+  .border-top-radius (@top_radius,@bottom_radius) {
+      border-top-left-radius: @top_radius;
+      border-top-right-radius: @top_radius;
+      border-bottom-left-radius: @bottom_radius;
+      border-bottom-right-radius: @bottom_radius;
+  }
+  
+  .ibox-content h1, .ibox-content h2, .ibox-content h3, .ibox-content h4, .ibox-content h5,
+  .ibox-title h1, .ibox-title h2, .ibox-title h3, .ibox-title h4, .ibox-title h5 {
+    margin-top: 5px;
+  }
+  
+  .ibox-content.text-box {
+    padding-bottom: 0;
+    padding-top: 15px;
+  }
+  
+  .ui-draggable .ibox-title {
+    cursor: move;
+  }
+.title{
+  font-size: 15px;
+  color: #51525c;
+}
+.ibox {
+    margin-bottom: 25px;
+    margin-top: 20px;
+    box-shadow: 1px 1px 8px @border-color;
+  }
+  .ibox.collapsed .ibox-content {
+    display: none;
+  }
+  
+  .ibox.collapsed .fa.fa-chevron-up:before {
+    content: "\f078";
+  }
+  
+  .ibox.collapsed .fa.fa-chevron-down:before {
+    content: "\f077";
+  }
+  
+  .ibox:after, .ibox:before {
+    display: table;
+  }
+  
+  .ibox-title {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: @ibox-title-bg;
+    border-color: @border-color;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 3px 0 0;
+    color: inherit;
+    margin-bottom: 0;
+    padding: 14px 15px 7px;
+    min-height: 48px;
+    font-size: @ibox-title-font;
+    font-weight: 600;
+    .info {
+      padding-left: 15px;
+      padding-right: 15px;
+      font-size: 12px;
+      font-weight: normal;
+      color: @info-color;
+    }
+  }
+  .ibox-content {
+    background-color: @ibox-content-bg;
+    color: inherit;
+    padding: 15px 20px 20px 20px;
+    font-size: 14px;
+    clear: both;
+    border-color: @border-color;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 1px 0;
+  }
+  
+  .ibox-footer {
+    color: inherit;
+    border-top: 1px solid @border-color;
+    font-size: 90%;
+    background: #ffffff;
+    padding: 10px 15px;
+  }
+  
+  
+  .ibox-heading {
+    background-color: #f3f6fb;
+    border-bottom: none;
+  }
+  
+  .ibox-heading h3 {
+    font-weight: 200;
+    font-size: 24px;
+  }
+  
+  .ibox-title h5 {
+    display: inline-block;
+    font-size: 14px;
+    margin: 0 0 7px;
+    padding: 0;
+    text-overflow: ellipsis;
+    float: left;
+  }
+  
+  .ibox-title .label {
+    float: left;
+    margin-left: 4px;
+  }
+  
+  .ibox-tools {
+    display: block;
+    float: right;
+    margin-top: 0;
+    position: relative;
+    padding: 0;
+    text-align: right;
+  }
+  
+  .ibox-tools a {
+    cursor: pointer;
+    margin-left: 5px;
+    color: #c4c4c4;
+  }
+  .close-link{
+    color: #c4c4c4
+  }
+  
+  .ibox-tools a.btn-primary {
+    color: #fff;
+  }
+  
+  .ibox-tools .dropdown-menu > li > a {
+    padding: 4px 10px;
+    font-size: 12px;
+  }
+  
+  .ibox .ibox-tools.open > .dropdown-menu {
+    left: auto;
+    right: 0;
+  }
+  
+  .ibox.fullscreen {
+    z-index: 2030;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+    margin-bottom: 0;
+  }
+  
+  .ibox.fullscreen .collapse-link {
+    display: none;
+  }
+  
+  .ibox.fullscreen .ibox-content {
+    min-height: calc(~"100% - 48px");
+  }
+  .ibox.simple {
+    .ibox-title {
+      border: none;
+    }
+    .ibox-content {
+      border:none;
+    }
+  }
+  .ibox.radius {
+    .ibox-title {
+      .border-top-radius(5px,0);
+    }
+    .ibox-content {
+      .border-top-radius(0,5px);
+    }
+  }
+  
+  .ibox.radius-footer {
+    .ibox-title {
+      .border-top-radius(5px,0);
+    }
+    .ibox-footer {
+      .border-top-radius(0,5px);
+    }
+  }
+  .color-panel{
+    margin-top: 20px;
+  }
+  .panel{
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+  }
+  .panel-heading{
+    padding: 10px 15px;
+    margin-top: -1px;
+    margin-left: -1px;
+    margin-right: -1px;
+    // border-bottom: 1px solid transparent;
+  }
+  .panel-body{
+    padding: 15px;
+    p{
+      font-size: 14px;
+    }
+  }
+
+
+  .minpenelwidth{
+    min-width: 256px;
+  }
+
+  .minpenelwidth{
+    min-width: 256px;
+  }

@@ -1,0 +1,116 @@
+@import "./variables";
+@font-color:#fff;
+.border-radius(@radius) {
+    border-radius: @radius;
+    -moz-border-radius: @radius;
+    -webkit-border-radius: @radius;
+}
+.border-style(@border-style,@bg-color,@text-color,@border-color){
+    border: @border-style 1px @border-color;
+    background:@bg-color !important;
+    color: @text-color !important;
+    &:hover, &:active, &:focus, &:focus:hover, &:focus:active {
+        background:@border-color  !important;
+        color: @font-color !important;
+        outline: none;
+      }
+}
+.btn-class(@bg-color,@border-color,@font-color) {
+    background: @bg-color;
+    border-color: @border-color;
+    color: @font-color;
+    &:hover, &:active, &:focus, &:focus:hover, &:focus:active {
+        background:fade(@bg-color,70%)  !important;
+        border-color:fade(@border-color,70%) !important ;
+        color: @font-color;
+        outline: none;
+      }
+}
+
+// normal button
+
+.btn-primary{
+    .btn-class(@navy,@navy,@font-color);
+}
+.btn-success{
+    .btn-class(@blue,@blue,@font-color);
+}
+.btn-info{
+    .btn-class(@lazur,@lazur,@font-color);
+}
+.btn-warning{
+    .btn-class(@yellow,@yellow,@font-color);
+}
+.btn-danger{
+    .btn-class(@red,@red,@font-color);
+}
+.btn-default{
+    .border-style(solid, @bg-white-color, @text-color,  @dark-gray);
+}
+.btn-disabled{
+    .btn-class(@yellow,@yellow,@font-color);
+}
+
+// solid button
+
+.btn-outline.btn-primary{
+    .border-style(solid,@bg-white-color, @navy, @navy)
+}
+.btn-outline.btn-success{
+    .border-style(solid, @bg-white-color,@blue, @blue);
+}
+.btn-outline.btn-warning{
+    .border-style(solid, @bg-white-color, @yellow,@yellow);
+}
+.btn-outline.btn-default{
+    .border-style(solid, @bg-white-color, @text-color,@dark-gray);
+}
+.btn-outline.btn-info{
+    .border-style(solid, @bg-white-color,@lazur, @lazur);
+}
+.btn-outline.btn-danger{
+    .border-style(solid, @bg-white-color, @red, @red)
+}
+
+// dashed button
+
+.btn-dashed.btn-primary{
+    .border-style(dashed,@bg-white-color, @navy, @navy)
+}
+.btn-dashed.btn-success{
+    .border-style(dashed, @bg-white-color,@blue, @blue)
+}
+.btn-dashed.btn-warning{
+    .border-style(dashed, @bg-white-color,@yellow, @yellow)
+}
+.btn-dashed.btn-default{
+    .border-style(dashed, @bg-white-color,@text-color, @dark-gray)
+}
+.btn-dashed.btn-info{
+    .border-style(dashed, @bg-white-color, @lazur, @lazur)
+}
+.btn-dashed.btn-danger{
+    .border-style(dashed, @bg-white-color,@red, @red)
+}
+
+// rounded button
+
+.btn-rounded {
+    .border-radius(50px);
+}
+
+// group button
+
+.btn-default-group {
+    margin-left: 0;
+    margin-right: 0;
+    .border-style(solid, @bg-white-color, @text-color, @dark-gray);
+}
+.btn-group{ 
+    .btn-outline{
+        .border-radius(50px); 
+    }
+    .btn-info.active{
+        .btn-class(@info-active-color, @info-active-color, @font-color)
+    }   
+}

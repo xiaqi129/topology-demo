@@ -1,4 +1,5 @@
 import * as _ from 'lodash';
+import * as PIXI from 'pixi.js';
 import { CommonElement } from './common-element';
 import { Edge } from './edge';
 import { Node } from './node';
@@ -69,8 +70,10 @@ export class Tooltip {
   private tooltipMove(event: any) {
     const tooltip = document.getElementById('tooltip');
     if (tooltip) {
-      tooltip.style.left = `${event.data.global.x + 30}px`;
-      tooltip.style.top = `${event.data.global.y + 30}px`;
+      // tooltip.style.left = `${event.data.global.x + 30}px`;
+      // tooltip.style.top = `${event.data.global.y + 30}px`;
+      tooltip.style.left = `${event.data.originalEvent.clientX + 20}px`;
+      tooltip.style.top = `${event.data.originalEvent.clientY + 20}px`;
     }
   }
 

@@ -1,0 +1,84 @@
+@import './variables';
+.main-title {
+    font-size: 18px;
+    color: @title-font-color;
+    font-weight: 600;
+    margin-bottom: 30px;
+    margin-left: 0;
+    margin-top: 50px;
+}
+
+.sub-title {
+    clear: both; // display: inline-block;
+    font-size: @sub-title-font;
+    color: @sub-title-color;
+    margin-bottom: 10px;
+    margin-top: 8px;
+    font-size: 15px;
+}
+
+.note {
+    text-align: left;
+    line-height: 30px;
+    .secondlevel {
+        font-size: 12px;
+        font-weight: normal;
+        color: #848ea1;
+    }
+}
+
+.explanation {
+    display: inline-block;
+    padding-bottom: 20px;
+    font-size: @explanation-font;
+    color: @explanation-color;
+    p {
+        display: inline-block;
+        background: @explanation-bg;
+        color: @explanation-block-color;
+        padding: 0px 8px;
+        border-radius: 3px;
+    }
+}
+
+// .row {
+//     max-width: 100%;
+// }
+
+.api_style {
+    width: 80%;
+    min-width: 580px;
+    h1 {
+        font-size: 18px;
+    }
+    h2 {
+        font-size: 16px;
+    }
+    p {
+        font-size: 12px;
+    }
+    table {
+        margin-bottom: 30px;
+        font-size: 14px;
+        min-width: 580px;
+        thead {
+            tr {
+                background: #F5F5F6;
+            }
+        }
+        tbody {
+            tr {
+                td {
+                    word-break: break-all;
+                }
+            }
+        }
+    }
+}
+
+// api style 
+p[class~="api-subtile"] {
+    // margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 12px;
+}
