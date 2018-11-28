@@ -17,15 +17,15 @@ describe('AppComponent', () => {
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   }));
-  it(`should have as title 'prime-ui-angular'`, async(() => {
+  it(`should have as title 'network-demo'`, async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('prime-ui-angular');
+    expect(app.title).toEqual('network-demo');
   }));
 //   it('should render title in a h1 tag', async(() => {
 //     const fixture = TestBed.createComponent(AppComponent);
 //     fixture.detectChanges();
 //     const compiled = fixture.debugElement.nativeElement;
-//     expect(compiled.querySelector('h1').textContent).toContain('Welcome to prime-ui-angular!');
+//     expect(compiled.querySelector('h1').textContent).toContain('Welcome to network-demo!');
 //   }));
 });

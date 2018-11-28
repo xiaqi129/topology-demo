@@ -1,5 +1,5 @@
 {
-    "name": "prime-ui-angular",
+    "name": "network-demo",
     "version": "0.0.0",
     "scripts": {
         "ng": "ng",
@@ -7,11 +7,11 @@
         "build": "ng build",
         "build-prod": "ng build --prod",
         "test": "ng test",
-        "lint":"run-p eslint stylelint",
+        "lint": "run-p eslint stylelint",
         "tslint": "tslint \"src/**/*.ts\"",
         "stylelint": "stylelint \"src/**/*.scss\"",
         "e2e": "ng e2e",
-        "runsh":".\\script\\script.sh",
+        "runsh": ".\\script\\script.sh",
         "precommit-msg": "echo 'Pre-commit checks...' && exit 0"
     },
     "pre-commit": {
@@ -32,7 +32,15 @@
         "@angular/platform-browser": "^6.1.0",
         "@angular/platform-browser-dynamic": "^6.1.0",
         "@angular/router": "^6.1.0",
+        "@types/pixi.js": "^4.8.3",
+        "bezier-js": "^2.2.15",
         "core-js": "^2.5.4",
+        "graham-scan-convex-hull": "^0.2.0",
+        "lodash": "^4.17.11",
+        "pixi-viewport": "^3.11.0",
+        "pixi.js": "^4.8.2",
+        "polygon": "^1.0.2",
+        "polygon-offset": "^0.3.1",
         "rxjs": "~6.2.0",
         "zone.js": "~0.8.26"
     },
