@@ -9,7 +9,6 @@
         "test": "ng test",
         "lint": "run-p eslint stylelint",
         "tslint": "tslint \"src/**/*.ts\"",
-        "stylelint": "stylelint \"src/**/*.scss\"",
         "e2e": "ng e2e",
         "runsh": ".\\script\\script.sh",
         "precommit-msg": "echo 'Pre-commit checks...' && exit 0"
@@ -17,8 +16,7 @@
     "pre-commit": {
         "run": [
             "precommit-msg",
-            "tslint",
-            "stylelint"
+            "tslint"
         ]
     },
     "private": true,
