@@ -136,6 +136,7 @@
             max-height: calc(~"100vh - 55px");
             overflow-x: hidden;
             box-shadow: 3px 1px 7px #f4f6f9;
+            z-index: 1;
             .navbar-nav {
                 height: 100%;
                 width: 350px;
@@ -202,11 +203,14 @@
     }
     .footer {
         background: #fff;
-        position: absolute;
+        position: fixed;
         bottom: 0;
-        left: 8px;
+        left: 260px;
+        right: 0;
         height: 50px;
         border-top: 1px solid #eceff5;
+        text-align: center;
+        line-height: 50px;
     }
 }
 
