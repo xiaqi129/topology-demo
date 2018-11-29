@@ -1,3 +1,18 @@
 .link {
   color: #fff;
 }
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5000;
+}
+
+.content {
+  box-sizing: border-box;
+  padding-top: 60px;
+  height: 100%;
+  position: fixed;
+}

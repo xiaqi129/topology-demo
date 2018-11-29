@@ -1,15 +1,25 @@
 import * as _ from 'lodash';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Network } from 'src/network/network';
 
 @Component({
     selector: 'app-simple',
     templateUrl: './simple.html',
     styleUrls: ['./simple.style.less']
-}) export class SimpleComponent implements OnInit {
+}) export class SimpleComponent implements OnInit, OnDestroy {
+
     constructor() {
     }
+
     ngOnInit() {
+        this.renderTopo();
+    }
+
+    ngOnDestroy() {
+        PIXI.loader.reset();
+    }
+
+    public renderTopo() {
         const network = new Network('div#network');
         const num = 50;
         network.addResourceCache('switch', './assets/pic/cisco-WS-C49.png');

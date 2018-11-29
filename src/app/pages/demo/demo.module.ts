@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { appRouter } from '../../main/app.router';
-import { IndexComponent } from './index.component';
+import { DemoComponent } from './demo.component';
 import { HeaderModule } from '../header/header.module';
 
 import { SimpleModule } from './simple/simple.module';
@@ -13,9 +13,9 @@ import { SimpleModule } from './simple/simple.module';
         SimpleModule
     ],
     exports: [],
-    declarations: [IndexComponent],
-    entryComponents: [IndexComponent]
+    declarations: [DemoComponent],
+    entryComponents: [DemoComponent]
 })
-export class IndexModule {
+export class DemoModule {
 
 }

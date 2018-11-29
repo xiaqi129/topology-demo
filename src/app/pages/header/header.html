@@ -1,7 +1,7 @@
 <nav class="navbar navbar-static-top nav-custom" role="navigation">
     <div class="container-fluid">
         <div class="navbar-content" id="navbar">
-            <a [routerLink]="['/home']"><div class="navbar-header">
+            <a [routerLink]="['/welcome']"><div class="navbar-header">
                 <a class="navbar-brand"></a>
                 <span class="logo-content">Network Demo</span>
             </div>
@@ -11,7 +11,7 @@
                     <a 
                         aria-expanded="false" 
                         role="button" 
-                        [routerLink]="['/home']" 
+                        [routerLink]="['/welcome']" 
                         routerLinkActive="nav-active"
                     >
                         Home
@@ -21,7 +21,7 @@
                     <a 
                         aria-expanded="false" 
                         role="button" 
-                        [routerLink]="['/index']" 
+                        [routerLink]="['/demo']" 
                         routerLinkActive="nav-active"
                     >
                         Demo
@@ -36,10 +36,10 @@
                         </a>
                         <ul role="menu" class="dropdown-menu dropdown-menu-custom">
                             <li>
-                                <a role="button" [routerLink]="['/home']" routerLinkActive="nav-active">Home</a>
+                                <a role="button" [routerLink]="['/welcome']" routerLinkActive="nav-active">Home</a>
                             </li>
                             <li>
-                                <a role="button" [routerLink]="['/index']" routerLinkActive="nav-active">UI Components</a>
+                                <a role="button" [routerLink]="['/demo']" routerLinkActive="nav-active">UI Components</a>
                             </li>
                         </ul>
                     </li>
