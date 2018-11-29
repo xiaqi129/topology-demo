@@ -21,7 +21,7 @@ import { Network } from 'src/network/network';
 
     public renderTopo() {
         const network = new Network('div#network');
-        const num = 12;
+        const num = 50;
         network.addResourceCache('switch', './assets/pic/cisco-WS-C49.png');
         network.addResourceCache('switchLayer3', './assets/pic/cisco-WS-C68.png');
         network.addResourceCache('router', './assets/pic/cisco-18.png');
@@ -68,21 +68,38 @@ import { Network } from 'src/network/network';
 
         }
 
-        // const group = network.createGroup();
-        // network.addElement(group);
+        const groupA = network.createGroup();
+        network.addElement(groupA);
 
-        // const groupNodes = _.slice(_.shuffle(_.dropRight(nodes, (num / 2) + 1)), 0, 3);
-        // _.each(groupNodes, (node) => {
-        //     node.setStyle({ lineColor: 0xf55d54 });
-        //     group.addChildNodes(node);
-        //     group.setStyle({
-        //         fillOpacity: 1,
-        //     });
-        // });
-        // group.addEventListener('click', (edges: any) => {
-        //     alert(`${edges.length} link[s] referenced.`);
-        // });
-        // // group.setExpaned(false);
+        const groupANodes = _.slice(_.shuffle(_.dropRight(nodes, (num / 2) + 1)), 0, 3);
+        _.each(groupANodes, (node) => {
+            node.setStyle({ lineColor: 0xf55d54 });
+            groupA.addChildNodes(node);
+            groupA.setStyle({
+                fillOpacity: 0.6,
+                fillColor: 0xcddc39,
+            });
+        });
+        groupA.addEventListener('click', (edges: any) => {
+            alert(`${edges.length} link[s] referenced.`);
+        });
+
+        const groupB = network.createGroup();
+        network.addElement(groupB);
+
+        const groupBNodes = _.slice(_.shuffle(_.dropRight(nodes, (num / 2) + 1)), 0, 3);
+        _.each(groupBNodes, (node) => {
+            node.setStyle({ lineColor: 0xe91e63 });
+            groupB.addChildNodes(node);
+            groupB.setStyle({
+                fillOpacity: 0.6,
+                fillColor: 0xe91e63,
+            });
+        });
+        groupB.addEventListener('click', (edges: any) => {
+            alert(`${edges.length} link[s] referenced.`);
+        });
+        // group.setExpaned(false);
 
         network.syncView();
         network.setDrag();
