@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,5 +8,7 @@ import { Component, OnInit } from '@angular/core';
     constructor() {
         console.log('in IndexComponent');
     }
-    ngOnInit() {}
+
+    ngOnInit() {
+    }
 }
