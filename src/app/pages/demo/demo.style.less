@@ -11,14 +11,17 @@
     padding: 0;
     overflow: hidden;
 }
-
+#wrapper {
+    height: 100%;
+}
 .white-bg {
     overflow-x: hidden;
+    height: 100%;
     .wrapper.wrapper-content {
         padding: 0px;
-        margin-left: 260px;
+        padding-left: 260px;
         min-width: 250px;
-        height: 100vh;
+        height: 100%;
     }
 }
 
@@ -196,10 +199,10 @@
         margin-bottom: 30px;
     }
     .component-content {
-        padding: 27px 30px 30px 50px;
+        padding: 27px 30px 50px 30px;
         min-width: 340px;
         overflow: auto;
-        height: calc(~"100vh - 100px");
+        height: 100%
     }
     .footer {
         background: #fff;
