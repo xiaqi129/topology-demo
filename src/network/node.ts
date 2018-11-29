@@ -32,7 +32,7 @@ export class Node extends CommonElement {
     this.elements = elements;
     this.selectedNodes = selectedNodes;
     // this.draw();  // 圆点
-    this.createSprite(resourceName || 'switch');  // 从loader中加载icon, 默认switch
+    this.createSprite(resourceName || 'router');  // 从loader中加载icon, 默认switch
   }
 
   public setParentNode(node: Group) {
