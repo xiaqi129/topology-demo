@@ -103,7 +103,7 @@ import { Network } from 'src/network/network';
 
         network.syncView();
         network.setDrag();
-        // network.setClick(0XFF0000);
+        network.setClick(0XFF0000);
 
         const zoomIn = document.querySelector('button.btn_zoomIn');
         const zoomOut = document.querySelector('button.btn_zoomOut');
