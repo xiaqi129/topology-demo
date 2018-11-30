@@ -28,7 +28,7 @@ import { Network } from 'src/network/network';
 
         for (let i = 0, len: number = num; i < len;) {
             i += 1;
-            const node = network.createNode();
+            const node = network.createNode('router');
             network.addElement(node);
             node.x = Math.random() * 1800;
             node.y = Math.random() * 900;
@@ -103,7 +103,7 @@ import { Network } from 'src/network/network';
 
         network.syncView();
         network.setDrag();
-        network.setClick(0XFF0000);
+        network.setClick();
 
         const zoomIn = document.querySelector('button.btn_zoomIn');
         const zoomOut = document.querySelector('button.btn_zoomOut');
