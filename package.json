@@ -41,6 +41,7 @@
         "pixi.js": "^4.8.2",
         "polygon": "^1.0.2",
         "polygon-offset": "^0.3.1",
+        "popper.js": "^1.14.6",
         "rxjs": "~6.2.0",
         "zone.js": "~0.8.26"
     },

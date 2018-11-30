@@ -1,3 +1,36 @@
-<p>
-  icon works!
-</p>
+<div class="toolbar">
+
+  <div class="add-node">
+    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+      aria-haspopup="true" aria-expanded="false">
+      Add Node As...
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" href="javascript:void(0)" (click)="createNode('switch')">Layer 2 switch</a>
+      <a class="dropdown-item" href="javascript:void(0)" (click)="createNode('switchLayer3')">Layer 3 switch</a>
+      <a class="dropdown-item" href="javascript:void(0)" (click)="createNode('router')">Router</a>
+    </div>
+  </div>
+
+  <div class="upload-icon">
+    <form>
+      <div class="form-row">
+        <div class="col-2">
+          <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Icon's name">
+        </div>
+        <div class="custom-file col-3">
+          <label class="custom-file-label" for="customFile">Choose your icon file</label>
+          <input type="file" class="custom-file-input" id="customFile">
+        </div>
+        <div class="col-1">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </form>
+
+  </div>
+
+</div>
+
+<div id="network">
+</div>
