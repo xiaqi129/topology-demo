@@ -2,6 +2,7 @@ import * as _ from 'lodash';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Network } from 'src/network/network';
 import { Node } from 'src/network/node';
+import { Edge } from 'src/network/edge';
 
 @Component({
   selector: 'app-icon',
@@ -15,6 +16,7 @@ export class IconComponent implements OnInit, OnDestroy {
   constructor() { }
 
   ngOnInit() {
+    this.network = new Network('div#network');
     this.renderTopo();
   }
 
@@ -22,8 +24,7 @@ export class IconComponent implements OnInit, OnDestroy {
     PIXI.loader.reset();
   }
 
-  public renderTopo() {
-    this.network = new Network('div#network');
+  public renderTopo(name?: string) {
 
     // add icon resources
     this.network.addResourceCache('switch', './assets/pic/cisco-WS-C49.png');
@@ -33,16 +34,7 @@ export class IconComponent implements OnInit, OnDestroy {
     // add nodes
     const num = 5;
     for (let i = 0, len: number = num; i < len; i++) {
-      let node = null;
-      if (i < 1) {
-        node = this.network.createNode();
-
-      } else if (i < 3) {
-        node = this.network.createNode('router');
-
-      } else {
-        node = this.network.createNode('switchLayer3');
-      }
+      const node = this.network.createNode(name);
       this.network.addElement(node);
 
       // add label
@@ -127,6 +119,14 @@ export class IconComponent implements OnInit, OnDestroy {
     this.network.addElement(node);
 
     this.network.syncView();
+  }
+
+  public changeNode(name: string) {
+
+    this.network.clear();
+    PIXI.loader.reset();
+
+    this.renderTopo(name);
   }
 
   /**
