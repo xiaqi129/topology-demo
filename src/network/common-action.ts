@@ -177,7 +177,7 @@ export class CommonAction {
     this.container.on('mousedown', () => {
       _.each(this.container.children, (element) => {
         if (element instanceof Node) {
-          element.clearDisplayObjects();
+          element.clearBorder();
         }
         if (element instanceof Edge) {
           element.setStyle({
@@ -196,7 +196,7 @@ export class CommonAction {
         if (element instanceof Group) {
           _.each(element.children, (node) => {
             if (node instanceof Node && node.parent instanceof Group) {
-              node.clearDisplayObjects();
+              node.clearBorder();
             }
             if (node instanceof GroupEdge) {
               node.setStyle({
@@ -242,7 +242,7 @@ export class CommonAction {
   public cleanNode() {
     _.each(this.container.children, (ele) => {
       if (ele instanceof Node) {
-        ele.clearDisplayObjects();
+        ele.clearBorder();
       }
     });
   }

@@ -5,9 +5,7 @@
  * Author: gsp-dalian-ued@cisco.com
  */
 
-// import convexHull from 'graham-scan-convex-hull/src/convex-hull';
 import * as _ from 'lodash';
-// import * as PIXI from 'pixi.js/dist/pixi.js';
 import polygon from 'polygon';
 import Offset from 'polygon-offset/dist/offset';
 import { CommonElement, IPosition } from './common-element';
