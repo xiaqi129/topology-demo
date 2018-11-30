@@ -31,8 +31,8 @@ export class Node extends CommonElement {
     this.dragging = false;
     this.elements = elements;
     this.selectedNodes = selectedNodes;
-    this.draw();  // 圆点
-    // this.createSprite(resourceName || 'router');  // 从loader中加载icon, 默认switch
+    // this.draw();  // 圆点
+    this.createSprite(resourceName || 'router');  // 从loader中加载icon, 默认switch
   }
 
   public setParentNode(node: Group) {
