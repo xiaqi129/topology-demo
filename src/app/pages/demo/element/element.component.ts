@@ -1,6 +1,8 @@
 import * as _ from 'lodash';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Network } from 'src/network/network';
+import { Node } from 'src/network/node';
+
 
 @Component({
   selector: 'app-element',
@@ -79,7 +81,6 @@ export class ElementComponent implements OnInit, OnDestroy {
     }
 
     this.network.syncView();
-
   }
 
   /**
@@ -110,7 +111,24 @@ export class ElementComponent implements OnInit, OnDestroy {
     node.addChild(label);
     this.network.addElement(node);
 
-    this.network.syncView();
+    const nodes = this.network.getElements();
+    _.each(_.slice(nodes, 0, nodes.length - 1), e => {
+      if (e instanceof Node) {
+        this.createEdge(e, node, 1, {
+          arrowColor: 0X006aad,
+          arrowLength: 15,
+          arrowType: 0,
+          arrowWidth: 1,
+          fillArrow: true,
+          lineColor: 0xb7b7b7,
+          lineDistance: 5,
+          lineType: 0,
+          lineWidth: 1,
+        }, this.network);
+      }
+    });
 
+    this.network.syncView();
   }
+
 }
