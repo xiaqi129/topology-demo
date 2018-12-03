@@ -7,7 +7,7 @@ import { HeaderModule } from '../header/header.module';
 import { SimpleModule } from './simple/simple.module';
 import { ElementComponent } from './element/element.component';
 import { GroupComponent } from './group/group.component';
-import { LabelComponent } from './label/label.component';
+import { EdgeComponent } from './edge/edge.component';
 import { SelectComponent } from './select/select.component';
 import { DragComponent } from './drag/drag.component';
 import { IconComponent } from './icon/icon.component';
@@ -25,7 +25,7 @@ import { TooltipComponent } from './tooltip/tooltip.component';
         DemoComponent,
         ElementComponent,
         GroupComponent,
-        LabelComponent,
+        EdgeComponent,
         SelectComponent,
         DragComponent,
         IconComponent,

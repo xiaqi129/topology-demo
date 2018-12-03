@@ -6,7 +6,7 @@ import { SimpleComponent } from '../pages/demo/simple/simple.component';
 import { WelcomeComponent } from '../pages/welcome/welcome.component';
 import { ElementComponent } from '../pages/demo/element/element.component';
 import { GroupComponent } from '../pages/demo/group/group.component';
-import { LabelComponent } from '../pages/demo/label/label.component';
+import { EdgeComponent } from '../pages/demo/edge/edge.component';
 import { SelectComponent } from '../pages/demo/select/select.component';
 import { DragComponent } from '../pages/demo/drag/drag.component';
 import { IconComponent } from '../pages/demo/icon/icon.component';
@@ -54,8 +54,8 @@ const routes: Routes = [
                         pathMatch: 'prefix'
                     },
                     {
-                        path: 'label',
-                        component: LabelComponent,
+                        path: 'edge',
+                        component: EdgeComponent,
                         pathMatch: 'prefix'
                     },
                     {
