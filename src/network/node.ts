@@ -182,7 +182,7 @@ export class Node extends CommonElement {
       return node === this;
     });
     if (this.selectedNodes.length > 0 && isInSelect) {
-      this.selectOn();
+      this.selectOn(color);
     } else {
       _.each(this.elements, (element: any) => {
         if (element instanceof Node) {
