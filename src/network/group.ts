@@ -386,22 +386,25 @@ export class Group extends CommonElement {
         const targetNode = edge.getTargetNode();
         const srcNodeInGroup = _.includes(nodes, srcNode);
         const targetNodeInGroup = _.includes(nodes, targetNode);
-        const groupEdgeParams =
-          (srcNodeInGroup && !targetNodeInGroup) ?
-            [this, targetNode, edges] : [srcNode, this, edges];
-        const groupEdge: GroupEdge = new GroupEdge(
-          groupEdgeParams[0], groupEdgeParams[1], groupEdgeParams[2]);
-        groupEdge.setStyle(edge.getStyle());
-        this.addChild(groupEdge);
-        this.groupEdges.push(groupEdge);
-        const edgeGraphic = groupEdge.getEdge();
-        edgeGraphic.interactive = true;
-        edgeGraphic.buttonMode = true;
-        _.each(this.groupEdgesEvent, ((call: any, event: any) => {
-          edgeGraphic.on(event, () => {
-            call(edges, this);
-          });
-        }).bind(this));
+        const bothInGroup = _.includes(nodes, srcNode, targetNode);
+        if (!bothInGroup) {
+          const groupEdgeParams =
+            (srcNodeInGroup && !targetNodeInGroup) ?
+              [this, targetNode, edges] : [srcNode, this, edges];
+          const groupEdge: GroupEdge = new GroupEdge(
+            groupEdgeParams[0], groupEdgeParams[1], groupEdgeParams[2]);
+          groupEdge.setStyle(edge.getStyle());
+          this.addChild(groupEdge);
+          this.groupEdges.push(groupEdge);
+          const edgeGraphic = groupEdge.getEdge();
+          edgeGraphic.interactive = true;
+          edgeGraphic.buttonMode = true;
+          _.each(this.groupEdgesEvent, ((call: any, event: any) => {
+            edgeGraphic.on(event, () => {
+              call(edges, this);
+            });
+          }).bind(this));
+        }
       });
     });
   }
