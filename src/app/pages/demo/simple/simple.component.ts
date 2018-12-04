@@ -93,7 +93,7 @@ import { Network } from 'src/network/network';
       groupB.addChildNodes(node);
       groupB.setStyle({
         fillOpacity: 0.6,
-        fillColor: 0xe91e63,
+        // fillColor: 0xe91e63,
       });
     });
     groupB.addEventListener('click', (edges: any) => {

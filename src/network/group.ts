@@ -386,8 +386,7 @@ export class Group extends CommonElement {
         const targetNode = edge.getTargetNode();
         const srcNodeInGroup = _.includes(nodes, srcNode);
         const targetNodeInGroup = _.includes(nodes, targetNode);
-        const bothInGroup = _.includes(nodes, srcNode, targetNode);
-        if (!bothInGroup) {
+        if (!(srcNodeInGroup && targetNodeInGroup)) {
           const groupEdgeParams =
             (srcNodeInGroup && !targetNodeInGroup) ?
               [this, targetNode, edges] : [srcNode, this, edges];
