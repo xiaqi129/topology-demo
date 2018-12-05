@@ -277,12 +277,12 @@ export class CommonAction {
           parent.removeChildren(0, parent.children.length);
           const afterBundle = new Edge(edge.startNode, edge.endNode);
           afterBundle.setStyle({
-            arrowColor: 0Xc71bd3,
+            arrowColor: 0X006aad,
             arrowLength: 15,
             arrowType: 0,
             arrowWidth: 1,
             fillArrow: true,
-            lineColor: 0xC7254E,
+            lineColor: 0xb7b7b7,
             lineDistance: 5,
             lineType: 0,
             lineWidth: 1,

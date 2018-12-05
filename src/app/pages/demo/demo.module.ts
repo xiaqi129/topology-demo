@@ -14,6 +14,7 @@ import { IconComponent } from './icon/icon.component';
 import { ZoomComponent } from './zoom/zoom.component';
 import { TooltipComponent } from './tooltip/tooltip.component';
 import { LabelComponent } from './label/label.component';
+import { BundleComponent } from './bundle/bundle.component';
 @NgModule({
     imports: [
         RouterModule,
@@ -32,7 +33,8 @@ import { LabelComponent } from './label/label.component';
         IconComponent,
         ZoomComponent,
         TooltipComponent,
-        LabelComponent
+        LabelComponent,
+        BundleComponent
     ],
     entryComponents: [DemoComponent]
 })
