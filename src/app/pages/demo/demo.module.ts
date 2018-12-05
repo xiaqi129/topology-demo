@@ -13,6 +13,7 @@ import { DragComponent } from './drag/drag.component';
 import { IconComponent } from './icon/icon.component';
 import { ZoomComponent } from './zoom/zoom.component';
 import { TooltipComponent } from './tooltip/tooltip.component';
+import { LabelComponent } from './label/label.component';
 @NgModule({
     imports: [
         RouterModule,
@@ -30,7 +31,8 @@ import { TooltipComponent } from './tooltip/tooltip.component';
         DragComponent,
         IconComponent,
         ZoomComponent,
-        TooltipComponent
+        TooltipComponent,
+        LabelComponent
     ],
     entryComponents: [DemoComponent]
 })

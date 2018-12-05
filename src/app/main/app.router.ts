@@ -12,6 +12,7 @@ import { DragComponent } from '../pages/demo/drag/drag.component';
 import { IconComponent } from '../pages/demo/icon/icon.component';
 import { ZoomComponent } from '../pages/demo/zoom/zoom.component';
 import { TooltipComponent } from '../pages/demo/tooltip/tooltip.component';
+import { LabelComponent } from '../pages/demo/label/label.component';
 const routes: Routes = [
     {
         path: '',
@@ -81,6 +82,11 @@ const routes: Routes = [
                     {
                         path: 'tooltip',
                         component: TooltipComponent,
+                        pathMatch: 'prefix'
+                    },
+                    {
+                        path: 'label',
+                        component: LabelComponent,
                         pathMatch: 'prefix'
                     }
                 ]
