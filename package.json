@@ -3,7 +3,7 @@
     "version": "0.0.0",
     "scripts": {
         "ng": "ng",
-        "start": "ng serve --port=9003",
+        "start": "ng serve --open --port=9003",
         "build": "ng build",
         "build-prod": "ng build --prod",
         "test": "ng test",
@@ -15,8 +15,7 @@
     },
     "pre-commit": {
         "run": [
-            "precommit-msg",
-            "tslint"
+            "precommit-msg"
         ]
     },
     "private": true,
@@ -37,7 +36,7 @@
         "graham-scan-convex-hull": "^0.2.0",
         "jquery": "^3.3.1",
         "lodash": "^4.17.11",
-        "pixi-viewport": "^3.11.0",
+        "pixi-viewport": "^3.11.2",
         "pixi.js": "^4.8.2",
         "polygon": "^1.0.2",
         "polygon-offset": "^0.3.1",

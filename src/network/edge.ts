@@ -19,10 +19,10 @@ export class Edge extends CommonElement {
   public endNode: any;
   public edge: PIXI.Graphics;
   public arrow: PIXI.Graphics;
-  public bundleExplosion = false;
+  public bundleExplosion: boolean = false;
   private brotherEdges: Edge[] = [];
-  private brotherEdgeName = 'BROTHER_EDGE';
-  private bundleStyle = 1; // 0: link style, 1: bezier style
+  private brotherEdgeName: string = 'BROTHER_EDGE';
+  private bundleStyle: number = 1; // 0: link style, 1: bezier style
 
   constructor(startNode: Node | Group, endNode: Node | Group) {
     super();
@@ -48,8 +48,8 @@ export class Edge extends CommonElement {
   }
 
   public getLineNodePosition(node: Node | Group) {
-    let x = 0;
-    let y = 0;
+    let x: number = 0;
+    let y: number = 0;
     if (node instanceof Node) {
       x = node.x;
       y = node.y;
@@ -207,7 +207,7 @@ export class Edge extends CommonElement {
       angle,
     );
     echoPoints.push(echoSrc.y, echoSrc.x);
-    for (let i = 0, len: number = points.length; i < len; i += 2) {
+    for (let i: number = 0, len: number = points.length; i < len; i += 2) {
       const tmp = this.getParallelPoint(
         { x: points[i], y: points[i + 1] },
         echoDistance,
@@ -257,7 +257,7 @@ export class Edge extends CommonElement {
 
   /**
    * set arrow type
-   *
+   * @type
    * :0 from --> to
    * :1 from <-- to
    * :2 from <-> to
@@ -320,9 +320,7 @@ export class Edge extends CommonElement {
   public createArrow(position: any, angle: number, reverse: boolean = true) {
     const style = this.defaultStyle;
     this.arrow.lineStyle(style.arrowWidth, style.arrowColor, 1);
-    if (style.fillArrow) {
-      this.arrow.beginFill(style.arrowColor);
-    }
+    if (style.fillArrow) this.arrow.beginFill(style.arrowColor);
     const arrowPoints = this.getArrowPints(position, angle, reverse);
     this.arrow.drawPolygon(_.flatMap(_.map(
       _.values(arrowPoints), o => ([o.x, o.y]))));
@@ -478,9 +476,7 @@ export class Edge extends CommonElement {
     style: any,
   ) {
     this.arrow.lineStyle(style.arrowWidth, style.arrowColor, 1);
-    if (style.fillArrow) {
-      this.arrow.beginFill(style.arrowColor);
-    }
+    if (style.fillArrow) this.arrow.beginFill(style.arrowColor);
     const tangenAngle =
       this.getTangentAngle(srcNodePos, controlPoints, endNodePos, 1);
     const arrowsPoints = this.bezierArrowPoints(
@@ -568,5 +564,9 @@ export class Edge extends CommonElement {
       elements = this.drawBezierEdge(srcNodePos, endNodePos, this.defaultStyle);
     }
     this.addChildren(elements);
+    if (this.getChildByName('bundle_label')) {
+      this.getChildByName('bundle_label').x = (this.startNode.x + this.endNode.x) / 2;
+      this.getChildByName('bundle_label').y = (this.startNode.y + this.endNode.y) / 2;
+    }
   }
 }

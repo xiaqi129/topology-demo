@@ -6,7 +6,6 @@
  */
 
 import * as _ from 'lodash';
-// import * as PIXI from 'pixi.js/dist/pixi.js';
 
 export class Label extends PIXI.Text {
   constructor(text?: string, style?: PIXI.TextStyleOptions, canvas?: HTMLCanvasElement) {
@@ -27,6 +26,7 @@ export class Label extends PIXI.Text {
     this.addListener('click', () => {
       alert(this.text);
     });
+    this.name = 'label';
   }
 
   public setText(label: string) {
@@ -54,6 +54,8 @@ export class Label extends PIXI.Text {
       case 3:
         this.anchor.set(-0.5 * posDisX, 0.55 * posDisY);
         break;
+      case 4:
+        this.anchor.set(0.5, 0.5);
     }
   }
 

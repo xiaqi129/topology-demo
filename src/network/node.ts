@@ -81,15 +81,16 @@ export class Node extends CommonElement {
     this.data = null;
   }
 
-  public onDragMove() {
+  public onDragMove(event: PIXI.interaction.InteractionEvent) {
     if (this.dragging) {
+      event.stopPropagation();
       const isInSelect = _.find(this.selectedNodes, (node) => {
         return node === this;
       });
       if (this.selectedNodes.length > 0 && isInSelect) {
         _.each(this.selectedNodes, (node) => {
-          node.position.x += this.data.originalEvent.movementX;
-          node.position.y += this.data.originalEvent.movementY;
+          node.position.x += this.data.originalEvent.movementX / this.parent.scale.x;
+          node.position.y += this.data.originalEvent.movementY / this.parent.scale.y;
           node.redrawEdge();
         });
       } else {
@@ -182,11 +183,11 @@ export class Node extends CommonElement {
       return node === this;
     });
     if (this.selectedNodes.length > 0 && isInSelect) {
-      this.selectOn();
+      this.selectOn(color);
     } else {
       _.each(this.elements, (element: any) => {
         if (element instanceof Node) {
-          element.clearDisplayObjects();
+          element.clearBorder();
         }
       });
       this.selectOn(color);
@@ -194,10 +195,10 @@ export class Node extends CommonElement {
   }
 
   public selectOn(color?: any) {
-    this.clearDisplayObjects();
+    this.clearBorder();
     const border = new PIXI.Graphics();
     border.lineStyle(1, color || 0X024997, 1);
-    border.drawRoundedRect(-this.width / 2, -this.height / 2, this.width, this.height, 10);
+    border.drawRoundedRect(-this.width / 2, -this.height / 2, this.width, this.height, 5);
     border.name = 'node_border';
     this.addChild(border);
   }

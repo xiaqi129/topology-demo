@@ -81,8 +81,21 @@ export abstract class CommonElement extends PIXI.Container {
     });
   }
 
+  public clearBorder() {
+    const childNodes = _.filter(this.children, (child) => {
+      return child.name === 'node_border';
+    });
+    _.each(childNodes, (node: any) => {
+      node.destroy();
+    });
+  }
+
   public getUID() {
     return this.id;
+  }
+
+  public getName() {
+    return this.name;
   }
 
   public setStyle(styles: any, draw: boolean = true) {
