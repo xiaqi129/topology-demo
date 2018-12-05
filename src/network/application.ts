@@ -12,7 +12,7 @@ import { debounceTime, windowWhen } from 'rxjs/operators';
 import { Group } from './group';
 
 export class Application extends PIXI.Application {
-  private domRegex = '';
+  private domRegex: string = '';
   private viewWrapper: HTMLDivElement | null = null;
   private container: Viewport | undefined = undefined;
 

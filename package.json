@@ -15,8 +15,7 @@
     },
     "pre-commit": {
         "run": [
-            "precommit-msg",
-            "tslint"
+            "precommit-msg"
         ]
     },
     "private": true,

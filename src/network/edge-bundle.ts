@@ -12,7 +12,7 @@ import { Edge } from './edge';
 const Point = PIXI.Point;
 
 export class EdgeBundle extends CommonElement {
-  private bundleID = '';
+  private bundleID: string = '';
 
   constructor(edge: Edge) {
     super();

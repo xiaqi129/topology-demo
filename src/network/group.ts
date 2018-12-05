@@ -5,6 +5,7 @@
  * Author: gsp-dalian-ued@cisco.com
  */
 
+// import convexHull from 'graham-scan-convex-hull/src/convex-hull';
 import * as _ from 'lodash';
 import polygon from 'polygon';
 import Offset from 'polygon-offset/dist/offset';
@@ -22,16 +23,16 @@ interface IEvent {
 
 export class Group extends CommonElement {
   public groupEdgesEvent?: IEvent = {};
-  public isExpanded = true;
+  public isExpanded: boolean = true;
   public groupEdges: GroupEdge[] = [];
   private positionList: IPosition[] = [];
   private elements: Edge | CommonElement[];
   private polygonHullOutlineName: string = _.uniqueId('hull_outline_');
-  private outLineStyleType = 1;
-  private lastClickTime = 0;
+  private outLineStyleType: number = 1;
+  private lastClickTime: number = 0;
   private dragging: boolean;
-  private data: any;
-  private dragPoint: any;
+  private last: any;
+  private current: any;
 
   constructor(elements: Edge | CommonElement[]) {
     super();
@@ -143,29 +144,35 @@ export class Group extends CommonElement {
     this.addChild(graph);
   }
 
-  public onDragStart(event: PIXI.interaction.InteractionEvent) {
+  public onDragStart(event: any) {
     event.stopPropagation();
+    const parent = this.parent.toLocal(event.data.global);
     this.dragging = true;
-    this.data = event.data;
+    this.last = { parents: parent, x: event.data.global.x, y: event.data.global.y };
+    this.current = event.data.pointerId;
   }
 
   public onDragEnd() {
     this.dragging = false;
-    this.data = null;
+    this.last = null;
   }
 
-  public onDragMove() {
-    if (this.dragging) {
+  public onDragMove(event: any) {
+    if (this.dragging && this.last && this.current === event.data.pointerId) {
+      const newPosition = this.toLocal(event.data.global);
       const edges = this.filterEdge();
       _.each(edges, (edge: Edge) => {
         edge.draw();
       });
+      const distX = event.data.global.x;
+      const distY = event.data.global.y;
       _.each(this.children, (element) => {
         if (element instanceof Node && element.parent instanceof Group) {
-          element.position.x += this.data.originalEvent.movementX;
-          element.position.y += this.data.originalEvent.movementY;
+          element.position.x += (newPosition.x - this.last.parents.x);
+          element.position.y += (newPosition.y - this.last.parents.y);
         }
       });
+      this.last = {  parents: newPosition, x: distX, y: distY };
       this.draw();
     }
   }
@@ -201,9 +208,7 @@ export class Group extends CommonElement {
       throw Error('Get hulls error: Points count must greater than 3.');
     }
     const convexHullScan = new ConvexHullGrahamScan();
-    if (rectVertexPoints.length === 0) {
-      return false;
-    }
+    if (rectVertexPoints.length === 0) return false;
     convexHullScan.addPoints(rectVertexPoints);
     let hulls = convexHullScan.getHull();
     hulls = _.map(hulls, (point) => {

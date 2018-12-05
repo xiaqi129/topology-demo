@@ -11,9 +11,7 @@ export default class ConvexHullGrahamScan {
     // var deltaX, deltaY;
 
     // if the points are undefined, return a zero difference angle.
-    if (!a || !b) {
-      return 0;
-    }
+    if (!a || !b) return 0;
 
     const deltaX = (b.x - a.x);
     const deltaY = (b.y - a.y);

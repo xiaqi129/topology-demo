@@ -81,15 +81,16 @@ export class Node extends CommonElement {
     this.data = null;
   }
 
-  public onDragMove() {
+  public onDragMove(event: PIXI.interaction.InteractionEvent) {
     if (this.dragging) {
+      event.stopPropagation();
       const isInSelect = _.find(this.selectedNodes, (node) => {
         return node === this;
       });
       if (this.selectedNodes.length > 0 && isInSelect) {
         _.each(this.selectedNodes, (node) => {
-          node.position.x += this.data.originalEvent.movementX;
-          node.position.y += this.data.originalEvent.movementY;
+          node.position.x += this.data.originalEvent.movementX / this.parent.scale.x;
+          node.position.y += this.data.originalEvent.movementY / this.parent.scale.y;
           node.redrawEdge();
         });
       } else {
