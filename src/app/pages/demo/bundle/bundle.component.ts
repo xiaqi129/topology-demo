@@ -103,4 +103,8 @@ export class BundleComponent implements OnInit, OnDestroy {
     }
   }
 
+  public bundleLabelToggle() {
+    this.network.bundleLabelToggle();
+  }
+
 }
