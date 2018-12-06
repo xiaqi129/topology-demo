@@ -111,11 +111,7 @@ export class LabelComponent implements OnInit, OnDestroy {
   }
 
   public toogleLabel() {
-    this.labelFlag = !this.labelFlag;
-    this.network.clear();
-    PIXI.loader.reset();
-
-    this.renderTopo();
+    this.network.nodeLabelToggle();
   }
 
 }
