@@ -67,7 +67,6 @@ export class SelectComponent implements OnInit, OnDestroy {
     this.network.syncView();
     this.network.setClick();
     this.network.setSelect();
-    this.network.zoomOver();
   }
 
 }

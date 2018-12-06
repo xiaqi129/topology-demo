@@ -4,11 +4,11 @@ import { Network } from 'src/network/network';
 import { Node } from 'src/network/node';
 
 @Component({
-  selector: 'app-edge',
-  templateUrl: './edge.component.html',
-  styleUrls: ['./edge.component.less']
+  selector: 'app-bundle',
+  templateUrl: './bundle.component.html',
+  styleUrls: ['./bundle.component.less']
 })
-export class EdgeComponent implements OnInit, OnDestroy {
+export class BundleComponent implements OnInit, OnDestroy {
 
   network: Network;
 
@@ -23,9 +23,7 @@ export class EdgeComponent implements OnInit, OnDestroy {
     PIXI.loader.reset();
   }
 
-  public renderTopo(type?: number) {
-
-    const edgeType = type || 0;
+  public renderTopo() {
 
     // add icon resources
     this.network.addResourceCache('switch', './assets/pic/cisco-WS-C49.png');
@@ -45,7 +43,7 @@ export class EdgeComponent implements OnInit, OnDestroy {
       node.addChild(label);
     }
 
-    const nodes = this.network.getElements();
+    const nodes = this.network.getNodes();
 
     // positon nodes
     nodes[0].x = 200;
@@ -68,7 +66,7 @@ export class EdgeComponent implements OnInit, OnDestroy {
       fillArrow: true,
       lineColor: 0xb7b7b7,
       lineDistance: 5,
-      lineType: edgeType,
+      lineType: 0,
       lineWidth: 1,
     };
 
@@ -84,6 +82,7 @@ export class EdgeComponent implements OnInit, OnDestroy {
     }
 
     this.network.syncView();
+    this.network.setClick();
   }
 
   /**
@@ -99,15 +98,9 @@ export class EdgeComponent implements OnInit, OnDestroy {
       const edge = container.createEdge(src, dest);
       edge.setStyle(styles);
       container.addElement(edge);
+      // set bundle collapse
+      container.setBundle(edge);
     }
   }
-
-  public changeEdgeType(type: number) {
-    this.network.clear();
-    PIXI.loader.reset();
-
-    this.renderTopo(type);
-  }
-
 
 }

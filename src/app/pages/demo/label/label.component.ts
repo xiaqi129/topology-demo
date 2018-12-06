@@ -4,13 +4,14 @@ import { Network } from 'src/network/network';
 import { Node } from 'src/network/node';
 
 @Component({
-  selector: 'app-edge',
-  templateUrl: './edge.component.html',
-  styleUrls: ['./edge.component.less']
+  selector: 'app-label',
+  templateUrl: './label.component.html',
+  styleUrls: ['./label.component.less']
 })
-export class EdgeComponent implements OnInit, OnDestroy {
+export class LabelComponent implements OnInit, OnDestroy {
 
   network: Network;
+  labelFlag = true;
 
   constructor() { }
 
@@ -23,11 +24,8 @@ export class EdgeComponent implements OnInit, OnDestroy {
     PIXI.loader.reset();
   }
 
-  public renderTopo(type?: number) {
+  public renderTopo() {
 
-    const edgeType = type || 0;
-
-    // add icon resources
     this.network.addResourceCache('switch', './assets/pic/cisco-WS-C49.png');
 
     // add nodes
@@ -37,12 +35,22 @@ export class EdgeComponent implements OnInit, OnDestroy {
       this.network.addElement(node);
 
       // add label
-      const labelStyleOptions = {
-        fontSize: 10,
-        fontWeight: 'bold',
-      };
-      const label = this.network.createLabel(node.getUID(), labelStyleOptions);
-      node.addChild(label);
+      if (this.labelFlag) {
+        const labelStyleOptions = {
+          fontSize: 10,
+          fontWeight: 'bold',
+        };
+        const label = this.network.createLabel(node.getUID(), labelStyleOptions);
+        node.addChild(label);
+      }
+      if (!this.labelFlag) {
+        const labelStyleOptions = {
+          fontSize: 10,
+          fontWeight: 'bold',
+        };
+        const label = this.network.createLabel('', labelStyleOptions);
+        node.addChild(label);
+      }
     }
 
     const nodes = this.network.getElements();
@@ -68,7 +76,7 @@ export class EdgeComponent implements OnInit, OnDestroy {
       fillArrow: true,
       lineColor: 0xb7b7b7,
       lineDistance: 5,
-      lineType: edgeType,
+      lineType: 0,
       lineWidth: 1,
     };
 
@@ -102,12 +110,12 @@ export class EdgeComponent implements OnInit, OnDestroy {
     }
   }
 
-  public changeEdgeType(type: number) {
+  public toogleLabel() {
+    this.labelFlag = !this.labelFlag;
     this.network.clear();
     PIXI.loader.reset();
 
-    this.renderTopo(type);
+    this.renderTopo();
   }
-
 
 }

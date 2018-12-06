@@ -277,12 +277,12 @@ export class CommonAction {
           parent.removeChildren(0, parent.children.length);
           const afterBundle = new Edge(edge.startNode, edge.endNode);
           afterBundle.setStyle({
-            arrowColor: 0Xc71bd3,
+            arrowColor: 0X006aad,
             arrowLength: 15,
             arrowType: 0,
             arrowWidth: 1,
             fillArrow: true,
-            lineColor: 0xC7254E,
+            lineColor: 0xb7b7b7,
             lineDistance: 5,
             lineType: 0,
             lineWidth: 1,
@@ -298,6 +298,9 @@ export class CommonAction {
             afterBundle.addChild(label);
           }
           this.setBundle(afterBundle);
+          // add Edge to EdgeBundle
+          const tmpBundle = new EdgeBundle(afterBundle);
+          tmpBundle.name = `tmpBundle_${parent.getBundleID()}`;
           // add to elements
           this.topo.addElement(afterBundle);
           parent.addChild(afterBundle);
@@ -307,13 +310,9 @@ export class CommonAction {
           // expand
           parent.removeChildren(0, parent.children.length);
           // remove from elements
-          this.topo.removeEdgeBundleByID(parent.getBundleID());
+          this.topo.removeEdgeBundleByName(`tmpBundle_${parent.getBundleID()}`);
           const edges = this.bundleData[parent.getBundleID()];
           for (const newEdge of edges) {
-            newEdge.setStyle({
-              lineColor: color,
-              fillColor: color,
-            });
             parent.addChild(newEdge);
           }
           this.bundleData[parent.getBundleID()] = undefined;
