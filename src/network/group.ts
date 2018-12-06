@@ -200,7 +200,9 @@ export class Group extends CommonElement {
 
   public marginPolygon(rectVertexPoints: number[], margin: number) {
     const offset = new Offset();
-    return offset.data(rectVertexPoints).margin(margin || 10);
+    try {
+      return offset.data(rectVertexPoints).margin(margin || 10);
+    } catch (err) {}
   }
 
   public getHulls(rectVertexPoints: number[][]) {

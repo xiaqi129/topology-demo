@@ -29,64 +29,67 @@ import { data as topoData } from './simpleData';
     network.addResourceCache('switch', './assets/pic/cisco-WS-C49.png');
     network.addResourceCache('switchLayer3', './assets/pic/cisco-WS-C68.png');
     network.addResourceCache('router', './assets/pic/cisco-18.png');
+
+    // create Node
     _.each(devices, (device) => {
-      const node = network.createNode('router');
-      network.addElement(node);
-      node.x = device.location.x;
-      node.y = device.location.y;
-      node.name = device.name;
-      const labelStyleOptions = {
-        fontSize: 10,
-        fontWeight: 'bold',
-      };
-      const label = network.createLabel(node.getName(), labelStyleOptions);
-      node.addChild(label);
-      network.addTooltip(node, node.getName());
+      const client = device.clients.User_Mark;
+      if (!(client === 'Hidden')) {
+        const node = network.createNode();
+        network.addElement(node);
+        node.x = device.location.x;
+        node.y = device.location.y;
+        node.name = device.name;
+        const labelStyleOptions = {
+          fontSize: 10,
+          fontWeight: 'bold',
+        };
+        const label = network.createLabel(node.getName(), labelStyleOptions);
+        node.addChild(label);
+        network.addTooltip(node, node.getName());
+      }
     });
+    // create Links
+
     const nodes = network.getNodeObj();
+
     _.each(links, (link) => {
       const srcNodeName = link.local_host;
       const destNodeName = link.remote_host;
       const srcNode = _.get(nodes, srcNodeName);
       const destNode = _.get(nodes, destNodeName);
-      const edge = network.createEdge(srcNode, destNode);
-      edge.setStyle({
-        arrowColor: 0X006aad,
-        arrowLength: 15,
-        arrowType: 0,
-        arrowWidth: 1,
-        fillArrow: true,
-        lineColor: 0xb7b7b7,
-        lineDistance: 5,
-        lineType: 1,
-        lineWidth: 1,
-      });
-      network.addElement(edge);
+      if (srcNode && destNode) {
+        const edge = network.createEdge(srcNode, destNode);
+        edge.setStyle({
+          arrowColor: 0X006aad,
+          arrowLength: 15,
+          arrowType: 0,
+          arrowWidth: 1,
+          fillArrow: true,
+          lineColor: 0xC7254E,
+          lineDistance: 5,
+          lineType: 0,
+          lineWidth: 1,
+        });
+        network.addElement(edge);
+      }
     });
-    // _.each(groups, (group) => {
-    //   const newGroup = network.createGroup();
-    //   const children = group.children;
-    //   network.addElement(newGroup);
-    //   _.each(children, (node) => {
-    //     const groupNode = _.get(nodes, node);
-    //     newGroup.addChildNodes(groupNode);
-    //     newGroup.setStyle({
-    //       fillOpacity: 1,
-    //       fillColor: 0xcddc39
-    //     });
-    //   });
-    // });
-    // console.log(_.sample(groups));
 
-    const newGroup = network.createGroup();
-    const children = _.sample(groups).children;
-    network.addElement(newGroup);
-    _.each(children, (node) => {
-      const groupNode = _.get(nodes, node);
-      newGroup.addChildNodes(groupNode);
+
+    _.each(groups, (group) => {
+      const bgColor = group.style.bgColor;
+      const newGroup = network.createGroup();
+      const children = group.children;
+      network.addElement(newGroup);
+      newGroup.name = group.id;
+      _.each(children, (node) => {
+        const groupNode = _.get(nodes, node);
+        if (groupNode) {
+          newGroup.addChildNodes(groupNode);
+        }
+      });
       newGroup.setStyle({
         fillOpacity: 1,
-        fillColor: 0xcddc39
+        fillColor: this.rgb2hex(bgColor)
       });
     });
 
@@ -167,4 +170,11 @@ import { data as topoData } from './simpleData';
       });
     }
   }
+
+  public rgb2hex(rgb) {
+    return (rgb && rgb.length === 4) ? '0X' +
+     ('0' + parseInt(rgb[0], 10).toString(16)).slice(-2) +
+     ('0' + parseInt(rgb[1], 10).toString(16)).slice(-2) +
+     ('0' + parseInt(rgb[2], 10).toString(16)).slice(-2) : '';
+   }
 }
