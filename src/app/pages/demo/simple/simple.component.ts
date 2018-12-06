@@ -25,7 +25,7 @@ import { data as topoData } from './simpleData';
     const network = new Network('div#network');
     const devices = topoData.devices;
     const links = topoData.links;
-    // const num = 50;
+    const groups = topoData.groups;
     network.addResourceCache('switch', './assets/pic/cisco-WS-C49.png');
     network.addResourceCache('switchLayer3', './assets/pic/cisco-WS-C68.png');
     network.addResourceCache('router', './assets/pic/cisco-18.png');
@@ -41,42 +41,57 @@ import { data as topoData } from './simpleData';
       };
       const label = network.createLabel(node.getName(), labelStyleOptions);
       node.addChild(label);
-      network.addTooltip(node);
+      network.addTooltip(node, node.getName());
     });
-    _.each(links, (edge) => {
-      const srcNodeName = edge.local_host;
-      const destNodeName = edge.remote_host;
-      console.log(srcNodeName, destNodeName);
+    const nodes = network.getNodeObj();
+    _.each(links, (link) => {
+      const srcNodeName = link.local_host;
+      const destNodeName = link.remote_host;
+      const srcNode = _.get(nodes, srcNodeName);
+      const destNode = _.get(nodes, destNodeName);
+      const edge = network.createEdge(srcNode, destNode);
+      edge.setStyle({
+        arrowColor: 0X006aad,
+        arrowLength: 15,
+        arrowType: 0,
+        arrowWidth: 1,
+        fillArrow: true,
+        lineColor: 0xb7b7b7,
+        lineDistance: 5,
+        lineType: 1,
+        lineWidth: 1,
+      });
+      network.addElement(edge);
     });
-    // for (let i = 0, len: number = num; i < len;) {
-    //   const srcNode = nodes[i];
-    //   const destNode = nodes[i + 1];
-    //   for (let j = 0; j < 2;) {
-    //     const edge = network.createEdge(srcNode, destNode);
-    //     edge.setStyle({
-    //       arrowColor: 0X006aad,
-    //       arrowLength: 15,
-    //       arrowType: 0,
-    //       arrowWidth: 1,
-    //       fillArrow: true,
-    //       lineColor: 0xb7b7b7,
-    //       lineDistance: 5,
-    //       lineType: 1,
-    //       lineWidth: 1,
+    // _.each(groups, (group) => {
+    //   const newGroup = network.createGroup();
+    //   const children = group.children;
+    //   network.addElement(newGroup);
+    //   _.each(children, (node) => {
+    //     const groupNode = _.get(nodes, node);
+    //     newGroup.addChildNodes(groupNode);
+    //     newGroup.setStyle({
+    //       fillOpacity: 1,
+    //       fillColor: 0xcddc39
     //     });
-    //     network.addTooltip(edge);
-    //     network.addElement(edge);
+    //   });
+    // });
+    // console.log(_.sample(groups));
 
-    //     // edge.setBundleStyle(1);
-    //     j += 1;
-    //   }
-    //   i += 2;
-
-    // }
+    const newGroup = network.createGroup();
+    const children = _.sample(groups).children;
+    network.addElement(newGroup);
+    _.each(children, (node) => {
+      const groupNode = _.get(nodes, node);
+      newGroup.addChildNodes(groupNode);
+      newGroup.setStyle({
+        fillOpacity: 1,
+        fillColor: 0xcddc39
+      });
+    });
 
     // const groupA = network.createGroup();
     // network.addElement(groupA);
-
     // const groupANodes = _.slice(_.shuffle(_.dropRight(nodes, (num / 2) + 1)), 0, 3);
     // _.each(groupANodes, (node) => {
     //   node.setStyle({ lineColor: 0xf55d54 });
