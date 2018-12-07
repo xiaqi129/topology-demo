@@ -67,9 +67,9 @@ export class Group extends CommonElement {
   public addChildNodes(element: Node | Group, preventDraw: boolean = false) {
     this.addChild(element);
     this.toggleChildNodesVisible(this.isExpanded, element);
-    if (!preventDraw) {
-      this.draw();
-    }
+    // if (!preventDraw) {
+    //   this.draw();
+    // }
     // this.analyzeEdges();
   }
 
@@ -202,7 +202,9 @@ export class Group extends CommonElement {
     const offset = new Offset();
     try {
       return offset.data(rectVertexPoints).margin(margin || 10);
-    } catch (err) {}
+    } catch (err) {
+      return offset.data(rectVertexPoints).margin(margin || 10);
+    }
   }
 
   public getHulls(rectVertexPoints: number[][]) {
@@ -210,7 +212,9 @@ export class Group extends CommonElement {
       throw Error('Get hulls error: Points count must greater than 3.');
     }
     const convexHullScan = new ConvexHullGrahamScan();
-    if (rectVertexPoints.length === 0) return false;
+    if (rectVertexPoints.length === 0) {
+      return false;
+    }
     convexHullScan.addPoints(rectVertexPoints);
     let hulls = convexHullScan.getHull();
     hulls = _.map(hulls, (point) => {

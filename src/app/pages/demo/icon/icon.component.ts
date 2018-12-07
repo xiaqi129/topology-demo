@@ -36,14 +36,6 @@ export class IconComponent implements OnInit, OnDestroy {
     for (let i = 0, len: number = num; i < len; i++) {
       const node = this.network.createNode(name);
       this.network.addElement(node);
-
-      // add label
-      const labelStyleOptions = {
-        fontSize: 10,
-        fontWeight: 'bold',
-      };
-      const label = this.network.createLabel(node.getUID(), labelStyleOptions);
-      node.addChild(label);
     }
 
     const nodes = this.network.getElements();
@@ -110,12 +102,6 @@ export class IconComponent implements OnInit, OnDestroy {
     const node = this.network.createNode(name);
     node.x = Math.random() * 400 + 300;
     node.y = Math.random() * 300 + 200;
-    const labelStyleOptions = {
-      fontSize: 10,
-      fontWeight: 'bold',
-    };
-    const label = this.network.createLabel(node.getUID(), labelStyleOptions);
-    node.addChild(label);
     this.network.addElement(node);
 
     this.network.syncView();

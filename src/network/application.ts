@@ -22,10 +22,10 @@ export class Application extends PIXI.Application {
       autoResize: true,
       height: 0,
       powerPreference: 'high-performance',
-      resolution: 1,
+      resolution: 2,
       transparent: true,
       width: 0,
-      // forceFXAA: true,
+      forceFXAA: true,
     });
     this.domRegex = domRegex;
     this.setup();

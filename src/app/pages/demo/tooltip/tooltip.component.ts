@@ -29,18 +29,8 @@ export class TooltipComponent implements OnInit, OnDestroy {
     const num = 5;
     for (let i = 0, len: number = num; i < len; i++) {
       const node = this.network.createNode();
+      node.setTooltip();
       this.network.addElement(node);
-
-      // add label
-      const labelStyleOptions = {
-        fontSize: 10,
-        fontWeight: 'bold',
-      };
-      const label = this.network.createLabel(node.getUID(), labelStyleOptions);
-      node.addChild(label);
-
-      // add tooltip
-      this.network.addTooltip(node);
     }
 
     const nodes = this.network.getElements();
@@ -105,7 +95,6 @@ export class TooltipComponent implements OnInit, OnDestroy {
     for (let i = 0; i < num; i++) {
       const edge = container.createEdge(src, dest);
       edge.setStyle(styles);
-      this.network.addTooltip(edge);
       container.addElement(edge);
     }
   }

@@ -32,13 +32,6 @@ export class DragComponent implements OnInit, OnDestroy {
       this.network.addElement(node);
       node.x = Math.random() * 1800;
       node.y = Math.random() * 900;
-
-      const labelStyleOptions = {
-        fontSize: 10,
-        fontWeight: 'bold',
-      };
-      const label = this.network.createLabel(node.getUID(), labelStyleOptions);
-      node.addChild(label);
     }
     const nodes = this.network.getElements();
     for (let i = 0, len: number = num; i < len;) {

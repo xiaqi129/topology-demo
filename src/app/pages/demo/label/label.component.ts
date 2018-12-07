@@ -33,24 +33,6 @@ export class LabelComponent implements OnInit, OnDestroy {
     for (let i = 0, len: number = num; i < len; i++) {
       const node = this.network.createNode();
       this.network.addElement(node);
-
-      // add label
-      if (this.labelFlag) {
-        const labelStyleOptions = {
-          fontSize: 10,
-          fontWeight: 'bold',
-        };
-        const label = this.network.createLabel(node.getUID(), labelStyleOptions);
-        node.addChild(label);
-      }
-      if (!this.labelFlag) {
-        const labelStyleOptions = {
-          fontSize: 10,
-          fontWeight: 'bold',
-        };
-        const label = this.network.createLabel('', labelStyleOptions);
-        node.addChild(label);
-      }
     }
 
     const nodes = this.network.getElements();

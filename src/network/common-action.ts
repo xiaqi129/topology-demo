@@ -127,7 +127,6 @@ export class CommonAction {
               }
             }
           });
-          element.draw();
         }
       });
       rectangle.clear();
@@ -277,17 +276,16 @@ export class CommonAction {
           parent.removeChildren(0, parent.children.length);
           const afterBundle = new Edge(edge.startNode, edge.endNode);
           afterBundle.setStyle({
-            arrowColor: 0X006aad,
+            arrowColor: 0Xc71bd3,
             arrowLength: 15,
             arrowType: 0,
             arrowWidth: 1,
             fillArrow: true,
-            lineColor: 0xb7b7b7,
+            lineColor: 0xC7254E,
             lineDistance: 5,
             lineType: 0,
             lineWidth: 1,
           });
-          this.tooltip.addTooltip(afterBundle);
           if (this.bundleLabelFlag) {
             const label = this.topo.createLabel(
               `(${this.bundleData[parent.getBundleID()].length})`);
@@ -317,7 +315,7 @@ export class CommonAction {
           }
           this.bundleData[parent.getBundleID()] = undefined;
         }
-        this.tooltip.tooltipOff();
+        this.tooltip.clearTooltip();
         this.setClick();
       } else {
         this.lastClickTime = currentTime;
@@ -352,22 +350,12 @@ export class CommonAction {
     if (this.nodeLabelFlag) {
       _.each(this.container.children, (element) => {
         if (element instanceof Node) {
-          const labelStyleOptions = {
-            fontSize: 10,
-            fontWeight: 'bold',
-          };
-          const label = this.topo.createLabel(element.getUID(), labelStyleOptions);
-          element.addChild(label);
+          element.setLabel(element.getLabelContent());
         }
         if (element instanceof Group) {
           _.each(element.children, (e) => {
             if (e instanceof Node) {
-              const labelStyleOptions = {
-                fontSize: 10,
-                fontWeight: 'bold',
-              };
-              const label = this.topo.createLabel(e.getUID(), labelStyleOptions);
-              e.addChild(label);
+              e.setLabel(e.getLabelContent());
             }
           });
         }
@@ -375,12 +363,12 @@ export class CommonAction {
     } else {
       _.each(this.container.children, (element) => {
         if (element instanceof Node) {
-          element.removeChild(element.getChildByName('label'));
+          element.removeChild(element.getChildByName('node_label'));
         }
         if (element instanceof Group) {
           _.each(element.children, (e) => {
             if (e instanceof Node) {
-              e.removeChild(e.getChildByName('label'));
+              e.removeChild(e.getChildByName('node_label'));
             }
           });
         }

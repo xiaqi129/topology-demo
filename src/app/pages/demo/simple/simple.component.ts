@@ -39,13 +39,8 @@ import { data as topoData } from './simpleData';
         node.x = device.location.x;
         node.y = device.location.y;
         node.name = device.name;
-        const labelStyleOptions = {
-          fontSize: 10,
-          fontWeight: 'bold',
-        };
-        const label = network.createLabel(node.getName(), labelStyleOptions);
-        node.addChild(label);
-        network.addTooltip(node, node.getName());
+        node.setLabel(node.name);
+        node.setTooltip(node.name);
       }
     });
     // create Links
@@ -71,27 +66,45 @@ import { data as topoData } from './simpleData';
           lineWidth: 1,
         });
         network.addElement(edge);
+        edge.setTooltip(`${edge.startNode.name} >>> ${edge.endNode.name}`);
       }
     });
 
-
-    _.each(groups, (group) => {
-      const bgColor = group.style.bgColor;
-      const newGroup = network.createGroup();
-      const children = group.children;
-      network.addElement(newGroup);
-      newGroup.name = group.id;
-      _.each(children, (node) => {
-        const groupNode = _.get(nodes, node);
-        if (groupNode) {
-          newGroup.addChildNodes(groupNode);
-        }
-      });
-      newGroup.setStyle({
-        fillOpacity: 1,
-        fillColor: this.rgb2hex(bgColor)
-      });
+    const group = _.get(groups, 'Country#@Malaysia&@City#@Kuala Lumpur&@Site#@Remote_ATM');
+    const newGroup = network.createGroup();
+    const bgColor = group.style.bgColor;
+    network.addElement(newGroup);
+    newGroup.name = group.id;
+    _.each(group.children, (node) => {
+      const groupNode = _.get(nodes, node);
+      if (groupNode) {
+        newGroup.addChildNodes(groupNode);
+      }
     });
+    newGroup.setStyle({
+      fillOpacity: 1,
+      fillColor: this.rgb2hex(bgColor)
+    });
+    console.log(newGroup);
+    // newGroup.setExpaned(false);
+    // _.each(groups, (group) => {
+    //   const bgColor = group.style.bgColor;
+    //   const newGroup = network.createGroup();
+    //   const children = group.children;
+    //   network.addElement(newGroup);
+    //   newGroup.name = group.id;
+    //   _.each(children, (node) => {
+    //     const groupNode = _.get(nodes, node);
+    //     if (groupNode) {
+    //       newGroup.addChildNodes(groupNode);
+    //     }
+    //   });
+    //   newGroup.setStyle({
+    //     fillOpacity: 1,
+    //     fillColor: this.rgb2hex(bgColor)
+    //   });
+    // });
+    console.log(network.getElements());
 
     // const groupA = network.createGroup();
     // network.addElement(groupA);
@@ -108,22 +121,6 @@ import { data as topoData } from './simpleData';
     //   alert(`${edges.length} link[s] referenced.`);
     // });
 
-    // const groupB = network.createGroup();
-    // network.addElement(groupB);
-
-    // const groupBNodes = _.slice(_.shuffle(_.dropRight(nodes, (num / 2) + 1)), 0, 3);
-    // _.each(groupBNodes, (node) => {
-    //   node.setStyle({ lineColor: 0xe91e63 });
-    //   groupB.addChildNodes(node);
-    //   groupB.setStyle({
-    //     fillOpacity: 0.6,
-    //     // fillColor: 0xe91e63,
-    //   });
-    // });
-    // groupB.addEventListener('click', (edges: any) => {
-    //   alert(`${edges.length} link[s] referenced.`);
-    // });
-    // group.setExpaned(false);
 
     network.syncView();
     network.setDrag();

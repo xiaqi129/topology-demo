@@ -11,14 +11,19 @@ import { CommonElement, IStyles } from './common-element';
 import { Edge } from './edge';
 import { EdgeBundle } from './edge-bundle';
 import { Group } from './group';
+import { Label } from './label';
+import { Tooltip } from './tooltip';
 
 export class Node extends CommonElement {
   private parentNode: Group | null = null;
-  private dragging: boolean;
   private data: any;
   private edgesGroupByNodes: { [key: string]: Edge[] };
   private elements: Edge | CommonElement[];
   private selectedNodes: any[] = [];
+  private dragging: boolean;
+  private last: any;
+  private tooltip: Tooltip;
+  private labelContent: string = '';
 
   constructor(
     edgesGroupByNodes: { [key: string]: Edge[] },
@@ -33,6 +38,9 @@ export class Node extends CommonElement {
     this.selectedNodes = selectedNodes;
     // this.draw();  // 圆点
     this.createSprite(resourceName || 'switch');  // 从loader中加载icon, 默认switch
+    this.tooltip = new Tooltip();
+    this.setTooltip();
+    this.setLabel();
   }
 
   public setParentNode(node: Group) {
@@ -66,6 +74,7 @@ export class Node extends CommonElement {
   }
 
   public onDragStart(event: PIXI.interaction.InteractionEvent) {
+    const parent = this.parent.toLocal(event.data.global);
     const isInSelect = _.find(this.selectedNodes, (node) => {
       return node === this;
     });
@@ -74,27 +83,33 @@ export class Node extends CommonElement {
     }
     this.dragging = true;
     this.data = event.data;
+    this.last = { parents: parent, x: event.data.global.x, y: event.data.global.y };
   }
 
   public onDragEnd() {
     this.dragging = false;
     this.data = null;
+    this.last = null;
   }
 
   public onDragMove(event: PIXI.interaction.InteractionEvent) {
     if (this.dragging) {
       event.stopPropagation();
+      const newPosition = this.data.getLocalPosition(this.parent);
       const isInSelect = _.find(this.selectedNodes, (node) => {
         return node === this;
       });
-      if (this.selectedNodes.length > 0 && isInSelect) {
+      if (this.selectedNodes.length > 0 && isInSelect
+        && this.last) {
+        const distX = event.data.global.x;
+        const distY = event.data.global.y;
         _.each(this.selectedNodes, (node) => {
-          node.position.x += this.data.originalEvent.movementX / this.parent.scale.x;
-          node.position.y += this.data.originalEvent.movementY / this.parent.scale.y;
+          node.position.x += (newPosition.x - this.last.parents.x);
+          node.position.y += (newPosition.y - this.last.parents.y);
           node.redrawEdge();
         });
+        this.last = { parents: newPosition, x: distX, y: distY };
       } else {
-        const newPosition = this.data.getLocalPosition(this.parent);
         this.position.x = newPosition.x;
         this.position.y = newPosition.y;
       }
@@ -201,5 +216,32 @@ export class Node extends CommonElement {
     border.drawRoundedRect(-this.width / 2, -this.height / 2, this.width, this.height, 5);
     border.name = 'node_border';
     this.addChild(border);
+  }
+
+  public setTooltip(content?: string) {
+    this.removeAllListeners();
+    this.tooltip.addTooltip(this, content || this.getUID());
+  }
+
+  public setLabel(content?: string, style?: PIXI.TextStyleOptions) {
+
+    const oldLabel = this.getChildByName('node_label');
+    if (oldLabel) {
+      (oldLabel as any).setText(content || this.getUID());
+      this.labelContent = (oldLabel as any).text;
+    } else {
+      const labelStyleOptions = {
+        fontSize: 10,
+        fontWeight: 'bold',
+      };
+      const label = new Label(content || this.getUID(), style || labelStyleOptions);
+      label.name = 'node_label';
+      this.addChild(label);
+      this.labelContent = label.text;
+    }
+  }
+
+  public getLabelContent() {
+    return this.labelContent;
   }
 }
