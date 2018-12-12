@@ -28,6 +28,7 @@ export class Group extends CommonElement {
   private positionList: IPosition[] = [];
   private elements: Edge | CommonElement[];
   private polygonHullOutlineName: string = _.uniqueId('hull_outline_');
+  private childrenNode: Node[] = [];
   private outLineStyleType: number = 1;
   private lastClickTime: number = 0;
   private dragging: boolean;
@@ -46,15 +47,17 @@ export class Group extends CommonElement {
     graph.on('click', (event) => {
       event.stopPropagation();
       const currentTime = new Date().getTime();
-      if (currentTime - this.lastClickTime < 500) {
-        this.isExpanded = !this.isExpanded;
-        // this.draw();
-        this.lastClickTime = 0;
-        this.setExpaned(this.isExpanded);
-      } else {
-        this.lastClickTime = currentTime;
+      if (this.intersection()[0].length === 0) {
+        if (currentTime - this.lastClickTime < 500) {
+          this.isExpanded = !this.isExpanded;
+          // this.draw();
+          this.lastClickTime = 0;
+          this.setExpaned(this.isExpanded);
+        } else {
+          this.lastClickTime = currentTime;
+        }
+        this.toggleShowEdges(this.isExpanded);
       }
-      this.toggleShowEdges(this.isExpanded);
     });
   }
 
@@ -64,8 +67,9 @@ export class Group extends CommonElement {
     this.draw();
   }
 
-  public addChildNodes(element: Node | Group, preventDraw: boolean = false) {
-    this.addChild(element);
+  public addChildNodes(element: Node, preventDraw: boolean = false) {
+    this.childrenNode.push(element);
+    // this.addChild(element);
     this.toggleChildNodesVisible(this.isExpanded, element);
     // if (!preventDraw) {
     //   this.draw();
@@ -74,7 +78,7 @@ export class Group extends CommonElement {
   }
 
   public toggleChildNodesVisible(visible: boolean, element?: Node | Group) {
-    const children = element ? [element] : this.children;
+    const children = element ? [element] : this.childrenNode;
     _.each(children, (node) => {
       const nodeObject = node as (Node | Group);
       nodeObject.visible = visible;
@@ -83,7 +87,7 @@ export class Group extends CommonElement {
 
   public getGroupVertexNumber() {
     this.positionList = [];
-    this.vertexPoints(this.children);
+    this.vertexPoints(this.childrenNode);
     const vertexPointsList = _.map(this.positionList, (pos: IPosition) => {
       return _.values(pos);
     });
@@ -105,7 +109,7 @@ export class Group extends CommonElement {
 
   public getAllVisibleNodes(children?: PIXI.DisplayObject[]) {
     const nodes: Node[] = [];
-    _.each(children || this.children, (node) => {
+    _.each(children || this.childrenNode, (node) => {
       if (node instanceof Node) {
         nodes.push(node);
       } else if (node instanceof Group && node.children.length > 0) {
@@ -161,19 +165,28 @@ export class Group extends CommonElement {
     if (this.dragging && this.last && this.current === event.data.pointerId) {
       const newPosition = this.toLocal(event.data.global);
       const edges = this.filterEdge();
+      const intersectionNodes = this.intersection()[0];
+      const intersectionGroup = this.intersection()[1];
       _.each(edges, (edge: Edge) => {
         edge.draw();
       });
       const distX = event.data.global.x;
       const distY = event.data.global.y;
-      _.each(this.children, (element) => {
-        if (element instanceof Node && element.parent instanceof Group) {
+      _.each(this.childrenNode, (element) => {
+        if (element instanceof Node) {
           element.position.x += (newPosition.x - this.last.parents.x);
           element.position.y += (newPosition.y - this.last.parents.y);
         }
       });
-      this.last = {  parents: newPosition, x: distX, y: distY };
-      this.draw();
+      this.last = { parents: newPosition, x: distX, y: distY };
+      if (intersectionNodes) {
+        _.each(intersectionGroup, (group) => {
+          group.draw();
+        });
+        this.draw();
+      } else {
+        this.draw();
+      }
     }
   }
 
@@ -200,11 +213,7 @@ export class Group extends CommonElement {
 
   public marginPolygon(rectVertexPoints: number[], margin: number) {
     const offset = new Offset();
-    try {
-      return offset.data(rectVertexPoints).margin(margin || 10);
-    } catch (err) {
-      return offset.data(rectVertexPoints).margin(margin || 10);
-    }
+    return offset.data(rectVertexPoints).margin(margin || 10);
   }
 
   public getHulls(rectVertexPoints: number[][]) {
@@ -313,18 +322,26 @@ export class Group extends CommonElement {
   public drawEllipseOutline(graph: PIXI.Graphics, vertexPointsNumber: number[][]) {
     const size = this.getNodesMaxSize();
     const padding = size + this.defaultStyle.padding;
-    const polygonObject: any = new polygon(vertexPointsNumber);
-    const rect = polygonObject.aabb();
-    const x = rect.x - padding;
-    const y = rect.y - padding;
-    const width = rect.w + padding;
-    const height = rect.h + padding;
-    const centerX = x + width * 0.5;
-    const centerY = y + height * 0.5;
-    const ellipseWidth = width / Math.sqrt(2);
-    const ellipseHeight = height / Math.sqrt(2);
-    graph.drawEllipse(centerX, centerY, ellipseWidth, ellipseHeight);
-    graph.endFill();
+    if (vertexPointsNumber.length > 1) {
+      const polygonObject: any = new polygon(vertexPointsNumber);
+      const rect = polygonObject.aabb();
+      const x = rect.x - padding / 2;
+      const y = rect.y - padding / 2;
+      const width = rect.w + padding;
+      const height = rect.h + padding;
+      const centerX = x + width * 0.5;
+      const centerY = y + height * 0.5;
+      const ellipseWidth = width / Math.sqrt(2);
+      const ellipseHeight = height / Math.sqrt(2);
+      graph.drawEllipse(centerX, centerY, ellipseWidth, ellipseHeight);
+      graph.endFill();
+    } else {
+      const x = vertexPointsNumber[0][0];
+      const y = vertexPointsNumber[0][1];
+      const radius = size;
+      graph.drawCircle(x, y, radius);
+      graph.endFill();
+    }
   }
 
   // draw polygon background outline
@@ -387,7 +404,7 @@ export class Group extends CommonElement {
 
   public drawEdges() {
     const edgesListGroup = this.toggleShowEdges(this.isExpanded);
-    const nodes = _.filter(this.children, (item) => {
+    const nodes = _.filter(this.childrenNode, (item) => {
       return item instanceof Node;
     });
     _.each(edgesListGroup, (edges: Edge[]) => {
@@ -458,7 +475,7 @@ export class Group extends CommonElement {
   public filterEdge() {
     let edges: Edge[] = this.getChildEdges();
 
-    const nodes = _.filter(this.children, (item) => {
+    const nodes = _.filter(this.childrenNode, (item) => {
       return item instanceof Node;
     });
 
@@ -471,6 +488,20 @@ export class Group extends CommonElement {
       return false;
     });
     return edges;
+  }
+
+  public intersection() {
+    const intersectionGroup: any[] = [];
+    let intersectionNode: Node[] = [];
+    _.each(this.elements, (groups: CommonElement) => {
+      if (groups instanceof Group && groups !== this) {
+        intersectionNode = _.intersection(this.childrenNode, groups.childrenNode);
+        if (intersectionNode) {
+          intersectionGroup.push(groups);
+        }
+      }
+    });
+    return [intersectionNode, intersectionGroup];
   }
 
   private analyzeEdges() {

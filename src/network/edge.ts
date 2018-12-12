@@ -76,8 +76,11 @@ export class Edge extends CommonElement {
     let width = 0;
     let height = 0;
     if (node instanceof Node) {
-      width = node.width;
-      height = node.height;
+      const sprite = node.getChildByName('node_sprite');
+      if (sprite) {
+        width = (sprite as any).width;
+        height = (sprite as any).height;
+      }
     }
 
     if (node instanceof Group) {
@@ -351,11 +354,13 @@ export class Edge extends CommonElement {
 
   public createLinkArrows(
     srcNodePos: any, endNodePos: any, angle: any, style: any) {
-    const arrowsDirections = [[true], [false], [true, false]];
+    const arrowsDirections = [[true], [false], [true, false], [undefined]];
     const directions = arrowsDirections[style.arrowType];
     _.each(directions, (direction) => {
-      const position = direction ? endNodePos : srcNodePos;
-      this.createArrow(position, angle, direction);
+      if (direction) {
+        const position = direction ? endNodePos : srcNodePos;
+        this.createArrow(position, angle, direction);
+      }
     });
     return this.arrow;
   }
