@@ -81,7 +81,7 @@ export class BundleComponent implements OnInit, OnDestroy {
       this.network.syncView();
       this.network.setClick();
 
-    }
+    };
   }
 
   /**

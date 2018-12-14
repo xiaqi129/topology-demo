@@ -52,6 +52,7 @@ export class Network {
           };
         });
         this.callback();
+        this.callback = Function();
       });
   }
 

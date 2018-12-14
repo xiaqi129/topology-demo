@@ -43,9 +43,9 @@ export class LabelComponent implements OnInit, OnDestroy {
         const node = this.network.createNode();
         this.network.addElement(node);
       }
-  
+
       const nodes = this.network.getElements();
-  
+
       // positon nodes
       nodes[0].x = 200;
       nodes[0].y = 200;
@@ -57,7 +57,7 @@ export class LabelComponent implements OnInit, OnDestroy {
       nodes[3].y = 300;
       nodes[4].x = 600;
       nodes[4].y = 300;
-  
+
       // edge styles
       const edgeStyles = {
         arrowColor: 0X006aad,
@@ -70,7 +70,7 @@ export class LabelComponent implements OnInit, OnDestroy {
         lineType: 0,
         lineWidth: 1,
       };
-  
+
       // draw edges
       this.createEdge(nodes[0], nodes[1], 2, edgeStyles, this.network);
       this.createEdge(nodes[1], nodes[2], 4, edgeStyles, this.network);
@@ -81,9 +81,9 @@ export class LabelComponent implements OnInit, OnDestroy {
       for (let i = 0; i < 2; i++) {
         this.createEdge(nodes[1], nodes[i + 3], 1, edgeStyles, this.network);
       }
-  
+
       this.network.syncView();
-    }
+    };
 
   }
 
