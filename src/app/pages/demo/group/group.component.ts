@@ -87,7 +87,7 @@ export class GroupComponent implements OnInit, OnDestroy {
       });
       // group.setOutlineStyle(2);
       this.network.syncView();
-    }
+    };
 
   }
 

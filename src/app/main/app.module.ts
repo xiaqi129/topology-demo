@@ -1,11 +1,12 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { appRouter } from './app.router';
-import { AppComponent } from './app.component';
-import { HomeModule } from '../pages/home/home.module';
-import { DemoModule } from '../pages/demo/demo.module';
+import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { DemoModule } from '../pages/demo/demo.module';
+import { HomeModule } from '../pages/home/home.module';
 import { WelcomeComponent } from '../pages/welcome/welcome.component';
+import { AppComponent } from './app.component';
+import { appRouter } from './app.router';
 
 @NgModule({
     declarations: [
@@ -13,11 +14,12 @@ import { WelcomeComponent } from '../pages/welcome/welcome.component';
         WelcomeComponent,
     ],
     imports: [
+        CommonModule,
         BrowserModule,
         RouterModule,
         appRouter,
         HomeModule,
-        DemoModule
+        DemoModule,
     ],
     providers: [],
     bootstrap: [AppComponent]

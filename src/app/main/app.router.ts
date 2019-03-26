@@ -23,12 +23,25 @@ const routes: Routes = [
             { path: '', redirectTo: 'welcome', pathMatch: 'full' },
             { path: 'welcome', component: WelcomeComponent, pathMatch: 'prefix' },
             {
-                path: 'demo',
+                path: 'basic',
                 component: DemoComponent,
+                data: {
+                    breadcrumb: 'Basic'
+                },
                 pathMatch: 'prefix',
                 children: [
-                    { path: '', redirectTo: 'simple', pathMatch: 'full' },
-                    { path: 'simple', component: SimpleComponent, pathMatch: 'prefix' },
+                    {
+                        path: '',
+                        component: SimpleComponent,
+                        pathMatch: 'prefix'
+                    },
+                    {
+                        path: 'base',
+                        component: SimpleComponent,
+                        data: {
+                            breadcrumb: 'Base'
+                        },
+                    },
                     { path: 'element', component: ElementComponent, pathMatch: 'prefix' },
                     { path: 'group', component: GroupComponent, pathMatch: 'prefix' },
                     { path: 'edge', component: EdgeComponent, pathMatch: 'prefix' },

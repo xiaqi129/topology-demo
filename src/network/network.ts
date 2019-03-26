@@ -38,6 +38,7 @@ export class Network {
   public addIconResource(iconList: any) {
     // this.loader.add(key, image);
     // return this.loader;
+    PIXI.utils.clearTextureCache();
     PIXI.loader.reset();
     _.each(iconList, (icon) => {
       PIXI.loader.add(icon.name, icon.url);

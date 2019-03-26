@@ -3,8 +3,9 @@ import { RouterModule } from '@angular/router';
 import { appRouter } from '../../main/app.router';
 import { DemoComponent } from './demo.component';
 import { HeaderModule } from '../header/header.module';
+import { BreadCrumbsModule } from '../breadcrumbs/breadcrumbs.module';
 
-import { SimpleModule } from './simple/simple.module';
+import { SimpleComponent } from './simple/simple.component';
 import { ElementComponent } from './element/element.component';
 import { GroupComponent } from './group/group.component';
 import { EdgeComponent } from './edge/edge.component';
@@ -15,15 +16,17 @@ import { ZoomComponent } from './zoom/zoom.component';
 import { TooltipComponent } from './tooltip/tooltip.component';
 import { LabelComponent } from './label/label.component';
 import { BundleComponent } from './bundle/bundle.component';
+import { from } from 'rxjs';
 @NgModule({
     imports: [
         RouterModule,
         appRouter,
         HeaderModule,
-        SimpleModule
+        BreadCrumbsModule,
     ],
     exports: [],
     declarations: [
+        SimpleComponent,
         DemoComponent,
         ElementComponent,
         GroupComponent,

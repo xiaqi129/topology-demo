@@ -52,8 +52,31 @@ body {
 }
 
 #network {
-    height: 85%;
-    border: 1px solid;
+    height: 100%;
+    table.tooltiptable {
+        font-family: verdana, arial, sans-serif;
+        border-collapse: collapse;
+        background-color: rgba(255,255,255,0.8);
+        .topLine {
+            border-top-width: 1px;
+            border-top-style: solid;
+            border-top-color: rgb(230, 189, 189);
+        }
+    }
+
+    table.tooltiptable th{
+        padding: 5px 10px;
+        font-size: 14px;
+        font-family: Verdana;
+        color: rgb(177, 106, 104);
+    }
+
+    table.tooltiptable td {
+        padding: 5px 5px 5px 10px;
+        font-size: 14px;
+        font-family: Verdana;
+        color: rgb(177, 106, 104);
+    }
 }
 
 .toolbar {
