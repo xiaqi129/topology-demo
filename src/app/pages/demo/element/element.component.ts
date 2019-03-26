@@ -1,7 +1,7 @@
-import * as _ from 'lodash';
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Network } from 'src/network/network';
-import { Node } from 'src/network/node';
+import { CommonService } from '../common/common-service';
+import { TopoNetwork } from '../common/TopoNetwork';
 
 
 @Component({
@@ -9,115 +9,410 @@ import { Node } from 'src/network/node';
   templateUrl: './element.component.html',
   styleUrls: ['./element.component.less']
 })
-export class ElementComponent implements OnInit  {
+export class ElementComponent implements OnInit {
+
+  static data = {
+    devices: [
+      {
+        'name': '1',
+        'location': {
+          'x': 80,
+          'y': 400,
+        },
+        'label': false,
+        'tooltip': false,
+        'style': {
+          'color': '0Xfdc999',
+          'width': 10,
+        },
+      },
+      {
+        'name': '2',
+        'location': {
+          'x': 200,
+          'y': 230,
+        },
+        'label': false,
+        'tooltip': false,
+        'style': {
+          'color': '0Xfdc999',
+          'width': 23,
+        },
+      },
+      {
+        'name': '3',
+        'location': {
+          'x': 190,
+          'y': 420,
+        },
+        'label': false,
+        'tooltip': false,
+        'style': {
+          'color': '0Xfdc999',
+          'width': 25,
+        },
+      },
+      {
+        'name': '4',
+        'location': {
+          'x': 370,
+          'y': 500,
+        },
+        'label': false,
+        'tooltip': false,
+        'style': {
+          'color': '0Xfdc999',
+          'width': 13,
+        },
+      },
+      {
+        'name': '5',
+        'location': {
+          'x': 500,
+          'y': 280,
+        },
+        'label': false,
+        'tooltip': false,
+        'style': {
+          'color': '0Xfdc999',
+          'width': 10,
+        },
+      },
+      {
+        'name': '6',
+        'location': {
+          'x': 450,
+          'y': 200,
+        },
+        'label': false,
+        'tooltip': false,
+        'style': {
+          'color': '0Xfdc999',
+          'width': 25,
+        },
+      },
+      {
+        'name': '7',
+        'location': {
+          'x': 170,
+          'y': 600,
+        },
+        'label': false,
+        'tooltip': false,
+        'style': {
+          'color': '0Xa3d89f',
+          'width': 25,
+        },
+      },
+      {
+        'name': '8',
+        'location': {
+          'x': 80,
+          'y': 650,
+        },
+        'label': false,
+        'tooltip': false,
+        'style': {
+          'color': '0Xa3d89f',
+          'width': 8,
+        },
+      },
+      {
+        'name': '9',
+        'location': {
+          'x': 120,
+          'y': 680,
+        },
+        'label': false,
+        'tooltip': false,
+        'style': {
+          'color': '0Xa3d89f',
+          'width': 15,
+        },
+      },
+      {
+        'name': '10',
+        'location': {
+          'x': 160,
+          'y': 700,
+        },
+        'label': false,
+        'tooltip': false,
+        'style': {
+          'color': '0Xa3d89f',
+          'width': 7,
+        },
+      },
+      {
+        'name': '11',
+        'location': {
+          'x': 220,
+          'y': 720,
+        },
+        'label': false,
+        'tooltip': false,
+        'style': {
+          'color': '0Xa3d89f',
+          'width': 32,
+        },
+      },
+      {
+        'name': '12',
+        'location': {
+          'x': 380,
+          'y': 650,
+        },
+        'label': false,
+        'tooltip': false,
+        'style': {
+          'color': '0Xa3d89f',
+          'width': 13,
+        },
+      },
+      {
+        'name': '13',
+        'location': {
+          'x': 450,
+          'y': 450,
+        },
+        'label': false,
+        'tooltip': false,
+        'style': {
+          'color': '0Xa8d4df',
+          'width': 25,
+        },
+      },
+      {
+        'name': '14',
+        'location': {
+          'x': 570,
+          'y': 380,
+        },
+        'label': false,
+        'tooltip': false,
+        'style': {
+          'color': '0Xa8d4df',
+          'width': 10,
+        },
+      },
+      {
+        'name': '15',
+        'location': {
+          'x': 630,
+          'y': 450,
+        },
+        'label': false,
+        'tooltip': false,
+        'style': {
+          'color': '0Xa8d4df',
+          'width': 8,
+        },
+      },
+      {
+        'name': '16',
+        'location': {
+          'x': 610,
+          'y': 570,
+        },
+        'label': false,
+        'tooltip': false,
+        'style': {
+          'color': '0Xa8d4df',
+          'width': 25,
+        },
+      },
+      {
+        'name': '17',
+        'location': {
+          'x': 550,
+          'y': 700,
+        },
+        'label': false,
+        'tooltip': false,
+        'style': {
+          'color': '0Xa8d4df',
+          'width': 22,
+        },
+      },
+    ],
+    links: [
+      {
+        'local_host': '2',
+        'remote_host': '1',
+        'label': false,
+        'tooltip': false,
+        'style': {
+          'lineType': 1,
+          'lineFull': 0,
+          'lineColor': '0Xdaf0d8',
+        }
+      },
+      {
+        'local_host': '2',
+        'remote_host': '3',
+        'label': false,
+        'tooltip': false,
+        'style': {
+          'lineType': 1,
+          'lineFull': 0,
+          'lineColor': '0Xdaf0d8',
+        }
+      },
+      {
+        'local_host': '2',
+        'remote_host': '4',
+        'label': false,
+        'tooltip': false,
+        'style': {
+          'lineType': 1,
+          'lineFull': 0,
+          'lineColor': '0Xdaf0d8',
+        }
+      },
+      {
+        'local_host': '2',
+        'remote_host': '5',
+        'label': false,
+        'tooltip': false,
+        'style': {
+          'lineType': 1,
+          'lineFull': 0,
+          'lineColor': '0Xdaf0d8',
+        }
+      },
+      {
+        'local_host': '2',
+        'remote_host': '6',
+        'label': false,
+        'tooltip': false,
+        'style': {
+          'lineType': 1,
+          'lineFull': 0,
+          'lineColor': '0Xdaf0d8',
+        }
+      },
+      {
+        'local_host': '7',
+        'remote_host': '8',
+        'label': false,
+        'tooltip': false,
+        'style': {
+          'lineType': 1,
+          'lineFull': 1,
+          'lineColor': '0Xdaf0d8',
+        }
+      },
+      {
+        'local_host': '7',
+        'remote_host': '9',
+        'label': false,
+        'tooltip': false,
+        'style': {
+          'lineType': 1,
+          'lineFull': 1,
+          'lineColor': '0Xdaf0d8',
+        }
+      },
+      {
+        'local_host': '7',
+        'remote_host': '10',
+        'label': false,
+        'tooltip': false,
+        'style': {
+          'lineType': 1,
+          'lineFull': 1,
+          'lineColor': '0Xdaf0d8',
+        }
+      },
+      {
+        'local_host': '7',
+        'remote_host': '11',
+        'label': false,
+        'tooltip': false,
+        'style': {
+          'lineType': 1,
+          'lineFull': 1,
+          'lineColor': '0Xdaf0d8',
+        }
+      },
+      {
+        'local_host': '7',
+        'remote_host': '12',
+        'label': false,
+        'tooltip': false,
+        'style': {
+          'lineType': 0,
+          'lineFull': 1,
+          'lineColor': '0Xdaf0d8',
+        }
+      },
+      {
+        'local_host': '13',
+        'remote_host': '14',
+        'label': false,
+        'tooltip': false,
+        'style': {
+          'lineType': 0,
+          'lineFull': 1,
+          'lineColor': '0Xfee8d3',
+        }
+      },
+      {
+        'local_host': '13',
+        'remote_host': '15',
+        'label': false,
+        'tooltip': false,
+        'style': {
+          'lineType': 0,
+          'lineFull': 1,
+          'lineColor': '0Xfee8d3',
+        }
+      },
+      {
+        'local_host': '13',
+        'remote_host': '16',
+        'label': false,
+        'tooltip': false,
+        'style': {
+          'lineType': 0,
+          'lineFull': 1,
+          'lineColor': '0Xfee8d3',
+        }
+      },
+      {
+        'local_host': '13',
+        'remote_host': '17',
+        'label': false,
+        'tooltip': false,
+        'style': {
+          'lineType': 0,
+          'lineFull': 1,
+          'lineColor': '0Xfee8d3',
+        }
+      },
+    ],
+    groups: [
+
+    ]
+  };
 
   network: Network;
 
-  constructor() { }
+  constructor(
+    public commonService: CommonService,
+  ) {
+  }
 
   ngOnInit() {
     this.renderTopo();
   }
 
   public renderTopo() {
-    const iconResource = {
-      switch: { name: 'switch', url: './pic/cisco-WS-C49.png', width: '40', height: '40' },
-    };
-
-    this.network = new Network('div#network');
-    this.network.addIconResource(iconResource);
-
-    this.network.callback = () => {
-      // add nodes
-      const num = 5;
-      for (let i = 0, len: number = num; i < len; i++) {
-        const node = this.network.createNode('switch');
-        this.network.addElement(node);
-      }
-
-      const nodes = this.network.getElements();
-
-      // positon nodes
-      nodes[0].x = 200;
-      nodes[0].y = 200;
-      nodes[1].x = 400;
-      nodes[1].y = 100;
-      nodes[2].x = 600;
-      nodes[2].y = 100;
-      nodes[3].x = 400;
-      nodes[3].y = 300;
-      nodes[4].x = 600;
-      nodes[4].y = 300;
-
-      // edge styles
-      const edgeStyles = {
-        arrowColor: 0X006aad,
-        arrowLength: 15,
-        arrowType: 0,
-        arrowWidth: 1,
-        fillArrow: true,
-        lineColor: 0xb7b7b7,
-        lineDistance: 5,
-        lineType: 0,
-        lineWidth: 1,
-      };
-
-      // draw edges
-      this.createEdge(nodes[0], nodes[1], 2, edgeStyles, this.network);
-      this.createEdge(nodes[1], nodes[2], 4, edgeStyles, this.network);
-      this.createEdge(nodes[2], nodes[3], 1, edgeStyles, this.network);
-      this.createEdge(nodes[4], nodes[2], 1, edgeStyles, this.network);
-      this.createEdge(nodes[3], nodes[0], 1, edgeStyles, this.network);
-      this.createEdge(nodes[3], nodes[4], 1, edgeStyles, this.network);
-      for (let i = 0; i < 2; i++) {
-        this.createEdge(nodes[1], nodes[i + 3], 1, edgeStyles, this.network);
-      }
-
-      this.network.syncView();
-
-    };
-  }
-
-  /**
-   * createEdgeTools
-   * @param src str node
-   * @param dest dest node
-   * @param num num of edge
-   * @param styles edge styles
-   * @param container the container to add edge
-   */
-  public createEdge(src: Node, dest: Node, num: number, styles: any, container: any) {
-    for (let i = 0; i < num; i++) {
-      const edge = container.createEdge(src, dest);
-      edge.setStyle(styles);
-      container.addElement(edge);
-    }
-  }
-
-  public createNode() {
-    const node = this.network.createNode();
-    node.x = Math.random() * 400 + 300;
-    node.y = Math.random() * 300 + 200;
-    this.network.addElement(node);
-
-    const nodes = this.network.getElements();
-    _.each(_.slice(nodes, 0, nodes.length - 1), e => {
-      if (e instanceof Node) {
-        this.createEdge(e, node, 1, {
-          arrowColor: 0X006aad,
-          arrowLength: 15,
-          arrowType: 0,
-          arrowWidth: 1,
-          fillArrow: true,
-          lineColor: 0xb7b7b7,
-          lineDistance: 5,
-          lineType: 0,
-          lineWidth: 1,
-        }, this.network);
-      }
-    });
-
-    this.network.syncView();
+    const network = new TopoNetwork(
+      'network',
+      this.commonService,
+    );
+    network.drawNoIConTopology(ElementComponent.data);
   }
 
 }

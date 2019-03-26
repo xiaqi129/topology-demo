@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import * as _ from 'lodash';
 import { Network } from 'src/network/network';
 import { CommonService } from '../common/common-service';
 import { TopoNetwork } from '../common/TopoNetwork';
@@ -17,8 +16,11 @@ import { TopoNetwork } from '../common/TopoNetwork';
           'x': 100,
           'y': 300,
         },
+        'label': true,
+        'tooltip': true,
         'style': {
           'color': '0Xc9d4f7',
+          'width': 20,
         },
         'clients': {
           'User_Manufacturer': 'Cisco',
@@ -33,8 +35,11 @@ import { TopoNetwork } from '../common/TopoNetwork';
           'x': 200,
           'y': 230,
         },
+        'label': true,
+        'tooltip': true,
         'style': {
           'color': '0X55efc4',
+          'width': 20,
         },
         'clients': {
           'User_Manufacturer': 'Cisco',
@@ -49,8 +54,11 @@ import { TopoNetwork } from '../common/TopoNetwork';
           'x': 350,
           'y': 250,
         },
+        'label': true,
+        'tooltip': true,
         'style': {
           'color': '0X74b9ff',
+          'width': 20,
         },
         'clients': {
           'User_Manufacturer': 'Cisco',
@@ -65,8 +73,11 @@ import { TopoNetwork } from '../common/TopoNetwork';
           'x': 500,
           'y': 320,
         },
+        'label': true,
+        'tooltip': true,
         'style': {
           'color': '0Xa09bfd',
+          'width': 20,
         },
         'clients': {
           'User_Manufacturer': 'Cisco',
@@ -81,8 +92,11 @@ import { TopoNetwork } from '../common/TopoNetwork';
           'x': 430,
           'y': 450,
         },
+        'label': true,
+        'tooltip': true,
         'style': {
           'color': '0X80ecec',
+          'width': 20,
         },
         'clients': {
           'User_Manufacturer': 'Cisco',
@@ -100,7 +114,9 @@ import { TopoNetwork } from '../common/TopoNetwork';
         'remote_int': 'Po1(Te1/0/1)',
         'local_int': '192.168.12.63',
         'link_state': 'normal',
-        'remote_host': '172.17.16.134'
+        'remote_host': '172.17.16.134',
+        'label': true,
+        'tooltip': true,
       },
       {
         'local_host': '172.17.16.134',
@@ -108,7 +124,9 @@ import { TopoNetwork } from '../common/TopoNetwork';
         'remote_int': 'Po1(Te1/0/1)',
         'local_int': '192.168.12.63',
         'link_state': 'normal',
-        'remote_host': '192.168.18.253'
+        'remote_host': '192.168.18.253',
+        'label': true,
+        'tooltip': true,
       },
       {
         'local_host': '192.168.18.253',
@@ -116,7 +134,9 @@ import { TopoNetwork } from '../common/TopoNetwork';
         'remote_int': 'Po1(Te1/0/1)',
         'local_int': '192.168.12.63',
         'link_state': 'normal',
-        'remote_host': '172.17.17.86'
+        'remote_host': '172.17.17.86',
+        'label': true,
+        'tooltip': true,
       },
       {
         'local_host': '172.17.17.86',
@@ -124,7 +144,9 @@ import { TopoNetwork } from '../common/TopoNetwork';
         'remote_int': 'Po1(Te1/0/1)',
         'local_int': '192.168.12.63',
         'link_state': 'normal',
-        'remote_host': '192.168.18.229'
+        'remote_host': '192.168.18.229',
+        'label': true,
+        'tooltip': true,
       },
       {
         'local_host': '172.17.16.134',
@@ -132,7 +154,9 @@ import { TopoNetwork } from '../common/TopoNetwork';
         'remote_int': 'Po1(Te1/0/1)',
         'local_int': '192.168.12.63',
         'link_state': 'normal',
-        'remote_host': '192.168.18.229'
+        'remote_host': '192.168.18.229',
+        'label': true,
+        'tooltip': true,
       },
       {
         'local_host': '192.168.18.253',
@@ -140,7 +164,9 @@ import { TopoNetwork } from '../common/TopoNetwork';
         'remote_int': 'Po1(Te1/0/1)',
         'local_int': '192.168.12.63',
         'link_state': 'normal',
-        'remote_host': '192.168.18.229'
+        'remote_host': '192.168.18.229',
+        'label': true,
+        'tooltip': true,
       },
       {
         'local_host': '192.168.10.0/24',
@@ -148,7 +174,9 @@ import { TopoNetwork } from '../common/TopoNetwork';
         'remote_int': 'Po1(Te1/0/1)',
         'local_int': '192.168.12.63',
         'link_state': 'normal',
-        'remote_host': '172.17.17.86'
+        'remote_host': '172.17.17.86',
+        'label': true,
+        'tooltip': true,
       },
       {
         'local_host': '192.168.10.0/24',
@@ -156,7 +184,9 @@ import { TopoNetwork } from '../common/TopoNetwork';
         'remote_int': 'Po1(Te1/0/1)',
         'local_int': '192.168.12.63',
         'link_state': 'normal',
-        'remote_host': '172.17.17.86'
+        'remote_host': '172.17.17.86',
+        'label': true,
+        'tooltip': true,
       },
       {
         'local_host': '192.168.10.0/24',
@@ -164,7 +194,9 @@ import { TopoNetwork } from '../common/TopoNetwork';
         'remote_int': 'Po1(Te1/0/1)',
         'local_int': '192.168.12.63',
         'link_state': 'normal',
-        'remote_host': '172.17.17.86'
+        'remote_host': '172.17.17.86',
+        'label': true,
+        'tooltip': true,
       },
       {
         'local_host': '192.168.10.0/24',
@@ -172,7 +204,9 @@ import { TopoNetwork } from '../common/TopoNetwork';
         'remote_int': 'Po1(Te1/0/1)',
         'local_int': '192.168.12.63',
         'link_state': 'normal',
-        'remote_host': '172.17.17.86'
+        'remote_host': '172.17.17.86',
+        'label': true,
+        'tooltip': true,
       },
       {
         'local_host': '192.168.10.0/24',
@@ -180,7 +214,9 @@ import { TopoNetwork } from '../common/TopoNetwork';
         'remote_int': 'Po1(Te1/0/1)',
         'local_int': '192.168.12.63',
         'link_state': 'normal',
-        'remote_host': '172.17.17.86'
+        'remote_host': '172.17.17.86',
+        'label': true,
+        'tooltip': true,
       },
 
     ],

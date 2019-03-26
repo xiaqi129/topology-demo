@@ -42,6 +42,13 @@ const routes: Routes = [
                             breadcrumb: 'Base'
                         },
                     },
+                    {
+                        path: 'customize',
+                        component: ElementComponent,
+                        data: {
+                            breadcrumb: 'Customize node and link style'
+                        },
+                    },
                     { path: 'element', component: ElementComponent, pathMatch: 'prefix' },
                     { path: 'group', component: GroupComponent, pathMatch: 'prefix' },
                     { path: 'edge', component: EdgeComponent, pathMatch: 'prefix' },

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
 import { TopoNetwork } from './TopoNetwork';
-import { TopoContext } from './TopoContext';
 
 @Injectable({
     providedIn: 'root',
@@ -42,38 +41,43 @@ export class CommonService {
     public newNoIConNode(topoNetwork: TopoNetwork, nodeInfo) {
         const network = topoNetwork.network;
         const node = network.createNode();
-        node.clients = nodeInfo.clients;
-        const nodeTooltipContent = `
-        <table class="tooltiptable">
-          <tr>
-          <th>${nodeInfo.name}</th>
-          </tr>
-          <tr class="topLine">
-          <th>Manufacture:</th>
-          <td>${nodeInfo.clients.User_Manufacturer}</td>
-          </tr>
-          <tr>
-          <th>Platform:</th>
-          <td>${nodeInfo.clients.platform}</td>
-          </tr>
-          <tr>
-          <th>Device IP:</th>
-          <td>${nodeInfo.clients.deviceIP}</td>
-          </tr>
-          <tr>
-          <th>From Source:</th>
-          <td>${nodeInfo.clients.device_source}</td>
-          </tr>
-          </table>`;
         node.labelStyle = nodeInfo.labelStyle || topoNetwork.labelStyle;
         node.x = nodeInfo.location.x;
         node.y = nodeInfo.location.y;
         node.name = nodeInfo.name;
         node.setStyle({
+            width: nodeInfo.style.width,
             fillColor: nodeInfo.style.color
         });
-        node.setLabel(nodeInfo.name, node.labelStyle);
-        node.setTooltip(nodeTooltipContent, topoNetwork.tooltipStyle);
+        if (nodeInfo.label) {
+            node.setLabel(nodeInfo.name, node.labelStyle);
+        }
+        if (nodeInfo.tooltip) {
+            node.clients = nodeInfo.clients;
+            const nodeTooltipContent = `
+            <table class="tooltiptable">
+              <tr>
+              <th>${nodeInfo.name}</th>
+              </tr>
+              <tr class="topLine">
+              <th>Manufacture:</th>
+              <td>${nodeInfo.clients.User_Manufacturer}</td>
+              </tr>
+              <tr>
+              <th>Platform:</th>
+              <td>${nodeInfo.clients.platform}</td>
+              </tr>
+              <tr>
+              <th>Device IP:</th>
+              <td>${nodeInfo.clients.deviceIP}</td>
+              </tr>
+              <tr>
+              <th>From Source:</th>
+              <td>${nodeInfo.clients.device_source}</td>
+              </tr>
+              </table>`;
+            node.setTooltip(nodeTooltipContent, topoNetwork.tooltipStyle);
+        }
         return node;
     }
 
@@ -114,11 +118,23 @@ export class CommonService {
                   </table>`;
             edge.fromId = srcNodeName;
             edge.endId = destNodeName;
-            edge.setStyle(topoNetwork.defaultLineStyle);
-            edge.setTooltip(linkTooltipContent, topoNetwork.tooltipStyle);
-            edge.setLabel(edgeInfo.local_int, edgeInfo.remote_int, {
-                fontSize: 12,
-            });
+            const style = _.cloneDeep(topoNetwork.defaultLineStyle);
+            if (edgeInfo.style) {
+                _.extend(style, {
+                    lineType: edgeInfo.style.lineType,
+                    lineFull: edgeInfo.style.lineFull,
+                    lineColor: edgeInfo.style.lineColor,
+                });
+            }
+            edge.setStyle(style);
+            if (edgeInfo.label) {
+                edge.setLabel(edgeInfo.local_int, edgeInfo.remote_int, {
+                    fontSize: 12,
+                });
+            }
+            if (edgeInfo.tooltip) {
+                edge.setTooltip(linkTooltipContent, topoNetwork.tooltipStyle);
+            }
             return edge;
         }
     }
