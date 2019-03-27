@@ -4,6 +4,7 @@ import { appRouter } from '../../main/app.router';
 import { DemoComponent } from './demo.component';
 import { HeaderModule } from '../header/header.module';
 import { BreadCrumbsModule } from '../breadcrumbs/breadcrumbs.module';
+import { LeftToolModule } from '../lefttool/lefttool.module';
 
 import { SimpleComponent } from './simple/simple.component';
 import { ElementComponent } from './element/element.component';
@@ -23,6 +24,7 @@ import { from } from 'rxjs';
         appRouter,
         HeaderModule,
         BreadCrumbsModule,
+        LeftToolModule,
     ],
     exports: [],
     declarations: [

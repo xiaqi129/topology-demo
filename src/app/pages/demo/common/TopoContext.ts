@@ -1,5 +1,4 @@
 
-
 export class TopoContext {
     static labelToggle = false;
     static groupLabelToggle = true;

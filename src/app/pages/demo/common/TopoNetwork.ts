@@ -70,6 +70,7 @@ export class TopoNetwork {
         window.addEventListener('resize', () => {
             network.moveCenter();
         });
+        this.commonService.changeNetwork(network);
         // window.topo = this.network;
     }
 

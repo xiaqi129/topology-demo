@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
 import { TopoNetwork } from './TopoNetwork';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
 })
 export class CommonService {
-
+    public currentNetork = new BehaviorSubject<object>({});
 
     public rgb2hex(rgb) {
         return rgb && rgb.length === 4
@@ -27,6 +28,10 @@ export class CommonService {
         }
         return sortedObj;
     }
+
+    public changeNetwork(network): void {
+        this.currentNetork.next(network);
+      }
 
     public reDraw(topoNetwork) {
         const network = topoNetwork.network;

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Network } from 'src/network/network';
 import { CommonService } from '../common/common-service';
 import { TopoNetwork } from '../common/TopoNetwork';
 
@@ -95,7 +94,7 @@ export class ElementComponent implements OnInit {
         'name': '7',
         'location': {
           'x': 170,
-          'y': 600,
+          'y': 570,
         },
         'label': false,
         'tooltip': false,
@@ -108,7 +107,7 @@ export class ElementComponent implements OnInit {
         'name': '8',
         'location': {
           'x': 80,
-          'y': 650,
+          'y': 620,
         },
         'label': false,
         'tooltip': false,
@@ -121,7 +120,7 @@ export class ElementComponent implements OnInit {
         'name': '9',
         'location': {
           'x': 120,
-          'y': 680,
+          'y': 650,
         },
         'label': false,
         'tooltip': false,
@@ -134,7 +133,7 @@ export class ElementComponent implements OnInit {
         'name': '10',
         'location': {
           'x': 160,
-          'y': 700,
+          'y': 670,
         },
         'label': false,
         'tooltip': false,
@@ -146,21 +145,21 @@ export class ElementComponent implements OnInit {
       {
         'name': '11',
         'location': {
-          'x': 220,
-          'y': 720,
+          'x': 250,
+          'y': 690,
         },
         'label': false,
         'tooltip': false,
         'style': {
           'color': '0Xa3d89f',
-          'width': 32,
+          'width': 34,
         },
       },
       {
         'name': '12',
         'location': {
           'x': 380,
-          'y': 650,
+          'y': 620,
         },
         'label': false,
         'tooltip': false,
@@ -395,8 +394,6 @@ export class ElementComponent implements OnInit {
 
     ]
   };
-
-  network: Network;
 
   constructor(
     public commonService: CommonService,

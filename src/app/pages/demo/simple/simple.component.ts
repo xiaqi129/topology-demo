@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Network } from 'src/network/network';
 import { CommonService } from '../common/common-service';
 import { TopoNetwork } from '../common/TopoNetwork';
 
@@ -224,8 +223,6 @@ import { TopoNetwork } from '../common/TopoNetwork';
 
     ]
   };
-
-  network: Network;
 
   constructor(
     public commonService: CommonService,
