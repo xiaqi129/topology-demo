@@ -162,8 +162,8 @@ export class CommonService {
         newGroup.name = groupInfo.name;
         if (typeof groupInfo.display_style === 'string') {
             switch (groupInfo.display_style) {
-                case 'rect_edge':
-                    newGroup.setOutlineStyle(3);
+                case 'polygon':
+                    newGroup.setOutlineStyle(1);
                     break;
                 case 'rect':
                     newGroup.setOutlineStyle(3);
@@ -196,7 +196,9 @@ export class CommonService {
                 fillColor: bgColor,
             });
         }
-        newGroup.setLabel(groupInfo.name, groupInfo.clients.label_position);
+        if (groupInfo.label) {
+            newGroup.setLabel(groupInfo.name, groupInfo.label_position);
+        }
         return newGroup;
     }
 }

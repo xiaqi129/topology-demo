@@ -14,7 +14,7 @@ export class LeftToolComponent implements OnInit {
     ) { }
     ngOnInit() {
         this.commonService.currentNetork.subscribe(network => this.network = network);
-        this.setStyle();
+        // this.setStyle();
     }
 
     public setSelect() {

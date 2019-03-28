@@ -1,13 +1,19 @@
 <div class="toolbar">
     <ul>
         <li id="drag" (click)="setDrag()">
-            <img src="../../../assets/pic/iconfont icon-shebei.png" title="Move Topology">
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#iconhand"></use>
+            </svg>
         </li>
         <li id="select" (click)="setSelect()">
-            <img src="../../../assets/pic/iconfont icon-xitong.png" title="Select Nodes">
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#iconselect"></use>
+            </svg>
         </li>
         <li (click)="moveCenter()">
-            <img src="../../../assets/pic/iconfont icon-xitong.png" title="Fit stage">
+            <svg class="icon" aria-hidden="true">
+                <use xlink:href="#iconcenter"></use>
+            </svg>
         </li>
     </ul>
 </div>
