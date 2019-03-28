@@ -31,7 +31,7 @@ export class CommonService {
 
     public changeNetwork(network): void {
         this.currentNetork.next(network);
-      }
+    }
 
     public reDraw(topoNetwork) {
         const network = topoNetwork.network;
@@ -43,9 +43,17 @@ export class CommonService {
         });
     }
 
-    public newNoIConNode(topoNetwork: TopoNetwork, nodeInfo) {
+    public newNode(topoNetwork: TopoNetwork, nodeInfo) {
         const network = topoNetwork.network;
-        const node = network.createNode();
+        let node;
+        if (nodeInfo.image) {
+            node = network.createNode(nodeInfo.image);
+            node.iconWidth = nodeInfo.width;
+            node.iconHeight = nodeInfo.height;
+            node.draw();
+        } else {
+            node = network.createNode();
+        }
         node.labelStyle = nodeInfo.labelStyle || topoNetwork.labelStyle;
         node.x = nodeInfo.location.x;
         node.y = nodeInfo.location.y;

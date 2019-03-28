@@ -1,110 +1,282 @@
-import * as _ from 'lodash';
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Network } from 'src/network/network';
-import { Node } from 'src/network/node';
+import { Component, OnInit } from '@angular/core';
+import { CommonService } from '../common/common-service';
+import { TopoNetwork } from '../common/TopoNetwork';
 
 @Component({
   selector: 'app-label',
   templateUrl: './label.component.html',
   styleUrls: ['./label.component.less']
 })
-export class LabelComponent implements OnInit, OnDestroy {
+export class LabelComponent implements OnInit {
+  static data = {
+    devices: [
+      {
+        'name': 'Router 192.168.10.0/24',
+        'location': {
+          'x': 60,
+          'y': 350,
+        },
+        'image': '1',
+        'width': 40,
+        'height': 40,
+        'label': true,
+        'tooltip': true,
+        'style': {
+          'color': '0Xc9d4f7',
+          'width': 20,
+        },
+        'clients': {
+          'User_Manufacturer': 'Cisco',
+          'platform': 'WS-C3650-24TD',
+          'deviceIP': '10.250.0.249',
+          'device_source': 'from collected',
+        }
+      },
+      {
+        'name': 'Nexus-5000&9000-service 172.17.16.134',
+        'location': {
+          'x': 210,
+          'y': 470,
+        },
+        'image': '2',
+        'width': 40,
+        'height': 40,
+        'label': true,
+        'tooltip': true,
+        'style': {
+          'color': '0X55efc4',
+          'width': 20,
+        },
+        'clients': {
+          'User_Manufacturer': 'Cisco',
+          'platform': 'WS-C3650-24TD',
+          'deviceIP': '10.250.0.249',
+          'device_source': 'from collected',
+        }
+      },
+      {
+        'name': 'Nexus-2000-service 192.168.18.253',
+        'location': {
+          'x': 500,
+          'y': 540,
+        },
+        'image': '3',
+        'width': 40,
+        'height': 40,
+        'label': true,
+        'tooltip': true,
+        'style': {
+          'color': '0X74b9ff',
+          'width': 20,
+        },
+        'clients': {
+          'User_Manufacturer': 'Cisco',
+          'platform': 'WS-C3650-24TD',
+          'deviceIP': '10.250.0.249',
+          'device_source': 'from collected',
+        }
+      },
+      {
+        'name': 'Nexus-7000-service 172.17.17.86',
+        'location': {
+          'x': 500,
+          'y': 320,
+        },
+        'image': '4',
+        'width': 40,
+        'height': 40,
+        'label': true,
+        'tooltip': true,
+        'style': {
+          'color': '0Xa09bfd',
+          'width': 20,
+        },
+        'clients': {
+          'User_Manufacturer': 'Cisco',
+          'platform': 'WS-C3650-24TD',
+          'deviceIP': '10.250.0.249',
+          'device_source': 'from collected',
+        }
+      },
+      {
+        'name': 'ALE(NLB) 192.168.18.229',
+        'location': {
+          'x': 320,
+          'y': 150,
+        },
+        'image': '5',
+        'width': 40,
+        'height': 40,
+        'label': true,
+        'tooltip': true,
+        'style': {
+          'color': '0X80ecec',
+          'width': 20,
+        },
+        'clients': {
+          'User_Manufacturer': 'Cisco',
+          'platform': 'WS-C3650-24TD',
+          'deviceIP': '10.250.0.249',
+          'device_source': 'from collected',
+        }
+      },
+      {
+        'name': 'Switch 192.168.20.210',
+        'location': {
+          'x': 270,
+          'y': 320,
+        },
+        'image': '6',
+        'width': 40,
+        'height': 40,
+        'label': true,
+        'tooltip': true,
+        'style': {
+          'color': '0X80ecec',
+          'width': 20,
+        },
+        'clients': {
+          'User_Manufacturer': 'Cisco',
+          'platform': 'WS-C3650-24TD',
+          'deviceIP': '10.250.0.249',
+          'device_source': 'from collected',
+        }
+      },
+    ],
+    links: [
+      {
+        'local_host': 'Router 192.168.10.0/24',
+        'link_protocol': 'Subnet',
+        'remote_int': 'Po1(Te1/0/1)',
+        'local_int': '192.168.12.63',
+        'link_state': 'normal',
+        'remote_host': 'Switch 192.168.20.210',
+        'label': true,
+        'tooltip': true,
+        'style': {
+          'lineType': 1,
+          'lineFull': 0,
+          'lineColor': '0XDDDDDD',
+        }
+      },
+      {
+        'local_host': 'Nexus-5000&9000-service 172.17.16.134',
+        'link_protocol': 'Subnet',
+        'remote_int': 'Po1(Te1/0/1)',
+        'local_int': '192.168.12.63',
+        'link_state': 'normal',
+        'remote_host': 'Switch 192.168.20.210',
+        'label': true,
+        'tooltip': true,
+        'style': {
+          'lineType': 1,
+          'lineFull': 0,
+          'lineColor': '0XDDDDDD',
+        }
+      },
+      {
+        'local_host': 'Nexus-2000-service 192.168.18.253',
+        'link_protocol': 'Subnet',
+        'remote_int': 'Po1(Te1/0/1)',
+        'local_int': '192.168.12.63',
+        'link_state': 'normal',
+        'remote_host': 'Switch 192.168.20.210',
+        'label': true,
+        'tooltip': true,
+        'style': {
+          'lineType': 1,
+          'lineFull': 0,
+          'lineColor': '0XDDDDDD',
+        }
+      },
+      {
+        'local_host': 'Nexus-7000-service 172.17.17.86',
+        'link_protocol': 'Subnet',
+        'remote_int': 'Po1(Te1/0/1)',
+        'local_int': '192.168.12.63',
+        'link_state': 'normal',
+        'remote_host': 'Switch 192.168.20.210',
+        'label': true,
+        'tooltip': true,
+      },
+      {
+        'local_host': 'Nexus-7000-service 172.17.17.86',
+        'link_protocol': 'Subnet',
+        'remote_int': 'Po1(Te1/0/1)',
+        'local_int': '192.168.12.63',
+        'link_state': 'normal',
+        'remote_host': 'Switch 192.168.20.210',
+        'label': true,
+        'tooltip': true,
+      },
+      {
+        'local_host': 'Nexus-7000-service 172.17.17.86',
+        'link_protocol': 'Subnet',
+        'remote_int': 'Po1(Te1/0/1)',
+        'local_int': '192.168.12.63',
+        'link_state': 'normal',
+        'remote_host': 'Switch 192.168.20.210',
+        'label': true,
+        'tooltip': true,
+      },
+      {
+        'local_host': 'Nexus-7000-service 172.17.17.86',
+        'link_protocol': 'Subnet',
+        'remote_int': 'Po1(Te1/0/1)',
+        'local_int': '192.168.12.63',
+        'link_state': 'normal',
+        'remote_host': 'Switch 192.168.20.210',
+        'label': true,
+        'tooltip': true,
+      },
+      {
+        'local_host': 'Nexus-7000-service 172.17.17.86',
+        'link_protocol': 'Subnet',
+        'remote_int': 'Po1(Te1/0/1)',
+        'local_int': '192.168.12.63',
+        'link_state': 'normal',
+        'remote_host': 'Switch 192.168.20.210',
+        'label': true,
+        'tooltip': true,
+      },
+      {
+        'local_host': 'ALE(NLB) 192.168.18.229',
+        'link_protocol': 'Subnet',
+        'remote_int': 'Po1(Te1/0/1)',
+        'local_int': '192.168.12.63',
+        'link_state': 'normal',
+        'remote_host': 'Switch 192.168.20.210',
+        'label': true,
+        'tooltip': true,
+        'style': {
+          'lineType': 1,
+          'lineFull': 0,
+          'lineColor': '0XDDDDDD',
+        }
+      },
+    ],
+    groups: [
 
-  network: Network;
-  labelFlag = true;
+    ]
+  };
+  static iconResource = {
+    resources: { name: 'resources', url: '../../../../assets/pic/Icon.json' },
+  };
 
-  constructor() { }
+  constructor(
+    public commonService: CommonService,
+  ) {}
 
   ngOnInit() {
 
     this.renderTopo();
   }
 
-  ngOnDestroy() {
-    PIXI.loader.reset();
-  }
-
   public renderTopo() {
-    const iconResource = {
-      switch: { name: 'switch', url: './pic/cisco-WS-C49.png', width: '40', height: '40' },
-      switchLayer3: { name: 'switchLayer3', url: './pic/cisco-WS-C68.png', width: '40', height: '40' },
-      router: { name: 'router', url: './pic/cisco-18.png', width: '40', height: '40' },
-    };
-
-    this.network = new Network('div#network');
-
-    this.network.addIconResource(iconResource);
-
-    this.network.callback = () => {
-
-      // add nodes
-      const num = 5;
-      for (let i = 0, len: number = num; i < len; i++) {
-        const node = this.network.createNode();
-        this.network.addElement(node);
-      }
-
-      const nodes = this.network.getElements();
-
-      // positon nodes
-      nodes[0].x = 200;
-      nodes[0].y = 200;
-      nodes[1].x = 400;
-      nodes[1].y = 100;
-      nodes[2].x = 600;
-      nodes[2].y = 100;
-      nodes[3].x = 400;
-      nodes[3].y = 300;
-      nodes[4].x = 600;
-      nodes[4].y = 300;
-
-      // edge styles
-      const edgeStyles = {
-        arrowColor: 0X006aad,
-        arrowLength: 15,
-        arrowType: 0,
-        arrowWidth: 1,
-        fillArrow: true,
-        lineColor: 0xb7b7b7,
-        lineDistance: 5,
-        lineType: 0,
-        lineWidth: 1,
-      };
-
-      // draw edges
-      this.createEdge(nodes[0], nodes[1], 2, edgeStyles, this.network);
-      this.createEdge(nodes[1], nodes[2], 4, edgeStyles, this.network);
-      this.createEdge(nodes[2], nodes[3], 1, edgeStyles, this.network);
-      this.createEdge(nodes[4], nodes[2], 1, edgeStyles, this.network);
-      this.createEdge(nodes[3], nodes[0], 1, edgeStyles, this.network);
-      this.createEdge(nodes[3], nodes[4], 1, edgeStyles, this.network);
-      for (let i = 0; i < 2; i++) {
-        this.createEdge(nodes[1], nodes[i + 3], 1, edgeStyles, this.network);
-      }
-
-      this.network.syncView();
-    };
-
+    const network = new TopoNetwork(
+      'network',
+      this.commonService,
+    );
+    network.drawTopology(LabelComponent.data, LabelComponent.iconResource);
   }
-
-  /**
-   * createEdgeTools
-   * @param src str node
-   * @param dest dest node
-   * @param num num of edge
-   * @param styles edge styles
-   * @param container the container to add edge
-   */
-  public createEdge(src: Node, dest: Node, num: number, styles: any, container: any) {
-    for (let i = 0; i < num; i++) {
-      const edge = container.createEdge(src, dest);
-      edge.setStyle(styles);
-      container.addElement(edge);
-    }
-  }
-
-  public toogleLabel() {
-    this.network.nodeLabelToggle();
-  }
-
 }

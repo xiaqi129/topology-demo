@@ -1,0 +1,36 @@
+{"frames": {
+
+"cisco-18":
+{
+	"frame": {"x":0,"y":0,"w":100,"h":101},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":100,"h":101},
+	"sourceSize": {"w":100,"h":101}
+},
+"cisco-WS-C49":
+{
+	"frame": {"x":100,"y":0,"w":100,"h":101},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":100,"h":101},
+	"sourceSize": {"w":100,"h":101}
+},
+"cisco-WS-C68":
+{
+	"frame": {"x":200,"y":0,"w":78,"h":116},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":78,"h":116},
+	"sourceSize": {"w":78,"h":116}
+}},
+"meta": {
+	"app": "http://www.texturepacker.com",
+	"version": "1.0",
+	"image": "demo.png",
+	"format": "RGBA8888",
+	"size": {"w":278,"h":116},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:26424bcee7d2bd51e1e7bb27544aae0c$"
+}
+}

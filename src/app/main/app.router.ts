@@ -49,8 +49,14 @@ const routes: Routes = [
                             breadcrumb: 'Customize node and link style'
                         },
                     },
+                    {
+                        path: 'icon',
+                        component: LabelComponent,
+                        data: {
+                            breadcrumb: `Set Node's Label and Icon`
+                        },
+                    },
                     { path: 'element', component: ElementComponent, pathMatch: 'prefix' },
-                    { path: 'group', component: GroupComponent, pathMatch: 'prefix' },
                     { path: 'edge', component: EdgeComponent, pathMatch: 'prefix' },
                     { path: 'select', component: SelectComponent, pathMatch: 'prefix' },
                     { path: 'drag', component: DragComponent, pathMatch: 'prefix' },
@@ -59,6 +65,28 @@ const routes: Routes = [
                     { path: 'tooltip', component: TooltipComponent, pathMatch: 'prefix' },
                     { path: 'label', component: LabelComponent, pathMatch: 'prefix' },
                     { path: 'bundle', component: BundleComponent, pathMatch: 'prefix' }
+                ]
+            },
+            {
+                path: 'group',
+                component: DemoComponent,
+                data: {
+                    breadcrumb: 'Group'
+                },
+                pathMatch: 'prefix',
+                children: [
+                    {
+                        path: '',
+                        component: GroupComponent,
+                        pathMatch: 'prefix'
+                    },
+                    {
+                        path: 'add',
+                        component: GroupComponent,
+                        data: {
+                            breadcrumb: 'Add Group'
+                        },
+                    },
                 ]
             }
         ]

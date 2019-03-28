@@ -13,6 +13,8 @@ export class TopoNetwork {
     public labelStyle = {
         fontSize: 12,
         fontWeight: 'bold',
+        align: 'center',
+        wordWrap: true,
     };
     // tooltip
     public tooltipStyle = {
@@ -74,11 +76,45 @@ export class TopoNetwork {
         // window.topo = this.network;
     }
 
+    public drawTopology(topoData, imageData) {
+        const network = this.network;
+        network.initIconResource(imageData);
+        const devices = topoData.devices;
+        const links = topoData.links;
+        const groups = topoData.groups;
+        const groupsList = this.commonService.keySort(groups);
+        network.callback = () => {
+            // create Node
+            this.initNodesData(devices);
+            // // create Links
+            this.initEdgesData(links);
+            // // create group
+            this.initGroupsData(groupsList);
+            // this.commonService.reDraw(this);
+            this.addElements();
+            network.syncView();
+            network.setDrag();
+            network.setZoom();
+            network.moveCenter();
+            network.setBundelExpanded(false);
+            TopoContext.labelToggle = true;
+            network.nodeLabelToggle(true);
+            TopoContext.edgeLabelToggle = false;
+            network.edgeLabelToggle(false);
+            this.commonService.reDraw(this);
+            window.addEventListener('resize', () => {
+                network.moveCenter();
+            });
+            this.commonService.changeNetwork(network);
+        };
+        // window.topo = this.network;
+    }
+
     public initNodesData(devices) {
         const _t = this;
         const nodeObjList = [];
         _.each(devices, device => {
-            const node = _t.commonService.newNoIConNode(_t, device);
+            const node = _t.commonService.newNode(_t, device);
             _t.initNodeRightClickMenu(node);
             nodeObjList.push(node);
             this.sourceNodes[device.name] = node;
