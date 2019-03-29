@@ -67,7 +67,11 @@ export class LeftToolComponent implements OnInit {
                     node.setStyle({
                         fillColor: n.color,
                     });
+                    node.setLabelStyle({
+                        fill: 0x0386d2,
+                    });
                 });
+                this.network.changeBundleLabelColor(0X0081cf);
                 break;
             case 'blue':
                 this.network.changeBackgroundColor(0X000000);
@@ -75,7 +79,11 @@ export class LeftToolComponent implements OnInit {
                     node.setStyle({
                         fillColor: 0X74b9ff
                     });
+                    node.setLabelStyle({
+                        fill: 0X74b9ff,
+                    });
                 });
+                this.network.changeBundleLabelColor(0X0081cf);
                 break;
             case 'green':
                 this.network.changeBackgroundColor(0X000000);
@@ -83,7 +91,11 @@ export class LeftToolComponent implements OnInit {
                     node.setStyle({
                         fillColor: 0X55efc4
                     });
+                    node.setLabelStyle({
+                        fill: 0X55efc4,
+                    });
                 });
+                this.network.changeBundleLabelColor(0X55efc4);
                 break;
             case 'dark':
                 this.network.changeBackgroundColor(0X000000);
@@ -92,15 +104,23 @@ export class LeftToolComponent implements OnInit {
                     node.setStyle({
                         fillColor: n.color,
                     });
+                    node.setLabelStyle({
+                        fill: 0X74b9ff,
+                    });
                 });
+                this.network.changeBundleLabelColor(0X0081cf);
                 break;
             case 'slate':
-                this.network.changeBackgroundColor(0X000000);
+                this.network.changeBackgroundColor(0X262b3e);
                 _.each(nodes, (node) => {
                     node.setStyle({
                         fillColor: 0Xffffff
                     });
+                    node.setLabelStyle({
+                        fill: 0Xffffff,
+                    });
                 });
+                this.network.changeBundleLabelColor(0X0081cf);
                 break;
             case 'yellow':
                 this.network.changeBackgroundColor(0X000000);
@@ -108,7 +128,11 @@ export class LeftToolComponent implements OnInit {
                     node.setStyle({
                         fillColor: 0Xfdca6d
                     });
+                    node.setLabelStyle({
+                        fill: 0Xfdca6d,
+                    });
                 });
+                this.network.changeBundleLabelColor(0Xfdca6d);
                 break;
             case 'default':
                 this.network.changeBackgroundColor(0XFFFFFF);
@@ -117,7 +141,11 @@ export class LeftToolComponent implements OnInit {
                     node.setStyle({
                         fillColor: n.color,
                     });
+                    node.setLabelStyle({
+                        fill: 0X74b9ff,
+                    });
                 });
+                this.network.changeBundleLabelColor(0X0081cf);
                 break;
         }
     }
