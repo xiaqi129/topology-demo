@@ -50,17 +50,22 @@ const routes: Routes = [
                         },
                     },
                     {
-                        path: 'icon',
+                        path: 'label',
                         component: LabelComponent,
                         data: {
                             breadcrumb: `Set Node's Label and Icon`
                         },
                     },
-                    { path: 'element', component: ElementComponent, pathMatch: 'prefix' },
+                    {
+                        path: 'icon',
+                        component: IconComponent,
+                        data: {
+                            breadcrumb: 'Register New Icon'
+                        },
+                    },
                     { path: 'edge', component: EdgeComponent, pathMatch: 'prefix' },
                     { path: 'select', component: SelectComponent, pathMatch: 'prefix' },
                     { path: 'drag', component: DragComponent, pathMatch: 'prefix' },
-                    { path: 'icon', component: IconComponent, pathMatch: 'prefix' },
                     { path: 'zoom', component: ZoomComponent, pathMatch: 'prefix' },
                     { path: 'tooltip', component: TooltipComponent, pathMatch: 'prefix' },
                     { path: 'label', component: LabelComponent, pathMatch: 'prefix' },

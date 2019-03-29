@@ -226,8 +226,7 @@ import { TopoNetwork } from '../common/TopoNetwork';
 
   constructor(
     public commonService: CommonService,
-  ) {
-  }
+  ) {}
 
   ngOnInit() {
     this.renderTopo();

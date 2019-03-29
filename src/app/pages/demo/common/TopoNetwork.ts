@@ -113,12 +113,18 @@ export class TopoNetwork {
     public initNodesData(devices) {
         const _t = this;
         const nodeObjList = [];
+        const nodesColor = [];
         _.each(devices, device => {
             const node = _t.commonService.newNode(_t, device);
             _t.initNodeRightClickMenu(node);
             nodeObjList.push(node);
+            nodesColor.push({
+                'name': device.name,
+                'color': device.style.color,
+            });
             this.sourceNodes[device.name] = node;
         });
+        this.commonService.changeNodesColor(nodesColor);
     }
 
     public initEdgesData(links) {
@@ -163,15 +169,7 @@ export class TopoNetwork {
             _t.network.menu.setMenuItems(TopoContext.nodeRightMenu);
             _t.network.menu.menuOnAction = id => {
                 if (id === 'debug') {
-                    const nodes = node.elements;
-                    _.each(nodes, (node) => {
-                        console.log({
-                            name: node.name,
-                            x: node.x,
-                            y: node.y,
-                        });
-                    });
-                    // console.log('Node:', node.elements);
+                    console.log('Node:', node.elements);
                 }
             };
             _t.network.menu.setClass('popMenu');

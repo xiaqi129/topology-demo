@@ -10,12 +10,16 @@
                                 routerLinkActive="nav-active">Base</a>
                         </li>
                         <li class="component">
+                            <a aria-expanded="false" class="navcom" role="button" [routerLink]="['/basic/label']"
+                                routerLinkActive="nav-active">Set Node's Label and Icon</a>
+                        </li>
+                        <li class="component">
                             <a aria-expanded="false" class="navcom" role="button" [routerLink]="['/basic/customize']"
                                 routerLinkActive="nav-active">Customize node and link style</a>
                         </li>
                         <li class="component">
                             <a aria-expanded="false" class="navcom" role="button" [routerLink]="['/basic/icon']"
-                                routerLinkActive="nav-active">Set Node's Label and Icon</a>
+                                routerLinkActive="nav-active">Register New Icon</a>
                         </li>
                         <li class="nav-header">Layout</li>
                         <li class="component">
@@ -34,10 +38,6 @@
                             <a aria-expanded="false" class="navcom" role="button" [routerLink]="['/basic/drag']"
                                 routerLinkActive="nav-active">Topo Drag</a>
                         </li>
-                        <!-- <li class="component">
-                            <a aria-expanded="false" class="navcom" role="button" [routerLink]="['/basic/icon']"
-                                routerLinkActive="nav-active">Customize Node Icon</a>
-                        </li> -->
                         <li class="component">
                             <a aria-expanded="false" class="navcom" role="button" [routerLink]="['/basic/zoom']"
                                 routerLinkActive="nav-active">Zoom</a>

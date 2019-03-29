@@ -1,8 +1,6 @@
-import * as _ from 'lodash';
 import { Component, OnInit } from '@angular/core';
-import { Network } from 'src/network/network';
-import { Node } from 'src/network/node';
-import { Edge } from 'src/network/edge';
+import { CommonService } from '../common/common-service';
+import { TopoNetwork } from '../common/TopoNetwork';
 
 @Component({
   selector: 'app-icon',
@@ -11,105 +9,197 @@ import { Edge } from 'src/network/edge';
 })
 export class IconComponent implements OnInit {
 
-  network: Network;
-  iconResource = {
-    switch: { name: 'switch', url: './pic/cisco-WS-C49.png', width: '40', height: '40' },
-    switchLayer3: { name: 'switchLayer3', url: './pic/cisco-WS-C68.png', width: '40', height: '40' },
-    router: { name: 'router', url: './pic/cisco-18.png', width: '40', height: '40' },
+  static data = {
+    devices: [
+      {
+        'name': '1',
+        'location': {
+          'x': 0,
+          'y': 200,
+        },
+        'label': false,
+        'tooltip': false,
+        'image': 'Windows',
+        'width': 40,
+        'height': 40,
+        'style': {
+          'color': '0Xc9d4f7',
+          'width': 20,
+        },
+      },
+      {
+        'name': '2',
+        'image': 'Cisco',
+        'width': 60,
+        'height': 60,
+        'location': {
+          'x': 200,
+          'y': 250,
+        },
+        'label': false,
+        'tooltip': false,
+        'style': {
+          'color': '0X55efc4',
+          'width': 20,
+        },
+      },
+      {
+        'name': '3',
+        'location': {
+          'x': 250,
+          'y': 500,
+        },
+        'label': false,
+        'tooltip': false,
+        'style': {
+          'color': '0X74b9ff',
+          'width': 15,
+        },
+      },
+      {
+        'name': '4',
+        'location': {
+          'x': 500,
+          'y': 350,
+        },
+        'image': 'Google',
+        'width': 40,
+        'height': 40,
+        'label': false,
+        'tooltip': false,
+        'style': {
+          'color': '0Xa09bfd',
+          'width': 20,
+        },
+      },
+      {
+        'name': '5',
+        'location': {
+          'x': 600,
+          'y': 530,
+        },
+        'label': false,
+        'tooltip': false,
+        'style': {
+          'color': '0X80ecec',
+          'width': 10,
+        },
+      },
+      {
+        'name': '6',
+        'location': {
+          'x': 730,
+          'y': 320,
+        },
+        'label': false,
+        'tooltip': false,
+        'style': {
+          'color': '0Xa09bfd',
+          'width': 15,
+        },
+      },
+      {
+        'name': '7',
+        'location': {
+          'x': 900,
+          'y': 530,
+        },
+        'image': 'baidu',
+        'width': 40,
+        'height': 40,
+        'label': false,
+        'tooltip': false,
+        'style': {
+          'color': '0X80ecec',
+          'width': 20,
+        },
+      },
+
+    ],
+    links: [
+      {
+        'local_host': '1',
+        'remote_host': '2',
+        'label': false,
+        'tooltip': false,
+      },
+      {
+        'local_host': '1',
+        'remote_host': '3',
+        'label': false,
+        'tooltip': false,
+      },
+      {
+        'local_host': '2',
+        'remote_host': '3',
+        'label': false,
+        'tooltip': false,
+      },
+      {
+        'local_host': '2',
+        'remote_host': '4',
+        'label': false,
+        'tooltip': false,
+      },
+      {
+        'local_host': '4',
+        'remote_host': '5',
+        'label': false,
+        'tooltip': false,
+      },
+      {
+        'local_host': '4',
+        'remote_host': '6',
+        'label': false,
+        'tooltip': false,
+      },
+      {
+        'local_host': '4',
+        'remote_host': '7',
+        'label': false,
+        'tooltip': false,
+      },
+      {
+        'local_host': '3',
+        'remote_host': '4',
+        'label': false,
+        'tooltip': false,
+      },
+      {
+        'local_host': '5',
+        'remote_host': '6',
+        'label': false,
+        'tooltip': false,
+      },
+      {
+        'local_host': '6',
+        'remote_host': '7',
+        'label': false,
+        'tooltip': false,
+      },
+
+    ],
+    groups: [
+
+    ]
   };
 
-  constructor() { }
+  static iconResource = {
+    resources: { name: 'resources', url: '../../../../assets/pic/registerIcon.json' },
+  };
+  constructor(
+    public commonService: CommonService,
+  ) {}
 
   ngOnInit() {
-    this.network = new Network('div#network');
-    this.network.addIconResource(this.iconResource);
-    this.network.callback = () => {
-      this.renderTopo('switch');
-    };
+    this.renderTopo();
   }
 
-  public renderTopo(name?: string) {
-
-    // add nodes
-    const num = 5;
-    for (let i = 0, len: number = num; i < len; i++) {
-      const node = this.network.createNode(name);
-      this.network.addElement(node);
-    }
-
-    const nodes = this.network.getElements();
-
-    // positon nodes
-    nodes[0].x = 200;
-    nodes[0].y = 200;
-    nodes[1].x = 400;
-    nodes[1].y = 100;
-    nodes[2].x = 600;
-    nodes[2].y = 100;
-    nodes[3].x = 400;
-    nodes[3].y = 300;
-    nodes[4].x = 600;
-    nodes[4].y = 300;
-
-    // edge styles
-    const edgeStyles = {
-      arrowColor: 0X006aad,
-      arrowLength: 15,
-      arrowType: 0,
-      arrowWidth: 1,
-      fillArrow: true,
-      lineColor: 0xb7b7b7,
-      lineDistance: 5,
-      lineType: 0,
-      lineWidth: 1,
-    };
-
-    // draw edges
-    this.createEdge(nodes[0], nodes[1], 2, edgeStyles, this.network);
-    this.createEdge(nodes[1], nodes[2], 4, edgeStyles, this.network);
-    this.createEdge(nodes[2], nodes[3], 1, edgeStyles, this.network);
-    this.createEdge(nodes[4], nodes[2], 1, edgeStyles, this.network);
-    this.createEdge(nodes[3], nodes[0], 1, edgeStyles, this.network);
-    this.createEdge(nodes[3], nodes[4], 1, edgeStyles, this.network);
-    for (let i = 0; i < 2; i++) {
-      this.createEdge(nodes[1], nodes[i + 3], 1, edgeStyles, this.network);
-    }
-
-    this.network.syncView();
-
-  }
-
-  /**
-   * createEdgeTools
-   * @param src str node
-   * @param dest dest node
-   * @param num num of edge
-   * @param styles edge styles
-   * @param container the container to add edge
-   */
-  public createEdge(src: Node, dest: Node, num: number, styles: any, container: any) {
-    for (let i = 0; i < num; i++) {
-      const edge = container.createEdge(src, dest);
-      edge.setStyle(styles);
-      container.addElement(edge);
-    }
-  }
-
-  /**
-   * create node with random position
-   */
-  public createNode(name?: string) {
-    const node = this.network.createNode(name);
-    node.x = Math.random() * 400;
-    node.y = Math.random() * 300;
-    this.network.addElement(node);
-
-    this.network.syncView();
-  }
-
-  public changeNode(name: string) {
-
-    this.network.clear();
-    this.renderTopo(name);
+  public renderTopo() {
+    const network = new TopoNetwork(
+      'network',
+      this.commonService,
+    );
+    network.drawTopology(IconComponent.data, IconComponent.iconResource);
   }
 }

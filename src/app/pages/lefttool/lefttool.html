@@ -1,19 +1,52 @@
 <div class="toolbar">
     <ul>
-        <li id="drag" (click)="setDrag()">
-            <svg class="icon" aria-hidden="true">
-                <use xlink:href="#iconhand"></use>
-            </svg>
+        <li (click)="setSelect()" title="Select nodes">
+            <a href="javascript:void(0)" id="select">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#iconselect"></use>
+                </svg>
+            </a>
         </li>
-        <li id="select" (click)="setSelect()">
-            <svg class="icon" aria-hidden="true">
-                <use xlink:href="#iconselect"></use>
-            </svg>
+        <li (click)="setDrag()" title="Move topology">
+            <a href="javascript:void(0)" id="drag">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#iconhand"></use>
+                </svg>
+            </a>
         </li>
-        <li (click)="moveCenter()">
-            <svg class="icon" aria-hidden="true">
-                <use xlink:href="#iconcenter"></use>
-            </svg>
+        <li (click)="moveCenter()" title="Fite stage">
+            <a href="javascript:void(0)">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#iconcenter"></use>
+                </svg>
+            </a>
+        </li>
+        <li (mouseover)="showTooltip()" (mouseout)="hideTooltip()">
+            <a href="javascript:void(0)">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#iconsetting"></use>
+                </svg>
+                <div class="pop-menu" id="pop">
+                    <div class="arrow"></div>
+                    <h3 class="pop-title">Topology Setting</h3>
+                    <div class="pop-content">
+                        <h5>
+                            <span>Display Label : </span>
+                            <input type="checkbox" class="toggleLabel" checked="checked" (click)="toggleLabel(this)">
+                        </h5>
+                        <h5>Theme: </h5>
+                        <div class="btn-group">
+                            <button class="btn btn-default" (click)="changeTheme('base')">Base</button>
+                            <button class="btn btn-default" (click)="changeTheme('blue')">Blue</button>
+                            <button class="btn btn-default" (click)="changeTheme('green')">Green</button>
+                            <button class="btn btn-default" (click)="changeTheme('dark')">Dark</button>
+                            <button class="btn btn-default" (click)="changeTheme('slate')">Slate</button>
+                            <button class="btn btn-default" (click)="changeTheme('yellow')">Yellow</button>
+                        </div>
+                    </div>
+                </div>
+            </a>
         </li>
     </ul>
+
 </div>

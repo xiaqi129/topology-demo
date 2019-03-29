@@ -3,11 +3,17 @@ import * as _ from 'lodash';
 import { TopoNetwork } from './TopoNetwork';
 import { BehaviorSubject } from 'rxjs';
 
+export interface IColorList {
+    name: string;
+    color: string;
+}
+
 @Injectable({
     providedIn: 'root',
 })
 export class CommonService {
     public currentNetork = new BehaviorSubject<object>({});
+    public nodesColor = new BehaviorSubject<Array<IColorList>>([]);
 
     public rgb2hex(rgb) {
         return rgb && rgb.length === 4
@@ -33,6 +39,9 @@ export class CommonService {
         this.currentNetork.next(network);
     }
 
+    public changeNodesColor(nodesColor): void {
+        this.nodesColor.next(nodesColor);
+    }
     public reDraw(topoNetwork) {
         const network = topoNetwork.network;
         _.each(network.getGroupObj(network), function (group, groupId) {
