@@ -64,6 +64,6 @@ export class DragComponent implements OnInit, OnDestroy {
 
       this.network.syncView();
       this.network.setDrag();
-    }
+    };
   }
 }

@@ -10,7 +10,7 @@ import { SimpleComponent } from './simple/simple.component';
 import { ElementComponent } from './element/element.component';
 import { GroupComponent } from './group/group.component';
 import { EdgeComponent } from './edge/edge.component';
-import { SelectComponent } from './select/select.component';
+import { MultiPathComponent } from './multipath/multipath.component';
 import { DragComponent } from './drag/drag.component';
 import { IconComponent } from './icon/icon.component';
 import { ZoomComponent } from './zoom/zoom.component';
@@ -33,7 +33,7 @@ import { from } from 'rxjs';
         ElementComponent,
         GroupComponent,
         EdgeComponent,
-        SelectComponent,
+        MultiPathComponent,
         DragComponent,
         IconComponent,
         ZoomComponent,

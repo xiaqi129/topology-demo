@@ -3,11 +3,12 @@ import { CommonService } from '../common/common-service';
 import { TopoNetwork } from '../common/TopoNetwork';
 
 @Component({
-  selector: 'app-edge',
-  templateUrl: './edge.component.html',
-  styleUrls: ['./edge.component.less']
+  selector: 'app-multipath',
+  templateUrl: './multipath.component.html',
+  styleUrls: ['./multipath.component.less']
 })
-export class EdgeComponent implements OnInit {
+export class MultiPathComponent implements OnInit {
+
   static data = {
     devices: [
       {
@@ -179,6 +180,12 @@ export class EdgeComponent implements OnInit {
         'tooltip': false,
         'style': {
           lineWidth: 2.5,
+          arrowColor: 0Xef5050,
+          arrowAngle: 25,
+          arrowMiddleLength: 15,
+          arrowLength: 20,
+          arrowType: 0,
+          lineColor: 0Xef5050,
         }
       },
       {
@@ -197,6 +204,12 @@ export class EdgeComponent implements OnInit {
         'tooltip': false,
         'style': {
           lineWidth: 2.5,
+          arrowColor: 0Xfcc346,
+          arrowAngle: 25,
+          arrowMiddleLength: 15,
+          arrowLength: 20,
+          arrowType: 0,
+          lineColor: 0Xfcc346,
         }
       },
       {
@@ -246,7 +259,7 @@ export class EdgeComponent implements OnInit {
       'network',
       this.commonService,
     );
-    network.drawNoIConTopology(EdgeComponent.data);
+    network.drawNoIConTopology(MultiPathComponent.data);
   }
 
 }

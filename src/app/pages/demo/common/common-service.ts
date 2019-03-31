@@ -142,11 +142,7 @@ export class CommonService {
             edge.endId = destNodeName;
             const style = _.cloneDeep(topoNetwork.defaultLineStyle);
             if (edgeInfo.style) {
-                _.extend(style, {
-                    lineType: edgeInfo.style.lineType,
-                    lineFull: edgeInfo.style.lineFull,
-                    lineColor: edgeInfo.style.lineColor,
-                });
+                _.extend(style, edgeInfo.style);
             }
             edge.setStyle(style);
             if (edgeInfo.label) {

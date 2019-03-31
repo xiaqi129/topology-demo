@@ -7,7 +7,7 @@ import { WelcomeComponent } from '../pages/welcome/welcome.component';
 import { ElementComponent } from '../pages/demo/element/element.component';
 import { GroupComponent } from '../pages/demo/group/group.component';
 import { EdgeComponent } from '../pages/demo/edge/edge.component';
-import { SelectComponent } from '../pages/demo/select/select.component';
+import { MultiPathComponent } from '../pages/demo/multipath/multipath.component';
 import { DragComponent } from '../pages/demo/drag/drag.component';
 import { IconComponent } from '../pages/demo/icon/icon.component';
 import { ZoomComponent } from '../pages/demo/zoom/zoom.component';
@@ -64,7 +64,6 @@ const routes: Routes = [
                         },
                     },
                     { path: 'edge', component: EdgeComponent, pathMatch: 'prefix' },
-                    { path: 'select', component: SelectComponent, pathMatch: 'prefix' },
                     { path: 'drag', component: DragComponent, pathMatch: 'prefix' },
                     { path: 'zoom', component: ZoomComponent, pathMatch: 'prefix' },
                     { path: 'tooltip', component: TooltipComponent, pathMatch: 'prefix' },
@@ -90,6 +89,35 @@ const routes: Routes = [
                         component: GroupComponent,
                         data: {
                             breadcrumb: 'Add Group'
+                        },
+                    },
+                ]
+            },
+            {
+                path: 'path',
+                component: DemoComponent,
+                data: {
+                    breadcrumb: 'Path'
+                },
+                pathMatch: 'prefix',
+                children: [
+                    {
+                        path: '',
+                        component: EdgeComponent,
+                        pathMatch: 'prefix'
+                    },
+                    {
+                        path: 'add',
+                        component: EdgeComponent,
+                        data: {
+                            breadcrumb: 'Add Path'
+                        },
+                    },
+                    {
+                        path: 'multi',
+                        component: MultiPathComponent,
+                        data: {
+                            breadcrumb: 'Add Multiple Path'
                         },
                     },
                 ]

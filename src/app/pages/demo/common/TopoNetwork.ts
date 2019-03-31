@@ -29,7 +29,6 @@ export class TopoNetwork {
         arrowColor: 0x3099f1,
         lineColor: 0xDDDDDD,
         arrowAngle: 10,
-        lineDistance: 0,
         lineType: 0,
         lineFull: 0,
         lineWidth: 1,

@@ -67,9 +67,11 @@ export class LeftToolComponent implements OnInit {
                     node.setStyle({
                         fillColor: n.color,
                     });
-                    node.setLabelStyle({
-                        fill: 0x0386d2,
-                    });
+                    if (node.getChildByName('node_label')) {
+                        node.setLabelStyle({
+                            fill: 0x0386d2,
+                        });
+                    }
                 });
                 this.network.changeBundleLabelColor(0X0081cf);
                 break;
@@ -79,9 +81,11 @@ export class LeftToolComponent implements OnInit {
                     node.setStyle({
                         fillColor: 0X74b9ff
                     });
-                    node.setLabelStyle({
-                        fill: 0X74b9ff,
-                    });
+                    if (node.getChildByName('node_label')) {
+                        node.setLabelStyle({
+                            fill: 0X74b9ff,
+                        });
+                    }
                 });
                 this.network.changeBundleLabelColor(0X0081cf);
                 break;
@@ -91,9 +95,11 @@ export class LeftToolComponent implements OnInit {
                     node.setStyle({
                         fillColor: 0X55efc4
                     });
-                    node.setLabelStyle({
-                        fill: 0X55efc4,
-                    });
+                    if (node.getChildByName('node_label')) {
+                        node.setLabelStyle({
+                            fill: 0X55efc4,
+                        });
+                    }
                 });
                 this.network.changeBundleLabelColor(0X55efc4);
                 break;
@@ -104,9 +110,11 @@ export class LeftToolComponent implements OnInit {
                     node.setStyle({
                         fillColor: n.color,
                     });
-                    node.setLabelStyle({
-                        fill: 0X74b9ff,
-                    });
+                    if (node.getChildByName('node_label')) {
+                        node.setLabelStyle({
+                            fill: 0X74b9ff,
+                        });
+                    }
                 });
                 this.network.changeBundleLabelColor(0X0081cf);
                 break;
@@ -116,9 +124,11 @@ export class LeftToolComponent implements OnInit {
                     node.setStyle({
                         fillColor: 0Xffffff
                     });
-                    node.setLabelStyle({
-                        fill: 0Xffffff,
-                    });
+                    if (node.getChildByName('node_label')) {
+                        node.setLabelStyle({
+                            fill: 0Xffffff,
+                        });
+                    }
                 });
                 this.network.changeBundleLabelColor(0X0081cf);
                 break;
@@ -128,9 +138,11 @@ export class LeftToolComponent implements OnInit {
                     node.setStyle({
                         fillColor: 0Xfdca6d
                     });
-                    node.setLabelStyle({
-                        fill: 0Xfdca6d,
-                    });
+                    if (node.getChildByName('node_label')) {
+                        node.setLabelStyle({
+                            fill: 0Xfdca6d,
+                        });
+                    }
                 });
                 this.network.changeBundleLabelColor(0Xfdca6d);
                 break;
@@ -141,9 +153,11 @@ export class LeftToolComponent implements OnInit {
                     node.setStyle({
                         fillColor: n.color,
                     });
-                    node.setLabelStyle({
-                        fill: 0X74b9ff,
-                    });
+                    if (node.getChildByName('node_label')) {
+                        node.setLabelStyle({
+                            fill: 0X74b9ff,
+                        });
+                    }
                 });
                 this.network.changeBundleLabelColor(0X0081cf);
                 break;
