@@ -57,6 +57,30 @@ export class LeftToolComponent implements OnInit {
         pop.style.display = 'none';
     }
 
+    public showElements() {
+        const elements = this.network.getElements();
+        const groups = this.network.getGroupObj();
+        _.each(elements, (element) => {
+            element.visible = true;
+        });
+        _.each(groups, (group) => {
+            group.draw();
+        });
+    }
+
+    public hideElement() {
+        const selectNodes = this.network.getSelectedNodes();
+        const selectEdge = this.network.getSelectEdge();
+        if (selectNodes) {
+            _.each(selectNodes, (node) => {
+                this.network.hideElement(node);
+            });
+        }
+        if (selectEdge) {
+            selectEdge.visible = false;
+        }
+    }
+
     public changeTheme(value) {
         const nodes = this.network.getNodeObj();
         switch (value) {
