@@ -11,7 +11,7 @@ import { ElementComponent } from './element/element.component';
 import { GroupComponent } from './group/group.component';
 import { EdgeComponent } from './edge/edge.component';
 import { MultiPathComponent } from './multipath/multipath.component';
-import { DragComponent } from './drag/drag.component';
+import { AddPictureComponent } from './addpicture/addpicture.component';
 import { IconComponent } from './icon/icon.component';
 import { ZoomComponent } from './zoom/zoom.component';
 import { TooltipComponent } from './tooltip/tooltip.component';
@@ -34,7 +34,7 @@ import { from } from 'rxjs';
         GroupComponent,
         EdgeComponent,
         MultiPathComponent,
-        DragComponent,
+        AddPictureComponent,
         IconComponent,
         ZoomComponent,
         TooltipComponent,

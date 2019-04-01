@@ -8,7 +8,7 @@ import { ElementComponent } from '../pages/demo/element/element.component';
 import { GroupComponent } from '../pages/demo/group/group.component';
 import { EdgeComponent } from '../pages/demo/edge/edge.component';
 import { MultiPathComponent } from '../pages/demo/multipath/multipath.component';
-import { DragComponent } from '../pages/demo/drag/drag.component';
+import { AddPictureComponent } from '../pages/demo/addpicture/addpicture.component';
 import { IconComponent } from '../pages/demo/icon/icon.component';
 import { ZoomComponent } from '../pages/demo/zoom/zoom.component';
 import { TooltipComponent } from '../pages/demo/tooltip/tooltip.component';
@@ -63,8 +63,15 @@ const routes: Routes = [
                             breadcrumb: 'Register New Icon'
                         },
                     },
+                    {
+                        path: 'addpicture',
+                        component: AddPictureComponent,
+                        data: {
+                            breadcrumb: 'Add Picture on Node'
+                        },
+                    },
+
                     { path: 'edge', component: EdgeComponent, pathMatch: 'prefix' },
-                    { path: 'drag', component: DragComponent, pathMatch: 'prefix' },
                     { path: 'zoom', component: ZoomComponent, pathMatch: 'prefix' },
                     { path: 'tooltip', component: TooltipComponent, pathMatch: 'prefix' },
                     { path: 'label', component: LabelComponent, pathMatch: 'prefix' },

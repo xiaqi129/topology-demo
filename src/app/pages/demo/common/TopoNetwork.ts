@@ -75,7 +75,7 @@ export class TopoNetwork {
         // window.topo = this.network;
     }
 
-    public drawTopology(topoData, imageData) {
+    public drawTopology(topoData, imageData, callbacksecFunction?: any) {
         const network = this.network;
         network.initIconResource(imageData);
         const devices = topoData.devices;
@@ -89,7 +89,6 @@ export class TopoNetwork {
             this.initEdgesData(links);
             // // create group
             this.initGroupsData(groupsList);
-            // this.commonService.reDraw(this);
             this.addElements();
             network.syncView();
             network.setDrag();
@@ -105,8 +104,13 @@ export class TopoNetwork {
                 network.moveCenter();
             });
             this.commonService.changeNetwork(network);
+            this.commonService.network = network;
+            if (callbacksecFunction) {
+                callbacksecFunction();
+            }
         };
         // window.topo = this.network;
+
     }
 
     public initNodesData(devices) {

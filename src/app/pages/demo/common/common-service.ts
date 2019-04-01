@@ -12,6 +12,7 @@ export interface IColorList {
     providedIn: 'root',
 })
 export class CommonService {
+    public network;
     public currentNetork = new BehaviorSubject<object>({});
     public nodesColor = new BehaviorSubject<Array<IColorList>>([]);
 
