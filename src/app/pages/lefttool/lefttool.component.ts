@@ -58,10 +58,14 @@ export class LeftToolComponent implements OnInit {
     }
 
     public showElements() {
-        const elements = this.network.getElements();
+        const edges = this.network.getEdgeObj();
+        const nodes = this.network.getNodeObj();
         const groups = this.network.getGroupObj();
-        _.each(elements, (element) => {
-            element.visible = true;
+        _.each(edges, (edge) => {
+            edge.visible = true;
+        });
+        _.each(nodes, (node) => {
+            node.visible = true;
         });
         _.each(groups, (group) => {
             group.draw();
