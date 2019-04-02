@@ -56,8 +56,6 @@ export class TopoNetwork {
         this.initEdgesData(links);
         // // create group
         this.initGroupsData(groupsList);
-        // this.commonService.reDraw(this);
-        this.addElements();
         network.syncView();
         network.setDrag();
         network.setZoom();
@@ -89,7 +87,6 @@ export class TopoNetwork {
             this.initEdgesData(links);
             // // create group
             this.initGroupsData(groupsList);
-            this.addElements();
             network.syncView();
             network.setDrag();
             network.setZoom();
@@ -153,17 +150,6 @@ export class TopoNetwork {
             // _t.initPhysicalGroupRightClickMenu(newGroup);
         });
         return groupObjList;
-    }
-
-    public addElements() {
-        const network = this.network;
-        network.clear();
-        // add nodes
-        network.addElements(this.sourceNodes);
-        // add edges
-        network.addElements(this.sourceEdges);
-        // add groups
-        network.addElements(this.sourceGroups);
     }
 
     public initNodeRightClickMenu(node: Network.Node) {

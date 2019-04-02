@@ -675,7 +675,7 @@ export class GroupComponent implements OnInit {
         'name': 'Group-1',
         'label': true,
         'style': {
-          'bgColor': '0Xf4f6fd'
+          'fillColor': '0Xf4f6fd'
         },
         'label_position': 'Above',
         'children': [
@@ -687,7 +687,7 @@ export class GroupComponent implements OnInit {
         'name': 'Group-2',
         'label': true,
         'style': {
-          'bgColor': '0Xf5e9eb'
+          'fillColor': '0Xf5e9eb'
         },
         'label_position': 'Center',
         'children': [
@@ -699,7 +699,7 @@ export class GroupComponent implements OnInit {
         'name': 'Group-3',
         'label': false,
         'style': {
-          'bgColor': '0Xdbeafe'
+          'fillColor': '0Xdbeafe'
         },
         'children': [
           '7', '8', '9'
@@ -710,7 +710,7 @@ export class GroupComponent implements OnInit {
         'name': 'Group-4',
         'label': true,
         'style': {
-          'bgColor': '0Xfffbee'
+          'fillColor': '0Xfffbee'
         },
         'label_position': 'Above',
         'children': [
@@ -722,7 +722,7 @@ export class GroupComponent implements OnInit {
         'name': 'Group-5',
         'label': true,
         'style': {
-          'bgColor': '0Xf7ede9'
+          'fillColor': '0Xf7ede9'
         },
         'label_position': 'Center',
         'children': [

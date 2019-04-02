@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BundleComponent } from './bundle.component';
+import { ToggleGroupComponent } from './togglegroup.component';
 
-describe('BundleComponent', () => {
-  let component: BundleComponent;
-  let fixture: ComponentFixture<BundleComponent>;
+describe('ToggleGroupComponent', () => {
+  let component: ToggleGroupComponent;
+  let fixture: ComponentFixture<ToggleGroupComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BundleComponent ]
+      declarations: [ ToggleGroupComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BundleComponent);
+    fixture = TestBed.createComponent(ToggleGroupComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

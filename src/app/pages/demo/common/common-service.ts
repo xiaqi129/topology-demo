@@ -101,6 +101,7 @@ export class CommonService {
               </table>`;
             node.setTooltip(nodeTooltipContent, topoNetwork.tooltipStyle);
         }
+        network.addElement(node);
         return node;
     }
 
@@ -154,6 +155,7 @@ export class CommonService {
             if (edgeInfo.tooltip) {
                 edge.setTooltip(linkTooltipContent, topoNetwork.tooltipStyle);
             }
+            network.addElement(edge);
             return edge;
         }
     }
@@ -164,7 +166,6 @@ export class CommonService {
         const bgColor = groupInfo.style.bgColor;
         const opacity = groupInfo.style.opacity || 0.5;
         const newGroup = network.createGroup();
-        newGroup.id = groupInfo.id;
         newGroup.name = groupInfo.name;
         if (typeof groupInfo.display_style === 'string') {
             switch (groupInfo.display_style) {
@@ -191,20 +192,16 @@ export class CommonService {
                 newGroup.addChildNodes(groupNode);
             }
         });
-        if (typeof bgColor !== 'string') {
-            newGroup.setStyle({
-                fillOpacity: opacity,
-                fillColor: this.rgb2hex(bgColor),
-            });
-        } else {
-            newGroup.setStyle({
-                fillOpacity: opacity,
-                fillColor: bgColor,
-            });
+        if (groupInfo.style) {
+            newGroup.setStyle(groupInfo.style);
         }
         if (groupInfo.label) {
             newGroup.setLabel(groupInfo.name, groupInfo.label_position);
         }
+        if (groupInfo.toggle) {
+            newGroup.setToggleExpanded(groupInfo.toggle);
+        }
+        network.addElement(newGroup);
         return newGroup;
     }
 }

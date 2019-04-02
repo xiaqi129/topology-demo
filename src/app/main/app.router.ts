@@ -13,7 +13,7 @@ import { IconComponent } from '../pages/demo/icon/icon.component';
 import { ZoomComponent } from '../pages/demo/zoom/zoom.component';
 import { TooltipComponent } from '../pages/demo/tooltip/tooltip.component';
 import { LabelComponent } from '../pages/demo/label/label.component';
-import { BundleComponent } from '../pages/demo/bundle/bundle.component';
+import { ToggleGroupComponent } from '../pages/demo/togglegroup/togglegroup.component';
 const routes: Routes = [
     {
         path: '',
@@ -71,11 +71,8 @@ const routes: Routes = [
                         },
                     },
 
-                    { path: 'edge', component: EdgeComponent, pathMatch: 'prefix' },
                     { path: 'zoom', component: ZoomComponent, pathMatch: 'prefix' },
                     { path: 'tooltip', component: TooltipComponent, pathMatch: 'prefix' },
-                    { path: 'label', component: LabelComponent, pathMatch: 'prefix' },
-                    { path: 'bundle', component: BundleComponent, pathMatch: 'prefix' }
                 ]
             },
             {
@@ -98,6 +95,13 @@ const routes: Routes = [
                             breadcrumb: 'Add Group'
                         },
                     },
+                    {
+                        path: 'toggle',
+                        component: ToggleGroupComponent,
+                        data: {
+                            breadcrumb: 'Toggle Group'
+                        },
+                    }
                 ]
             },
             {

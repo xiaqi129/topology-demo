@@ -16,7 +16,7 @@ import { IconComponent } from './icon/icon.component';
 import { ZoomComponent } from './zoom/zoom.component';
 import { TooltipComponent } from './tooltip/tooltip.component';
 import { LabelComponent } from './label/label.component';
-import { BundleComponent } from './bundle/bundle.component';
+import { ToggleGroupComponent } from './togglegroup/togglegroup.component';
 import { from } from 'rxjs';
 @NgModule({
     imports: [
@@ -39,7 +39,7 @@ import { from } from 'rxjs';
         ZoomComponent,
         TooltipComponent,
         LabelComponent,
-        BundleComponent
+        ToggleGroupComponent
     ],
     entryComponents: [DemoComponent]
 })
