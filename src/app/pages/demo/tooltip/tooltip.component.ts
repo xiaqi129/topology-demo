@@ -1,111 +1,244 @@
-import * as _ from 'lodash';
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Network } from 'src/network/network';
+import { Component, OnInit } from '@angular/core';
+import { CommonService } from '../common/common-service';
+import { TopoNetwork } from '../common/TopoNetwork';
 
 @Component({
   selector: 'app-tooltip',
   templateUrl: './tooltip.component.html',
   styleUrls: ['./tooltip.component.less']
 })
-export class TooltipComponent implements OnInit, OnDestroy {
+export class TooltipComponent implements OnInit {
 
-  network: Network;
+  static data = {
+    devices: [
+      {
+        'name': '192.168.10.0/24',
+        'location': {
+          'x': 100,
+          'y': 300,
+        },
+        'label': true,
+        'tooltip': true,
+        'style': {
+          'color': '0Xc9d4f7',
+          'width': 20,
+        },
+        'clients': {
+          'User_Manufacturer': 'Cisco',
+          'platform': 'WS-C3650-24TD',
+          'deviceIP': '10.250.0.249',
+          'device_source': 'from collected',
+        }
+      },
+      {
+        'name': '172.17.16.134',
+        'location': {
+          'x': 200,
+          'y': 230,
+        },
+        'label': true,
+        'tooltip': true,
+        'style': {
+          'color': '0X55efc4',
+          'width': 20,
+        },
+        'clients': {
+          'User_Manufacturer': 'Cisco',
+          'platform': 'WS-C3650-24TD',
+          'deviceIP': '10.250.0.249',
+          'device_source': 'from collected',
+        }
+      },
+      {
+        'name': '192.168.18.253',
+        'location': {
+          'x': 350,
+          'y': 250,
+        },
+        'label': true,
+        'tooltip': true,
+        'style': {
+          'color': '0X74b9ff',
+          'width': 20,
+        },
+        'clients': {
+          'User_Manufacturer': 'Cisco',
+          'platform': 'WS-C3650-24TD',
+          'deviceIP': '10.250.0.249',
+          'device_source': 'from collected',
+        }
+      },
+      {
+        'name': '172.17.17.86',
+        'location': {
+          'x': 500,
+          'y': 320,
+        },
+        'label': true,
+        'tooltip': true,
+        'style': {
+          'color': '0Xa09bfd',
+          'width': 20,
+        },
+        'clients': {
+          'User_Manufacturer': 'Cisco',
+          'platform': 'WS-C3650-24TD',
+          'deviceIP': '10.250.0.249',
+          'device_source': 'from collected',
+        }
+      },
+      {
+        'name': '192.168.18.229',
+        'location': {
+          'x': 430,
+          'y': 450,
+        },
+        'label': true,
+        'tooltip': true,
+        'style': {
+          'color': '0X80ecec',
+          'width': 20,
+        },
+        'clients': {
+          'User_Manufacturer': 'Cisco',
+          'platform': 'WS-C3650-24TD',
+          'deviceIP': '10.250.0.249',
+          'device_source': 'from collected',
+        }
+      },
 
-  constructor() { }
+    ],
+    links: [
+      {
+        'local_host': '192.168.10.0/24',
+        'link_protocol': 'Subnet',
+        'remote_int': 'Po1(Te1/0/1)',
+        'local_int': '192.168.12.63',
+        'link_state': 'normal',
+        'remote_host': '172.17.16.134',
+        'label': true,
+        'tooltip': true,
+      },
+      {
+        'local_host': '172.17.16.134',
+        'link_protocol': 'Subnet',
+        'remote_int': 'Po1(Te1/0/1)',
+        'local_int': '192.168.12.63',
+        'link_state': 'normal',
+        'remote_host': '192.168.18.253',
+        'label': true,
+        'tooltip': true,
+      },
+      {
+        'local_host': '192.168.18.253',
+        'link_protocol': 'Subnet',
+        'remote_int': 'Po1(Te1/0/1)',
+        'local_int': '192.168.12.63',
+        'link_state': 'normal',
+        'remote_host': '172.17.17.86',
+        'label': true,
+        'tooltip': true,
+      },
+      {
+        'local_host': '172.17.17.86',
+        'link_protocol': 'Subnet',
+        'remote_int': 'Po1(Te1/0/1)',
+        'local_int': '192.168.12.63',
+        'link_state': 'normal',
+        'remote_host': '192.168.18.229',
+        'label': true,
+        'tooltip': true,
+      },
+      {
+        'local_host': '172.17.16.134',
+        'link_protocol': 'Subnet',
+        'remote_int': 'Po1(Te1/0/1)',
+        'local_int': '192.168.12.63',
+        'link_state': 'normal',
+        'remote_host': '192.168.18.229',
+        'label': true,
+        'tooltip': true,
+      },
+      {
+        'local_host': '192.168.18.253',
+        'link_protocol': 'Subnet',
+        'remote_int': 'Po1(Te1/0/1)',
+        'local_int': '192.168.12.63',
+        'link_state': 'normal',
+        'remote_host': '192.168.18.229',
+        'label': true,
+        'tooltip': true,
+      },
+      {
+        'local_host': '192.168.10.0/24',
+        'link_protocol': 'Subnet',
+        'remote_int': 'Po1(Te1/0/1)',
+        'local_int': '192.168.12.63',
+        'link_state': 'normal',
+        'remote_host': '172.17.17.86',
+        'label': true,
+        'tooltip': true,
+      },
+      {
+        'local_host': '192.168.10.0/24',
+        'link_protocol': 'Subnet',
+        'remote_int': 'Po1(Te1/0/1)',
+        'local_int': '192.168.12.63',
+        'link_state': 'normal',
+        'remote_host': '172.17.17.86',
+        'label': true,
+        'tooltip': true,
+      },
+      {
+        'local_host': '192.168.10.0/24',
+        'link_protocol': 'Subnet',
+        'remote_int': 'Po1(Te1/0/1)',
+        'local_int': '192.168.12.63',
+        'link_state': 'normal',
+        'remote_host': '172.17.17.86',
+        'label': true,
+        'tooltip': true,
+      },
+      {
+        'local_host': '192.168.10.0/24',
+        'link_protocol': 'Subnet',
+        'remote_int': 'Po1(Te1/0/1)',
+        'local_int': '192.168.12.63',
+        'link_state': 'normal',
+        'remote_host': '172.17.17.86',
+        'label': true,
+        'tooltip': true,
+      },
+      {
+        'local_host': '192.168.10.0/24',
+        'link_protocol': 'Subnet',
+        'remote_int': 'Po1(Te1/0/1)',
+        'local_int': '192.168.12.63',
+        'link_state': 'normal',
+        'remote_host': '172.17.17.86',
+        'label': true,
+        'tooltip': true,
+      },
+
+    ],
+    groups: [
+
+    ]
+  };
+
+  constructor(
+    public commonService: CommonService,
+  ) { }
 
   ngOnInit() {
     this.renderTopo();
   }
 
-  ngOnDestroy() {
-    PIXI.loader.reset();
-  }
-
   public renderTopo() {
-    const iconResource = {
-      switch: { name: 'switch', url: './pic/cisco-WS-C49.png', width: '40', height: '40' },
-      switchLayer3: { name: 'switchLayer3', url: './pic/cisco-WS-C68.png', width: '40', height: '40' },
-      router: { name: 'router', url: './pic/cisco-18.png', width: '40', height: '40' },
-    };
-    this.network = new Network('div#network');
-    this.network.addIconResource(iconResource);
-
-    this.network.callback = () => {
-
-      // add nodes
-      const num = 5;
-      for (let i = 0, len: number = num; i < len; i++) {
-        const node = this.network.createNode();
-        node.setTooltip();
-        this.network.addElement(node);
-      }
-
-      const nodes = this.network.getElements();
-
-      // positon nodes
-      nodes[0].x = 200;
-      nodes[0].y = 200;
-      nodes[1].x = 400;
-      nodes[1].y = 100;
-      nodes[2].x = 600;
-      nodes[2].y = 100;
-      nodes[3].x = 400;
-      nodes[3].y = 300;
-      nodes[4].x = 600;
-      nodes[4].y = 300;
-
-      // edge styles
-      const edgeStyles = {
-        arrowColor: 0X006aad,
-        arrowLength: 15,
-        arrowType: 0,
-        arrowWidth: 1,
-        fillArrow: true,
-        lineColor: 0xb7b7b7,
-        lineDistance: 5,
-        lineType: 0,
-        lineWidth: 1,
-      };
-
-      // draw edges
-      this.createEdge(nodes[0], nodes[1], 2, edgeStyles, this.network);
-      this.createEdge(nodes[1], nodes[2], 4, edgeStyles, this.network);
-      this.createEdge(nodes[2], nodes[3], 1, edgeStyles, this.network);
-      this.createEdge(nodes[4], nodes[2], 1, edgeStyles, this.network);
-      this.createEdge(nodes[3], nodes[0], 1, edgeStyles, this.network);
-      this.createEdge(nodes[3], nodes[4], 1, edgeStyles, this.network);
-      for (let i = 0; i < 2; i++) {
-        this.createEdge(nodes[1], nodes[i + 3], 1, edgeStyles, this.network);
-      }
-
-      this.network.syncView();
-
-      const tooltipToggle = document.querySelector('button.btn_tooltipToggle');
-      if (tooltipToggle) {
-        let isDisplay = true;
-        tooltipToggle.addEventListener('click', () => {
-          isDisplay = !isDisplay;
-          this.network.setTooltipDisplay(isDisplay);
-        });
-      }
-    };
-
+    const network = new TopoNetwork(
+      'network',
+      this.commonService,
+    );
+    network.drawNoIConTopology(TooltipComponent.data);
   }
-
-  /**
-   * createEdgeTools
-   * @param src str node
-   * @param dest dest node
-   * @param num num of edge
-   * @param styles edge styles
-   * @param container the container to add edge
-   */
-  public createEdge(src: Node, dest: Node, num: number, styles: any, container: any) {
-    for (let i = 0; i < num; i++) {
-      const edge = container.createEdge(src, dest);
-      edge.setStyle(styles);
-      container.addElement(edge);
-    }
-  }
-
 }
