@@ -15,8 +15,8 @@ export class ElementComponent implements OnInit {
       {
         'name': '1',
         'location': {
-          'x': 80,
-          'y': 400,
+          x: 321.9618495396206,
+          y: 168.83811558314733
         },
         'label': false,
         'tooltip': false,
@@ -28,8 +28,8 @@ export class ElementComponent implements OnInit {
       {
         'name': '2',
         'location': {
-          'x': 200,
-          'y': 230,
+          x: 393.9618495396206,
+          y: 66.83811558314733
         },
         'label': false,
         'tooltip': false,
@@ -41,8 +41,8 @@ export class ElementComponent implements OnInit {
       {
         'name': '3',
         'location': {
-          'x': 190,
-          'y': 420,
+          x: 387.96184953962063,
+          y: 180.83811558314733
         },
         'label': false,
         'tooltip': false,
@@ -54,8 +54,8 @@ export class ElementComponent implements OnInit {
       {
         'name': '4',
         'location': {
-          'x': 370,
-          'y': 500,
+          x: 495.96184953962063,
+          y: 228.83811558314733
         },
         'label': false,
         'tooltip': false,
@@ -67,8 +67,8 @@ export class ElementComponent implements OnInit {
       {
         'name': '5',
         'location': {
-          'x': 500,
-          'y': 280,
+          x: 573.9618495396207,
+          y: 96.83811558314736
         },
         'label': false,
         'tooltip': false,
@@ -80,8 +80,8 @@ export class ElementComponent implements OnInit {
       {
         'name': '6',
         'location': {
-          'x': 450,
-          'y': 200,
+          x: 543.9618495396207,
+          y: 48.83811558314733
         },
         'label': false,
         'tooltip': false,
@@ -93,8 +93,8 @@ export class ElementComponent implements OnInit {
       {
         'name': '7',
         'location': {
-          'x': 170,
-          'y': 570,
+          x: 375.9618495396206,
+          y: 270.8381155831473
         },
         'label': false,
         'tooltip': false,
@@ -106,8 +106,8 @@ export class ElementComponent implements OnInit {
       {
         'name': '8',
         'location': {
-          'x': 80,
-          'y': 620,
+          x: 321.9618495396206,
+          y: 300.8381155831473
         },
         'label': false,
         'tooltip': false,
@@ -119,8 +119,8 @@ export class ElementComponent implements OnInit {
       {
         'name': '9',
         'location': {
-          'x': 120,
-          'y': 650,
+          x: 345.9618495396206,
+          y: 318.8381155831473
         },
         'label': false,
         'tooltip': false,
@@ -132,8 +132,8 @@ export class ElementComponent implements OnInit {
       {
         'name': '10',
         'location': {
-          'x': 160,
-          'y': 670,
+          x: 369.9618495396206,
+          y: 330.8381155831473
         },
         'label': false,
         'tooltip': false,
@@ -145,8 +145,8 @@ export class ElementComponent implements OnInit {
       {
         'name': '11',
         'location': {
-          'x': 250,
-          'y': 690,
+          x: 423.9618495396206,
+          y: 342.8381155831473
         },
         'label': false,
         'tooltip': false,
@@ -158,8 +158,8 @@ export class ElementComponent implements OnInit {
       {
         'name': '12',
         'location': {
-          'x': 380,
-          'y': 620,
+          x: 501.9618495396207,
+          y: 300.8381155831473
         },
         'label': false,
         'tooltip': false,
@@ -171,8 +171,8 @@ export class ElementComponent implements OnInit {
       {
         'name': '13',
         'location': {
-          'x': 450,
-          'y': 450,
+          x: 543.9618495396207,
+          y: 198.83811558314733
         },
         'label': false,
         'tooltip': false,
@@ -184,8 +184,8 @@ export class ElementComponent implements OnInit {
       {
         'name': '14',
         'location': {
-          'x': 570,
-          'y': 380,
+          x: 615.9618495396207,
+          y: 156.83811558314733
         },
         'label': false,
         'tooltip': false,
@@ -197,8 +197,8 @@ export class ElementComponent implements OnInit {
       {
         'name': '15',
         'location': {
-          'x': 630,
-          'y': 450,
+          x: 651.9618495396207,
+          y: 198.83811558314733
         },
         'label': false,
         'tooltip': false,
@@ -210,8 +210,8 @@ export class ElementComponent implements OnInit {
       {
         'name': '16',
         'location': {
-          'x': 610,
-          'y': 570,
+          x: 639.9618495396207,
+          y: 270.8381155831473
         },
         'label': false,
         'tooltip': false,
@@ -223,8 +223,8 @@ export class ElementComponent implements OnInit {
       {
         'name': '17',
         'location': {
-          'x': 550,
-          'y': 700,
+          x: 603.9618495396207,
+          y: 348.8381155831473
         },
         'label': false,
         'tooltip': false,

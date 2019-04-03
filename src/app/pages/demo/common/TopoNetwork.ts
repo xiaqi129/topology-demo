@@ -158,7 +158,16 @@ export class TopoNetwork {
             _t.network.menu.setMenuItems(TopoContext.nodeRightMenu);
             _t.network.menu.menuOnAction = id => {
                 if (id === 'debug') {
-                    console.log('Node:', node);
+                    const nodes = _t.network.getNodeObj();
+                    const positionList = [];
+                    _.each(nodes, (n) => {
+                        positionList.push({
+                            name: n.name,
+                            x: n.x,
+                            y: n.y,
+                        });
+                    });
+                    console.log(positionList);
                 }
             };
             _t.network.menu.setClass('popMenu');

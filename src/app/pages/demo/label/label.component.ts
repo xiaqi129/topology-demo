@@ -13,8 +13,8 @@ export class LabelComponent implements OnInit {
       {
         'name': 'Router 192.168.10.0/24',
         'location': {
-          'x': 60,
-          'y': 350,
+          x: 318.46000000385465,
+          y: 185.95999999583714
         },
         'image': '1',
         'width': 40,
@@ -35,8 +35,8 @@ export class LabelComponent implements OnInit {
       {
         'name': 'Nexus-5000&9000-service 172.17.16.134',
         'location': {
-          'x': 210,
-          'y': 470,
+          x: 437.2600000038543,
+          y: 280.99999999583775
         },
         'image': '2',
         'width': 40,
@@ -57,8 +57,8 @@ export class LabelComponent implements OnInit {
       {
         'name': 'Nexus-2000-service 192.168.18.253',
         'location': {
-          'x': 500,
-          'y': 540,
+          x: 625.5399084418261,
+          y: 299.27331298583806
         },
         'image': '3',
         'width': 40,
@@ -79,8 +79,8 @@ export class LabelComponent implements OnInit {
       {
         'name': 'Nexus-7000-service 172.17.17.86',
         'location': {
-          'x': 500,
-          'y': 320,
+          x: 666.9400000038574,
+          y: 162.1999999958375
         },
         'image': '4',
         'width': 40,
@@ -101,8 +101,8 @@ export class LabelComponent implements OnInit {
       {
         'name': 'ALE(NLB) 192.168.18.229',
         'location': {
-          'x': 320,
-          'y': 150,
+          x: 524.3800000038553,
+          y: 27.559999995837295
         },
         'image': '5',
         'width': 40,
@@ -123,8 +123,8 @@ export class LabelComponent implements OnInit {
       {
         'name': 'Switch 192.168.20.210',
         'location': {
-          'x': 270,
-          'y': 320,
+          x: 484.7800000038556,
+          y: 162.1999999958375
         },
         'image': '6',
         'width': 40,
@@ -265,7 +265,7 @@ export class LabelComponent implements OnInit {
 
   constructor(
     public commonService: CommonService,
-  ) {}
+  ) { }
 
   ngOnInit() {
 
