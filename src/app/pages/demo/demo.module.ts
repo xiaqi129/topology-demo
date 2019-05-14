@@ -1,23 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { appRouter } from '../../main/app.router';
-import { DemoComponent } from './demo.component';
-import { HeaderModule } from '../header/header.module';
 import { BreadCrumbsModule } from '../breadcrumbs/breadcrumbs.module';
+import { HeaderModule } from '../header/header.module';
 import { LeftToolModule } from '../lefttool/lefttool.module';
-
-import { SimpleComponent } from './simple/simple.component';
+import { AddPictureComponent } from './addpicture/addpicture.component';
+import { DemoComponent } from './demo.component';
+import { DataFlowComponent } from './data-flow/dataflow.component';
+import { EdgeGroupComponent } from './edge-group/edgegroup.component';
+import { EdgeComponent } from './edge/edge.component';
 import { ElementComponent } from './element/element.component';
 import { GroupComponent } from './group/group.component';
-import { EdgeComponent } from './edge/edge.component';
-import { MultiPathComponent } from './multipath/multipath.component';
-import { AddPictureComponent } from './addpicture/addpicture.component';
 import { IconComponent } from './icon/icon.component';
-import { ZoomComponent } from './zoom/zoom.component';
-import { TooltipComponent } from './tooltip/tooltip.component';
 import { LabelComponent } from './label/label.component';
+import { MultiPathComponent } from './multipath/multipath.component';
+import { SimpleComponent } from './simple/simple.component';
 import { ToggleGroupComponent } from './togglegroup/togglegroup.component';
-import { from } from 'rxjs';
+import { TooltipComponent } from './tooltip/tooltip.component';
+
 @NgModule({
     imports: [
         RouterModule,
@@ -36,10 +36,11 @@ import { from } from 'rxjs';
         MultiPathComponent,
         AddPictureComponent,
         IconComponent,
-        ZoomComponent,
+        DataFlowComponent,
         TooltipComponent,
         LabelComponent,
-        ToggleGroupComponent
+        ToggleGroupComponent,
+        EdgeGroupComponent
     ],
     entryComponents: [DemoComponent]
 })

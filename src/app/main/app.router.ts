@@ -10,7 +10,8 @@ import { EdgeComponent } from '../pages/demo/edge/edge.component';
 import { MultiPathComponent } from '../pages/demo/multipath/multipath.component';
 import { AddPictureComponent } from '../pages/demo/addpicture/addpicture.component';
 import { IconComponent } from '../pages/demo/icon/icon.component';
-import { ZoomComponent } from '../pages/demo/zoom/zoom.component';
+import { DataFlowComponent } from '../pages/demo/data-flow/dataflow.component';
+import { EdgeGroupComponent } from '../pages/demo/edge-group/edgegroup.component';
 import { TooltipComponent } from '../pages/demo/tooltip/tooltip.component';
 import { LabelComponent } from '../pages/demo/label/label.component';
 import { ToggleGroupComponent } from '../pages/demo/togglegroup/togglegroup.component';
@@ -70,8 +71,6 @@ const routes: Routes = [
                             breadcrumb: 'Add Picture on Node'
                         },
                     },
-
-                    { path: 'zoom', component: ZoomComponent, pathMatch: 'prefix' },
                     { path: 'tooltip', component: TooltipComponent, pathMatch: 'prefix' },
                 ]
             },
@@ -101,6 +100,13 @@ const routes: Routes = [
                         data: {
                             breadcrumb: 'Toggle Group'
                         },
+                    },
+                    {
+                        path: 'edgegroup',
+                        component: EdgeGroupComponent,
+                        data: {
+                            breadcrumb: 'Edge Group'
+                        },
                     }
                 ]
             },
@@ -129,6 +135,13 @@ const routes: Routes = [
                         component: MultiPathComponent,
                         data: {
                             breadcrumb: 'Add Multiple Path'
+                        },
+                    },
+                    {
+                        path: 'dataflow',
+                        component: DataFlowComponent,
+                        data: {
+                            breadcrumb: 'Data Flow'
                         },
                     },
                 ]

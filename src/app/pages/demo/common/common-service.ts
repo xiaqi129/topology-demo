@@ -68,7 +68,7 @@ export class CommonService {
         node.x = nodeInfo.location.x;
         node.y = nodeInfo.location.y;
         node.name = nodeInfo.name;
-        node.setStyle({
+        node.initStyle({
             width: nodeInfo.style.width,
             fillColor: nodeInfo.style.color
         });
@@ -79,9 +79,10 @@ export class CommonService {
             node.clients = nodeInfo.clients;
             const nodeTooltipContent = `
             <table class="tooltiptable">
-              <tr>
-              <th>${nodeInfo.name}</th>
-              </tr>
+            <tr>
+            <th colspan="2">
+              ${nodeInfo.name}
+              </th></tr>
               <tr class="topLine">
               <th>Manufacture:</th>
               <td>${nodeInfo.clients.User_Manufacturer}</td>
@@ -142,11 +143,12 @@ export class CommonService {
                   </table>`;
             edge.fromId = srcNodeName;
             edge.endId = destNodeName;
+            edge.name = edgeInfo.name;
             const style = _.cloneDeep(topoNetwork.defaultLineStyle);
             if (edgeInfo.style) {
                 _.extend(style, edgeInfo.style);
             }
-            edge.setStyle(style);
+            edge.initStyle(style);
             if (edgeInfo.label) {
                 edge.setLabel(edgeInfo.local_int, edgeInfo.remote_int, {
                     fontSize: 12,
@@ -193,7 +195,7 @@ export class CommonService {
             }
         });
         if (groupInfo.style) {
-            newGroup.setStyle(groupInfo.style);
+            newGroup.initStyle(groupInfo.style);
         }
         if (groupInfo.label) {
             newGroup.setLabel(groupInfo.name, groupInfo.label_position);
@@ -203,5 +205,45 @@ export class CommonService {
         }
         network.addElement(newGroup);
         return newGroup;
+    }
+
+    public newEdgeGroup(topoNetwork: TopoNetwork, groupInfo) {
+        const network = topoNetwork.network;
+        const edges = topoNetwork.sourceEdges;
+        const newGroup = network.createEdgeGroup();
+        newGroup.name = groupInfo.name;
+        newGroup.clients = groupInfo.clients;
+        _.each(groupInfo.children, (child) => {
+            const edge: any = _.find(edges, (e: any) => {
+                return e.name === child;
+            });
+            if (edge) {
+                newGroup.addChildEdges(edge);
+            }
+        });
+        if (groupInfo.style) {
+            newGroup.initStyle(groupInfo.style);
+        }
+        network.addElement(newGroup);
+        return newGroup;
+    }
+
+    public newDataFlow(topoNetwork: TopoNetwork, edgeInfo) {
+        const network = topoNetwork.network;
+        const srcNodeName = edgeInfo.local_host;
+        const destNodeName = edgeInfo.remote_host;
+        const srcNode = topoNetwork.sourceNodes[srcNodeName];
+        const destNode = topoNetwork.sourceNodes[destNodeName];
+        if (srcNode && destNode) {
+            const dataflow = network.createDataFlow(srcNode, destNode);
+            dataflow.name = edgeInfo.name;
+            const style = _.cloneDeep(topoNetwork.defaultLineStyle);
+            if (edgeInfo.style) {
+                _.extend(style, edgeInfo.style);
+            }
+            dataflow.initStyle(style);
+            network.addElement(dataflow);
+            return dataflow;
+        }
     }
 }

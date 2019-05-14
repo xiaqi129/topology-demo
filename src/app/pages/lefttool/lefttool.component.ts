@@ -27,9 +27,13 @@ export class LeftToolComponent implements OnInit {
     }
 
     public setSelect() {
+        const condition = {
+            isLock: false,
+            isSelectGroup: false,
+        };
         this.isDrag = false;
         this.setStyle();
-        this.network.setSelect();
+        this.network.setSelect(condition);
     }
 
     public toggleLabel() {

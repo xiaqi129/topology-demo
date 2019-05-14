@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ZoomComponent } from './zoom.component';
+import { DataFlowComponent } from './dataflow.component';
 
 describe('ZoomComponent', () => {
-  let component: ZoomComponent;
-  let fixture: ComponentFixture<ZoomComponent>;
+  let component: DataFlowComponent;
+  let fixture: ComponentFixture<DataFlowComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ZoomComponent ]
+      declarations: [ DataFlowComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ZoomComponent);
+    fixture = TestBed.createComponent(DataFlowComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

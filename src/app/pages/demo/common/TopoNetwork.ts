@@ -49,13 +49,19 @@ export class TopoNetwork {
         const devices = topoData.devices;
         const links = topoData.links;
         const groups = topoData.groups;
+        const edgeGroups = topoData.edgeGroups;
+        const dataFlows = topoData.dataFlows;
         const groupsList = this.commonService.keySort(groups);
         // create Node
         this.initNodesData(devices);
-        // // create Links
+        // create Links
         this.initEdgesData(links);
-        // // create group
+        // create group
         this.initGroupsData(groupsList);
+        // create edge group
+        this.initEdgeGroupsData(edgeGroups);
+        // create data flow
+        this.initDataFlowsData(dataFlows);
         network.syncView();
         network.setDrag();
         network.setZoom();
@@ -79,13 +85,14 @@ export class TopoNetwork {
         const devices = topoData.devices;
         const links = topoData.links;
         const groups = topoData.groups;
+        const dataFlows = topoData.dataFlows;
         const groupsList = this.commonService.keySort(groups);
         network.callback = () => {
             // create Node
             this.initNodesData(devices);
-            // // create Links
+            // create Links
             this.initEdgesData(links);
-            // // create group
+            // create group
             this.initGroupsData(groupsList);
             network.syncView();
             network.setDrag();
@@ -145,6 +152,30 @@ export class TopoNetwork {
         const _t = this;
         _.each(groupsMap, (group, groupId) => {
             const newGroup = _t.commonService.newGroup(_t, group);
+            groupObjList.push(newGroup);
+            this.sourceGroups[groupId] = newGroup;
+            // _t.initPhysicalGroupRightClickMenu(newGroup);
+        });
+        return groupObjList;
+    }
+
+    public initEdgeGroupsData(groupsMap) {
+        const groupObjList = [];
+        const _t = this;
+        _.each(groupsMap, (group, groupId) => {
+            const newGroup = _t.commonService.newEdgeGroup(_t, group);
+            groupObjList.push(newGroup);
+            this.sourceGroups[groupId] = newGroup;
+            // _t.initPhysicalGroupRightClickMenu(newGroup);
+        });
+        return groupObjList;
+    }
+
+    public initDataFlowsData(dataFlows) {
+        const groupObjList = [];
+        const _t = this;
+        _.each(dataFlows, (dataflow, groupId) => {
+            const newGroup = _t.commonService.newDataFlow(_t, dataflow);
             groupObjList.push(newGroup);
             this.sourceGroups[groupId] = newGroup;
             // _t.initPhysicalGroupRightClickMenu(newGroup);
