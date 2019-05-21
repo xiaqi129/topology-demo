@@ -73,7 +73,12 @@ export class CommonService {
             fillColor: nodeInfo.style.color
         });
         if (nodeInfo.label) {
-            node.setLabel(nodeInfo.name, node.labelStyle);
+            const label = node.setLabel(nodeInfo.name, node.labelStyle);
+            if (nodeInfo.image) {
+                label.anchor.set(0.5, 0);
+            } else {
+                label.anchor.set(0.5, -1.5);
+            }
         }
         if (nodeInfo.tooltip) {
             node.clients = nodeInfo.clients;
