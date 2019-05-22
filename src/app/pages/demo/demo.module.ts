@@ -16,7 +16,7 @@ import { LabelComponent } from './label/label.component';
 import { MultiPathComponent } from './multipath/multipath.component';
 import { SimpleComponent } from './simple/simple.component';
 import { ToggleGroupComponent } from './togglegroup/togglegroup.component';
-import { TooltipComponent } from './tooltip/tooltip.component';
+import { TreeComponent } from './tree/tree.component';
 
 @NgModule({
     imports: [
@@ -37,7 +37,7 @@ import { TooltipComponent } from './tooltip/tooltip.component';
         AddPictureComponent,
         IconComponent,
         DataFlowComponent,
-        TooltipComponent,
+        TreeComponent,
         LabelComponent,
         ToggleGroupComponent,
         EdgeGroupComponent

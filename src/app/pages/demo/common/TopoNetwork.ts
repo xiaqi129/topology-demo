@@ -38,6 +38,7 @@ export class TopoNetwork {
         commonService: CommonService,
     ) {
         this.network = new Network(domRegex);
+        (window as any).topo = this.network;
         this.commonService = commonService;
         this.sourceNodes = {};
         this.sourceEdges = [];

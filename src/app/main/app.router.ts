@@ -12,7 +12,7 @@ import { AddPictureComponent } from '../pages/demo/addpicture/addpicture.compone
 import { IconComponent } from '../pages/demo/icon/icon.component';
 import { DataFlowComponent } from '../pages/demo/data-flow/dataflow.component';
 import { EdgeGroupComponent } from '../pages/demo/edge-group/edgegroup.component';
-import { TooltipComponent } from '../pages/demo/tooltip/tooltip.component';
+import { TreeComponent } from '../pages/demo/tree/tree.component';
 import { LabelComponent } from '../pages/demo/label/label.component';
 import { ToggleGroupComponent } from '../pages/demo/togglegroup/togglegroup.component';
 const routes: Routes = [
@@ -71,7 +71,6 @@ const routes: Routes = [
                             breadcrumb: 'Add Picture on Node'
                         },
                     },
-                    { path: 'tooltip', component: TooltipComponent, pathMatch: 'prefix' },
                 ]
             },
             {
@@ -142,6 +141,13 @@ const routes: Routes = [
                         component: DataFlowComponent,
                         data: {
                             breadcrumb: 'Data Flow'
+                        },
+                    },
+                    {
+                        path: 'tree',
+                        component: TreeComponent,
+                        data: {
+                            breadcrumb: 'Tree'
                         },
                     },
                 ]

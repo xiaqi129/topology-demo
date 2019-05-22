@@ -107,7 +107,7 @@ export class DataFlowComponent implements OnInit {
                 local_host: 'name-1',
                 remote_host: 'name-2',
                 style: {
-                    fillColor: 0xf55d54,
+                    fillColor: 0Xfcc242,
                     lineColor: 0xEEEEEE,
                 },
             },
@@ -116,41 +116,14 @@ export class DataFlowComponent implements OnInit {
                 local_host: 'name-2',
                 remote_host: 'name-3',
                 style: {
-                    fillColor: 0Xa3d89f,
-                    lineColor: 0xEEEEEE,
-                },
-            },
-            {
-                name: '3',
-                local_host: 'name-1',
-                remote_host: 'name-4',
-                style: {
                     fillColor: 0Xfcc242,
                     lineColor: 0xEEEEEE,
                 },
             },
             {
                 name: '4',
-                local_host: 'name-1',
-                remote_host: 'name-7',
-                style: {
-                    fillColor: 0xf55d54,
-                    lineColor: 0xEEEEEE,
-                },
-            },
-            {
-                name: '5',
-                local_host: 'name-2',
-                remote_host: 'name-4',
-                style: {
-                    fillColor: 0Xa3d89f,
-                    lineColor: 0xEEEEEE,
-                },
-            },
-            {
-                name: '6',
-                local_host: 'name-3',
-                remote_host: 'name-7',
+                local_host: 'name-7',
+                remote_host: 'name-1',
                 style: {
                     fillColor: 0Xfcc242,
                     lineColor: 0xEEEEEE,
@@ -161,34 +134,7 @@ export class DataFlowComponent implements OnInit {
                 local_host: 'name-3',
                 remote_host: 'name-6',
                 style: {
-                    fillColor: 0xf55d54,
-                    lineColor: 0xEEEEEE,
-                },
-            },
-            {
-                name: '8',
-                local_host: 'name-3',
-                remote_host: 'name-8',
-                style: {
-                    fillColor: 0Xa3d89f,
-                    lineColor: 0xEEEEEE,
-                },
-            },
-            {
-                name: '9',
-                local_host: 'name-3',
-                remote_host: 'name-4',
-                style: {
                     fillColor: 0Xfcc242,
-                    lineColor: 0xEEEEEE,
-                },
-            },
-            {
-                name: '10',
-                local_host: 'name-6',
-                remote_host: 'name-5',
-                style: {
-                    fillColor: 0xf55d54,
                     lineColor: 0xEEEEEE,
                 },
             },
@@ -197,8 +143,64 @@ export class DataFlowComponent implements OnInit {
                 local_host: 'name-6',
                 remote_host: 'name-7',
                 style: {
-                    fillColor: 0Xa3d89f,
+                    fillColor: 0Xfcc242,
                     lineColor: 0xEEEEEE,
+                },
+            },
+        ],
+        links: [
+            {
+                name: '3',
+                local_host: 'name-1',
+                remote_host: 'name-4',
+                style: {
+                    fillColor: 0Xfcc242,
+                    lineColor: 0Xa3d89f,
+                },
+            },
+            {
+                name: '5',
+                local_host: 'name-2',
+                remote_host: 'name-4',
+                style: {
+                    fillColor: 0Xa3d89f,
+                    lineColor: 0Xa3d89f,
+                },
+            },
+            {
+                name: '6',
+                local_host: 'name-3',
+                remote_host: 'name-7',
+                style: {
+                    fillColor: 0Xa3d89f,
+                    lineColor: 0Xa3d89f,
+                },
+            },
+            {
+                name: '8',
+                local_host: 'name-3',
+                remote_host: 'name-8',
+                style: {
+                    fillColor: 0Xa3d89f,
+                    lineColor: 0Xa3d89f,
+                },
+            },
+            {
+                name: '9',
+                local_host: 'name-3',
+                remote_host: 'name-4',
+                style: {
+                    fillColor: 0Xfcc242,
+                    lineColor: 0Xa3d89f,
+                },
+            },
+            {
+                name: '10',
+                local_host: 'name-6',
+                remote_host: 'name-5',
+                style: {
+                    fillColor: 0Xa3d89f,
+                    lineColor: 0Xa3d89f,
                 },
             },
             {
@@ -207,7 +209,7 @@ export class DataFlowComponent implements OnInit {
                 remote_host: 'name-8',
                 style: {
                     fillColor: 0Xfcc242,
-                    lineColor: 0xEEEEEE,
+                    lineColor: 0Xa3d89f,
                 },
             },
             {
@@ -215,8 +217,8 @@ export class DataFlowComponent implements OnInit {
                 local_host: 'name-5',
                 remote_host: 'name-8',
                 style: {
-                    fillColor: 0xf55d54,
-                    lineColor: 0xEEEEEE,
+                    fillColor: 0Xa3d89f,
+                    lineColor: 0Xa3d89f,
                 },
             },
             {
@@ -224,12 +226,10 @@ export class DataFlowComponent implements OnInit {
                 local_host: 'name-7',
                 remote_host: 'name-8',
                 style: {
-                    fillColor: 0Xa3d89f,
-                    lineColor: 0xEEEEEE,
-                    // lineWidth: 1,
+                    fillColor: 0Xfcc242,
+                    lineColor: 0Xa3d89f,
                 },
             },
-
         ],
         groups: [],
     };
