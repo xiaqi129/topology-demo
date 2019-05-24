@@ -66,6 +66,7 @@ export class TopoNetwork {
         network.syncView();
         network.setDrag();
         network.setZoom();
+        network.setClick();
         network.moveCenter();
         network.setBundelExpanded(false);
         TopoContext.labelToggle = true;
@@ -98,6 +99,7 @@ export class TopoNetwork {
             network.syncView();
             network.setDrag();
             network.setZoom();
+            network.setClick();
             network.moveCenter();
             network.setBundelExpanded(false);
             TopoContext.labelToggle = true;

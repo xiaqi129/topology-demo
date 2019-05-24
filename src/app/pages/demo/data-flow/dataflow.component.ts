@@ -9,6 +9,7 @@ import { TopoNetwork } from '../common/TopoNetwork';
 })
 export class DataFlowComponent implements OnInit {
 
+
     static data = {
         devices: [
             {

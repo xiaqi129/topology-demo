@@ -15,6 +15,7 @@ import { EdgeGroupComponent } from '../pages/demo/edge-group/edgegroup.component
 import { TreeComponent } from '../pages/demo/tree/tree.component';
 import { LabelComponent } from '../pages/demo/label/label.component';
 import { ToggleGroupComponent } from '../pages/demo/togglegroup/togglegroup.component';
+import { MultipleLineComponent } from '../pages/demo/multiple-line/multipleLIne.component';
 const routes: Routes = [
     {
         path: '',
@@ -135,6 +136,13 @@ const routes: Routes = [
                         data: {
                             breadcrumb: 'Add Multiple Path'
                         },
+                    },
+                    {
+                        path: 'multiple',
+                        component: MultipleLineComponent,
+                        data: {
+                            breadcrumb: 'Multiple Line'
+                        }
                     },
                     {
                         path: 'dataflow',
