@@ -44,7 +44,7 @@ export class LeftToolComponent implements OnInit {
     }
 
     public moveCenter() {
-        this.network.moveCenter();
+        this.network.zoomOver();
     }
 
     public showTooltip() {

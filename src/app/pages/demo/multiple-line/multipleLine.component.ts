@@ -3,6 +3,7 @@ import { CommonService } from '../common/common-service';
 import { TopoNetwork } from '../common/TopoNetwork';
 
 @Component({
+    // tslint:disable-next-line: component-selector
     selector: 'app-multipleLine',
     templateUrl: './multipleLine.component.html',
     styleUrls: ['./multipleLine.component.less']

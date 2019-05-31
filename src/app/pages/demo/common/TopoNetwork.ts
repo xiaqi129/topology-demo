@@ -33,11 +33,13 @@ export class TopoNetwork {
         lineFull: 0,
         lineWidth: 1,
     };
+    private domRegex;
     constructor(
         domRegex: string,
         commonService: CommonService,
     ) {
         this.network = new Network(domRegex);
+        this.domRegex = domRegex;
         (window as any).topo = this.network;
         this.commonService = commonService;
         this.sourceNodes = {};
@@ -69,15 +71,12 @@ export class TopoNetwork {
         network.setClick();
         network.moveCenter();
         network.setBundelExpanded(false);
-        TopoContext.labelToggle = true;
-        network.nodeLabelToggle(true);
-        TopoContext.edgeLabelToggle = false;
-        network.edgeLabelToggle(false);
-        this.commonService.reDraw(this);
+        network.toggleLabel(1, 2);
         window.addEventListener('resize', () => {
             network.moveCenter();
         });
         this.commonService.changeNetwork(network);
+        this.doMouseWheel();
         // window.topo = this.network;
     }
 
@@ -102,11 +101,7 @@ export class TopoNetwork {
             network.setClick();
             network.moveCenter();
             network.setBundelExpanded(false);
-            TopoContext.labelToggle = true;
-            network.nodeLabelToggle(true);
-            TopoContext.edgeLabelToggle = false;
-            network.edgeLabelToggle(false);
-            this.commonService.reDraw(this);
+            network.toggleLabel(1, 2);
             window.addEventListener('resize', () => {
                 network.moveCenter();
             });
@@ -116,6 +111,7 @@ export class TopoNetwork {
                 callbacksecFunction();
             }
         };
+        this.doMouseWheel();
         // window.topo = this.network;
 
     }
@@ -206,6 +202,28 @@ export class TopoNetwork {
             };
             _t.network.menu.setClass('popMenu');
             _t.network.menu.showMenu(event);
+        });
+    }
+
+    public doMouseWheel() {
+        const body = document.getElementById(this.domRegex);
+        const network = this.network;
+        body.addEventListener('wheel', () => {
+            if (!TopoContext.labelToggle && !TopoContext.edgeLabelToggle) {
+                network.toggleLabel(1, 2);
+            } else if (
+                TopoContext.labelToggle &&
+                !TopoContext.edgeLabelToggle
+            ) {
+                network.toggleLabel(0, 2);
+            } else if (
+                !TopoContext.labelToggle &&
+                TopoContext.edgeLabelToggle
+            ) {
+                network.toggleLabel(1, 0);
+            } else if (TopoContext.labelToggle && TopoContext.edgeLabelToggle) {
+                network.toggleLabel(0, 0);
+            }
         });
     }
 
