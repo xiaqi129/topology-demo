@@ -44,7 +44,18 @@ export class LeftToolComponent implements OnInit {
     }
 
     public moveCenter() {
-        this.network.zoomOver();
+        const network = this.network;
+        const groups = network.getGroupObj();
+        const groupsIsExpandedList = [];
+        if (groups) {
+            _.each(groups, (group) => {
+                groupsIsExpandedList.push(group.isExpanded);
+            });
+        }
+        const flag = _.every(groupsIsExpandedList, Boolean);
+        if (flag) {
+            this.network.zoomOver();
+        }
     }
 
     public showTooltip() {
@@ -61,12 +72,21 @@ export class LeftToolComponent implements OnInit {
         const edges = this.network.getEdgeObj();
         const nodes = this.network.getNodeObj();
         const groups = this.network.getGroupObj();
-        _.each(edges, (edge) => {
-            edge.visible = true;
-        });
-        _.each(nodes, (node) => {
-            node.visible = true;
-        });
+        const groupsIsExpandedList = [];
+        if (groups) {
+            _.each(groups, (group) => {
+                groupsIsExpandedList.push(group.isExpanded);
+            });
+        }
+        const flag = _.every(groupsIsExpandedList, Boolean);
+        if (flag) {
+            _.each(edges, (edge) => {
+                edge.visible = true;
+            });
+            _.each(nodes, (node) => {
+                node.visible = true;
+            });
+        }
         _.each(groups, (group) => {
             group.draw();
         });
