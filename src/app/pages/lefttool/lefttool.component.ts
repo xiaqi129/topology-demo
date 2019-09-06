@@ -55,6 +55,7 @@ export class LeftToolComponent implements OnInit {
         const flag = _.every(groupsIsExpandedList, Boolean);
         if (flag) {
             this.network.zoomOver();
+            this.network.reDraw();
         }
     }
 

@@ -27,7 +27,7 @@ export class TopoNetwork {
     };
     public defaultLineStyle = {
         arrowColor: 0x3099f1,
-        lineColor: 0xDDDDDD,
+        lineColor: 0xCCCCCC,
         arrowAngle: 10,
         lineType: 0,
         lineFull: 0,
@@ -70,7 +70,7 @@ export class TopoNetwork {
         network.setZoom();
         network.setClick();
         network.moveCenter();
-        network.setBundelExpanded(false);
+        network.setBundleExpanded(false);
         network.toggleLabel(1, 2);
         window.addEventListener('resize', () => {
             network.moveCenter();
@@ -100,7 +100,7 @@ export class TopoNetwork {
             network.setZoom();
             network.setClick();
             network.moveCenter();
-            network.setBundelExpanded(false);
+            network.setBundleExpanded(false);
             network.toggleLabel(1, 2);
             window.addEventListener('resize', () => {
                 network.moveCenter();

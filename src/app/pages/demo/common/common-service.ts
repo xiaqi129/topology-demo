@@ -75,7 +75,7 @@ export class CommonService {
         if (nodeInfo.label) {
             const label = node.setLabel(nodeInfo.name, node.labelStyle);
             if (nodeInfo.image) {
-                label.anchor.set(0.5, 0);
+                label.anchor.set(0.5, -1);
             } else {
                 label.anchor.set(0.5, -1.5);
             }
