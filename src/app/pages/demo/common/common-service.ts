@@ -80,6 +80,12 @@ export class CommonService {
                 label.anchor.set(0.5, -1.5);
             }
         }
+        if (nodeInfo.mark) {
+            node.addLabelMark(nodeInfo.mark.content, {
+                fillColor: nodeInfo.mark.color,
+                alpha: nodeInfo.mark.alpha,
+            });
+        }
         if (nodeInfo.tooltip) {
             node.clients = nodeInfo.clients;
             const nodeTooltipContent = `
@@ -161,6 +167,9 @@ export class CommonService {
             }
             if (edgeInfo.tooltip) {
                 edge.setTooltip(linkTooltipContent, topoNetwork.tooltipStyle);
+            }
+            if (edgeInfo.mark) {
+                edge.setMark(edgeInfo.mark.src, edgeInfo.mark.end);
             }
             network.addElement(edge);
             return edge;

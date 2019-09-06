@@ -17,6 +17,7 @@ import { LabelComponent } from '../pages/demo/label/label.component';
 import { ToggleGroupComponent } from '../pages/demo/togglegroup/togglegroup.component';
 import { MultipleLineComponent } from '../pages/demo/multiple-line/multipleLine.component';
 import { MultipleColorLineComponent } from '../pages/demo/multiple-color-line/multipleColorLine.component';
+import { MarkComponent } from '../pages/demo/mark/mark.component';
 const routes: Routes = [
     {
         path: '',
@@ -64,6 +65,13 @@ const routes: Routes = [
                         component: IconComponent,
                         data: {
                             breadcrumb: 'Register New Icon'
+                        },
+                    },
+                    {
+                        path: 'mark',
+                        component: MarkComponent,
+                        data: {
+                            breadcrumb: 'Mark and Bubble'
                         },
                     },
                     {
@@ -149,7 +157,7 @@ const routes: Routes = [
                         path: 'multipleColor',
                         component: MultipleColorLineComponent,
                         data: {
-                            breadcrumb: 'Multiple Color Line'
+                            breadcrumb: 'Add Traffic Path'
                         }
                     },
                     {
