@@ -33,6 +33,11 @@ export class TopoNetwork {
         lineFull: 0,
         lineWidth: 1,
     };
+    public defaultMultipleLineStyle = {
+        arrowAngle: 30,
+        lineColor: 0xdcdee2,
+        lineWidth: 0.8,
+    };
     private domRegex;
     constructor(
         domRegex: string,
@@ -54,6 +59,7 @@ export class TopoNetwork {
         const groups = topoData.groups;
         const edgeGroups = topoData.edgeGroups;
         const dataFlows = topoData.dataFlows;
+        const multipleLine = topoData.multipleLine;
         const groupsList = this.commonService.keySort(groups);
         // create Node
         this.initNodesData(devices);
@@ -65,6 +71,8 @@ export class TopoNetwork {
         this.initEdgeGroupsData(edgeGroups);
         // create data flow
         this.initDataFlowsData(dataFlows);
+        // create multiple color line
+        this.initMultipleColorLine(multipleLine);
         network.syncView();
         network.setDrag();
         network.setZoom();
@@ -180,6 +188,17 @@ export class TopoNetwork {
             // _t.initPhysicalGroupRightClickMenu(newGroup);
         });
         return groupObjList;
+    }
+
+    public initMultipleColorLine(multipleLines) {
+        const multipleLineList = [];
+        const _t = this;
+        _.each(multipleLines, (multipleLine, id) => {
+            const newMultipleLine = _t.commonService.newMultipleLine(_t, multipleLine);
+            multipleLineList.push(newMultipleLine);
+            this.sourceEdges[id] = newMultipleLine;
+        });
+        return multipleLineList;
     }
 
     public initNodeRightClickMenu(node: Network.Node) {

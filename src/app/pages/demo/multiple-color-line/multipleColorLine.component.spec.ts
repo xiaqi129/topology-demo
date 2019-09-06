@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MultipleLineComponent } from './multipleLIne.component';
+import { MultipleColorLineComponent } from './multipleColorLine.component';
 
-describe('MultipleLineComponent', () => {
-    let component: MultipleLineComponent;
-    let fixture: ComponentFixture<MultipleLineComponent>;
+describe('MultipleColorLineComponent', () => {
+    let component: MultipleColorLineComponent;
+    let fixture: ComponentFixture<MultipleColorLineComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [MultipleLineComponent]
+            declarations: [MultipleColorLineComponent]
         })
             .compileComponents();
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(MultipleLineComponent);
+        fixture = TestBed.createComponent(MultipleColorLineComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

@@ -251,4 +251,30 @@ export class CommonService {
             return dataflow;
         }
     }
+
+    public newMultipleLine(topoNetwork: TopoNetwork, multipleInfo) {
+        const network = topoNetwork.network;
+        const srcNodeName = multipleInfo.local_host;
+        const destNodeName = multipleInfo.remote_host;
+        const srcNode = topoNetwork.sourceNodes[srcNodeName];
+        const destNode = topoNetwork.sourceNodes[destNodeName];
+        if (srcNode && destNode) {
+            const multipleLine = network.createMultipleLine(srcNode, destNode);
+            multipleLine.name = multipleInfo.name;
+            const style = _.cloneDeep(topoNetwork.defaultMultipleLineStyle);
+            if (multipleInfo.style) {
+                _.extend(style, multipleInfo.style);
+            }
+            multipleLine.initStyle(style);
+            multipleLine.createStartLine(multipleInfo.startLineRatio, multipleInfo.startLineStyle);
+            multipleLine.createEndLine(multipleInfo.endLineRatio, multipleInfo.endLineStyle);
+            multipleLine.createEndArrow(multipleInfo.endArrowStyle);
+            multipleLine.createStartArrow(multipleInfo.startArrowStyle);
+            _.each(multipleInfo.labels, label => {
+                multipleLine.setLabel(label.content, label.ratio, label.style);
+            });
+            network.addElement(multipleLine);
+            return multipleLine;
+        }
+    }
 }

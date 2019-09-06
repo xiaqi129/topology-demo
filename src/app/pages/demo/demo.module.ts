@@ -18,6 +18,7 @@ import { SimpleComponent } from './simple/simple.component';
 import { ToggleGroupComponent } from './togglegroup/togglegroup.component';
 import { TreeComponent } from './tree/tree.component';
 import { MultipleLineComponent } from './multiple-line/multipleLine.component';
+import { MultipleColorLineComponent } from './multiple-color-line/multipleColorLine.component'
 
 @NgModule({
     imports: [
@@ -42,7 +43,8 @@ import { MultipleLineComponent } from './multiple-line/multipleLine.component';
         LabelComponent,
         ToggleGroupComponent,
         EdgeGroupComponent,
-        MultipleLineComponent
+        MultipleLineComponent,
+        MultipleColorLineComponent
     ],
     entryComponents: [DemoComponent]
 })

@@ -16,6 +16,7 @@ import { TreeComponent } from '../pages/demo/tree/tree.component';
 import { LabelComponent } from '../pages/demo/label/label.component';
 import { ToggleGroupComponent } from '../pages/demo/togglegroup/togglegroup.component';
 import { MultipleLineComponent } from '../pages/demo/multiple-line/multipleLine.component';
+import { MultipleColorLineComponent } from '../pages/demo/multiple-color-line/multipleColorLine.component';
 const routes: Routes = [
     {
         path: '',
@@ -142,6 +143,13 @@ const routes: Routes = [
                         component: MultipleLineComponent,
                         data: {
                             breadcrumb: 'Multiple Line'
+                        }
+                    },
+                    {
+                        path: 'multipleColor',
+                        component: MultipleColorLineComponent,
+                        data: {
+                            breadcrumb: 'Multiple Color Line'
                         }
                     },
                     {
