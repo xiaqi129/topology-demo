@@ -286,4 +286,27 @@ export class CommonService {
             return multipleLine;
         }
     }
+
+    public newPortChannel(topoNetwork: TopoNetwork, portChannel) {
+        const network = topoNetwork.network;
+        const edges = topoNetwork.sourceEdges;
+        const lines = [];
+        _.each(edges, edge => {
+            if (_.includes(portChannel.lines, edge.name)) {
+                lines.push(edge);
+            }
+        });
+        const channel = network.createPortChannel(lines, portChannel.ratio);
+        channel.name = portChannel.name;
+        const style = _.cloneDeep(topoNetwork.defaultPortChannelStyle);
+        if (portChannel.style) {
+            _.extend(style, portChannel.style);
+        }
+        channel.initStyle(style);
+        channel.setLabel(portChannel.content);
+        network.addElement(channel);
+        return channel;
+    }
+
+
 }

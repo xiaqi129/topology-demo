@@ -18,6 +18,7 @@ import { ToggleGroupComponent } from '../pages/demo/togglegroup/togglegroup.comp
 import { MultipleLineComponent } from '../pages/demo/multiple-line/multipleLine.component';
 import { MultipleColorLineComponent } from '../pages/demo/multiple-color-line/multipleColorLine.component';
 import { MarkComponent } from '../pages/demo/mark/mark.component';
+import { PortChannelComponent } from '../pages/demo/port-channel/portChannel.component';
 const routes: Routes = [
     {
         path: '',
@@ -79,6 +80,13 @@ const routes: Routes = [
                         component: AddPictureComponent,
                         data: {
                             breadcrumb: 'Add Picture on Node'
+                        },
+                    },
+                    {
+                        path: 'portchannel',
+                        component: PortChannelComponent,
+                        data: {
+                            breadcrumb: 'Port Channel'
                         },
                     },
                 ]

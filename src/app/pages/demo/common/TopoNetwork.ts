@@ -9,6 +9,7 @@ export class TopoNetwork {
     public sourceNodes;
     public sourceEdges;
     public sourceGroups;
+    public sourceOthers;
     // label
     public labelStyle = {
         fontSize: 12,
@@ -38,6 +39,11 @@ export class TopoNetwork {
         lineColor: 0xdcdee2,
         lineWidth: 0.8,
     };
+    public defaultPortChannelStyle = {
+        lineColor: 0X0386d2,
+        fillColor: 0XFFFFFF,
+    };
+
     private domRegex;
     constructor(
         domRegex: string,
@@ -50,6 +56,7 @@ export class TopoNetwork {
         this.sourceNodes = {};
         this.sourceEdges = [];
         this.sourceGroups = {};
+        this.sourceOthers = {};
     }
 
     public drawNoIConTopology(topoData) {
@@ -60,6 +67,7 @@ export class TopoNetwork {
         const edgeGroups = topoData.edgeGroups;
         const dataFlows = topoData.dataFlows;
         const multipleLine = topoData.multipleLine;
+        const portChannel = topoData.portChannel;
         const groupsList = this.commonService.keySort(groups);
         // create Node
         this.initNodesData(devices);
@@ -73,6 +81,8 @@ export class TopoNetwork {
         this.initDataFlowsData(dataFlows);
         // create multiple color line
         this.initMultipleColorLine(multipleLine);
+        // create port channel
+        this.initPortChannel(portChannel);
         network.syncView();
         network.setDrag();
         network.setZoom();
@@ -199,6 +209,18 @@ export class TopoNetwork {
             this.sourceEdges[id] = newMultipleLine;
         });
         return multipleLineList;
+    }
+
+    public initPortChannel(portChannels) {
+        const portChannelList = [];
+        const _t = this;
+        _.each(portChannels, (portChannel, id) => {
+            const newPortChannel = _t.commonService.newPortChannel(_t, portChannel);
+            portChannelList.push(newPortChannel);
+            this.sourceOthers[id] = newPortChannel;
+        });
+        return portChannelList;
+
     }
 
     public initNodeRightClickMenu(node: Network.Node) {

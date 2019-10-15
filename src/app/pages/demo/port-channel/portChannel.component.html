@@ -1,0 +1,10 @@
+<div class="selects">
+    <div class="sel_wrap">
+        <span>Label Position</span>
+        <select class="select" [(ngModel)]="selectValue" (change)="selectedChange()">
+            <option *ngFor="let item of labelPosition">
+                {{item}}</option>
+        </select>
+    </div>
+</div>
+<div id="network"></div>
